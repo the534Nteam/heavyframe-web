@@ -207,7 +207,7 @@ h3{font-family:var(--f-display);font-weight:700;margin:0;text-wrap:balance}
 .opp{display:grid;grid-template-columns:72px minmax(0,1fr) auto;gap:10px;align-items:center;background:var(--panel2);border:1px solid var(--line);border-radius:6px;padding:6px 10px}
 .opp canvas{width:72px;height:72px}.opp canvas.face{border-radius:4px}
 .opp .on{font-family:var(--f-display);font-weight:600;font-size:16px;overflow-wrap:anywhere}
-.opp small{color:var(--mute);font-size:12px;display:block}
+.opp small{color:var(--mute);font-size:12px;display:block}.opp small.upfirst{color:var(--amber);margin-top:2px}.opp small.upfirst b{color:var(--amber)}
 .tag{font-size:12px;letter-spacing:.1em;text-transform:uppercase;padding:2px 6px;border-radius:3px;background:var(--line);color:var(--fg);margin-left:6px;vertical-align:2px}
 .bestv{font:800 10px var(--f-display);letter-spacing:.08em;color:#0b0f14;background:var(--amber);border-radius:4px;padding:2px 6px;margin-left:6px;vertical-align:2px}.passst{display:block;color:#ffd77a;margin-top:4px}.wsgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:8px}.wsi{display:flex;flex-direction:column;gap:3px;padding:8px;border:1px solid var(--line);border-left:3px solid var(--rc);border-radius:8px;background:var(--panel2);min-width:0}.wsi canvas{width:100%;height:64px;border-radius:6px}.wsi b{font-size:13px}.wsi small{font-size:12px;color:var(--mute);line-height:1.3}.wsi .wsr{color:var(--rc);font-weight:700}.wsi .wsneed{color:#ffd77a}.wsi.sold{opacity:.55}.sitem{display:flex;justify-content:space-between;align-items:center;gap:12px;background:var(--panel2);border:1px solid var(--line);border-radius:6px;padding:10px 12px}
 .sitem small{display:block;color:var(--mute);font-size:12px}
@@ -250,6 +250,7 @@ h3{font-family:var(--f-display);font-weight:700;margin:0;text-wrap:balance}
 @keyframes flip{from{transform:rotateY(90deg) scale(.8);opacity:0}to{transform:none;opacity:1}}
 .mpick{display:flex;align-items:center;gap:10px;margin-bottom:10px;flex-wrap:wrap}.mpick label{font-family:var(--f-display);font-weight:600;letter-spacing:.08em;text-transform:uppercase;font-size:13px;color:var(--mute)}.mpick select{flex:1;min-width:0}
 @media (max-width:420px){nav.tabs button{font-size:13px;letter-spacing:.02em}}
+/* ROUND5 v (Apex): scrolls into view stop above the fixed bottom nav */@media (max-width:760px){html{scroll-padding-bottom:calc(84px + env(safe-area-inset-bottom,0px))}}
 @media (max-width:760px){nav.tabs{position:fixed;left:0;right:0;bottom:0;z-index:40;margin:0;gap:0;background:rgba(9,12,17,.97);border-bottom:0;border-top:1px solid var(--line);padding:0 max(6px,env(safe-area-inset-right,0px)) env(safe-area-inset-bottom,0px) max(6px,env(safe-area-inset-left,0px));box-shadow:0 -8px 24px rgba(0,0,0,.45)}nav.tabs button{padding:15px 4px 14px;border-bottom:0;border-top:3px solid transparent;margin:0}nav.tabs button[aria-selected="true"]{border-top-color:var(--amber);background:linear-gradient(rgba(255,178,46,.1),transparent)}.wrap{padding-bottom:calc(78px + env(safe-area-inset-bottom,0px))!important}#toast{bottom:calc(76px + env(safe-area-inset-bottom,0px))}}
 .legal{margin-top:28px;text-align:center;font-size:12px;color:var(--mute);letter-spacing:.04em}
 #v-store .shopbw{max-width:none!important;margin:0}
@@ -258,6 +259,7 @@ h3{font-family:var(--f-display);font-weight:700;margin:0;text-wrap:balance}
 /* Mochi build 78 bug 4: on short screens the centred box was taller than the screen, so its top (Skip tutorial) sat above it
    and could not be reached. Scroll instead, keep the top reachable, and give the Captain less room on short screens. */
 #tut{overflow-y:auto;align-items:flex-start!important}#tut>.tutbox{margin:auto}
+/* ROUND5 j: the callsign ask lets taps through to the screen around its box (tabs, contract cards, Launch) */#tut.askn{pointer-events:none;background:rgba(4,6,10,.25)}#tut.askn>.tutbox{pointer-events:auto;margin:8px auto auto}
 @media (max-height:720px){#tutCv{height:min(300px,26vh)}}
 .tutdlg{background:linear-gradient(180deg,#141c2a,#0c111a);padding:12px 14px 14px;display:flex;flex-direction:column;gap:8px}
 .tutname{align-self:flex-start;background:#e8b33a;color:#141a28;font-family:var(--f-display);font-weight:700;letter-spacing:.1em;font-size:13px;padding:3px 10px;border-radius:4px;margin-top:-26px}
@@ -293,6 +295,7 @@ h3{font-family:var(--f-display);font-weight:700;margin:0;text-wrap:balance}
 #bcv{width:100%;height:min(340px,52vh);display:block;border-radius:6px;background:linear-gradient(#141c26,#0d1218)}
 .blog{min-height:2.6em;font-size:14px}
 .bctl{display:flex;gap:8px;justify-content:flex-end}
+.bres[hidden]{display:none}/* ROUND5 x: display:grid beat the hidden attribute */
 .bres{text-align:center;display:grid;gap:8px;justify-items:center;padding:6px}
 .bres h3{font-size:30px;letter-spacing:.1em;text-transform:uppercase}
 .bres.win h3{color:var(--amber)} .bres.loss h3{color:var(--red)}
@@ -376,6 +379,8 @@ h3{font-family:var(--f-display);font-weight:700;margin:0;text-wrap:balance}
  #battle .bres{padding:2px}}
 /* battle on desktop: the panel always fits the window; the arena view gives up height first, so the header and VICTORY never scroll off the top */
 @media (min-width:761px){#battle .bwrap{display:flex;flex-direction:column}#battle .bwrap>*{flex-shrink:0}#battle #bcv{flex:0 1 auto;min-height:150px}}
+/* ROUND5 o follow-up: the result panel grew (HEAVY answered, Read lines); once it shows, the arena view may shrink further so Continue stays on screen */
+@media (min-width:761px){#battle .bwrap:has(#bres:not([hidden])) #bcv{min-height:64px}}
 .fbon{margin-left:3px;font-size:.8em;color:var(--green);font-weight:700}
 /* fix80 A6: under any open modal, Roll, Fight and the map are greyed out and take no taps */
 body.mlock #rollBtn,body.mlock .thb,body.mlock #isoc,body.mlock .consoleWrap .btn,body.mlock #rivals .opp .btn,body.mlock .ccard,body.mlock .camp .btn,body.mlock #v-missions .console .btn,body.mlock #bDone{filter:grayscale(1);opacity:.4;pointer-events:none;transition:opacity .15s}
@@ -559,7 +564,7 @@ body.pre1 #t-store,body.pre1 #hgTabs [data-h=parts],body.pre1 #hgTabs [data-h=sk
     <div id="st-cos" hidden></div>
     <div id="st-perks" hidden style="display:grid;gap:8px">
       <div class="sitem" style="border-color:var(--amber)"><div><b>Commander Bundle · Lifetime</b><small>No ads, 4x battle speed and auto-battle, for life. One payment. Includes the No Ads perks: a 6th hangar slot and Skip on 3-star cleared contracts.</small></div><button class="btn go sm" data-buy="bundle">$9.99</button></div>
-      <div class="sitem"><div><b>Turbo Membership · Monthly</b><small>No ads, 4x battle speed, auto-battle with auto-retreat, plus 100 credits every month. No Ads perks while active: a 6th hangar slot and Skip on 3-star cleared contracts. Cancel anytime.</small></div><button class="btn go sm" data-buy="turboSub">$2.99/mo</button></div>
+      <div class="sitem"><div><b>Turbo Membership · Monthly</b><small>No ads, 4x battle speed, auto-battle with auto-retreat, plus 400 credits and a Turbo-only paint every month (looks only, never Power). No Ads perks while active: a 6th hangar slot and Skip on 3-star cleared contracts. Cancel anytime.</small></div><button class="btn go sm" data-buy="turboSub">$2.99/mo</button></div>
       <div class="sitem"><div><b>No Ads · Lifetime</b><small>Removes the ads between missions and matches. Perks: a 6th hangar slot (free), and Skip on contracts you already cleared with 3 stars (same fuel, same clear rewards; not Arena or the daily contract).</small></div><button class="btn go sm" data-buy="noAds">$4.99</button></div>
       <div class="sitem"><div><b>Repair Kit</b><small>+50% hull on a mission. You have <span id="kitN">0</span>.</small></div><div style="display:grid;gap:6px"><button class="btn sm" id="kitScrap">150 Fed-$</button><button class="btn sm" id="kitCred">25 credits</button></div></div>
     </div>
@@ -614,7 +619,7 @@ body.pre1 #t-store,body.pre1 #hgTabs [data-h=parts],body.pre1 #hgTabs [data-h=sk
   <div style="display:flex;justify-content:space-between;align-items:center"><h3 style="margin:0;font-family:var(--f-display);letter-spacing:.06em">SETTINGS</h3><button class="btn sm" id="setClose">Close</button></div>
   <label class="fld">Music volume<input type="range" id="volMus" min="0" max="100"></label>
   <label class="fld">Sound effects volume<input type="range" id="volSfx" min="0" max="100"></label>
-  <label class="fld" style="display:flex;align-items:center;gap:10px">Vibration on hits<input type="checkbox" id="setHap" style="width:22px;height:22px;margin-left:auto"></label>   <label class="fld" style="display:flex;align-items:center;gap:10px">Captain's tips<input type="checkbox" id="setTips" style="width:22px;height:22px;margin-left:auto"></label>   <label class="fld" style="display:flex;align-items:center;gap:10px">Crew lines in battle<input type="checkbox" id="setChat" style="width:22px;height:22px;margin-left:auto"></label>   <label class="fld" style="display:flex;align-items:center;gap:10px">Impact effects (shake, hit-stop, slow motion)<input type="checkbox" id="setFx" style="width:22px;height:22px;margin-left:auto"></label>
+  <label class="fld" style="display:flex;align-items:center;gap:10px">Vibration on hits<input type="checkbox" id="setHap" style="width:22px;height:22px;margin-left:auto"></label>   <label class="fld" style="display:flex;align-items:center;gap:10px">Captain's tips<input type="checkbox" id="setTips" style="width:22px;height:22px;margin-left:auto"></label>   <label class="fld" style="display:flex;align-items:center;gap:10px">Crew lines in battle<input type="checkbox" id="setChat" style="width:22px;height:22px;margin-left:auto"></label>   <label class="fld" style="display:flex;align-items:center;gap:10px">Impact effects (shake, hit-stop, slow motion)<input type="checkbox" id="setFx" style="width:22px;height:22px;margin-left:auto"></label>   <label class="fld" style="display:flex;align-items:center;gap:10px">Skip cut-ins and story scenes<input type="checkbox" id="setSkipCuts" style="width:22px;height:22px;margin-left:auto"></label>
   <label class="fld" style="display:flex;align-items:center;gap:10px">Phone alerts (patrol done, fuel full)<input type="checkbox" id="setPtA" style="width:22px;height:22px;margin-left:auto"></label>
   <div id="acctBox" class="acct" hidden></div>
   <button class="btn" id="howBtn">How to play</button>
@@ -667,7 +672,7 @@ body.pre1 #t-store,body.pre1 #hgTabs [data-h=parts],body.pre1 #hgTabs [data-h=sk
 <script>
 (()=>{
 // build version: build-web.py stamps this from android/app/build.gradle (versionName, versionCode)
-const APP_VER='v8.3 (build 83)';
+const APP_VER='v8.4 (build 84)';
 // A7 (build 74 review): the version on the splash/title screen, from the same stamp as Settings (build-web.py fills APP_VER)
 document.getElementById('opVer').textContent=APP_VER==='dev'?'dev build':APP_VER;
 // ---------- data ----------
@@ -868,6 +873,13 @@ const PAINTS={
  pt_rust:{n:'Rust Runner',base:'#7a4a2a',pat:'camo',cols:['#4a2a18','#a8683a','#2e1a10'],r:2,lock:1},
  pt_storm:{n:'Storm Front',base:'#4a5a70',pat:'stripe',cols:['#d8e4f0'],r:2,lock:1},
  pt_ember:{n:'Ember Weave',base:'#a8341e',pat:'carbon',cols:['#2a0e08'],r:2,lock:1},
+ // ROUND5 z: Turbo Membership paints, one a month while Turbo is active (never in crates or the paint shop; looks only)
+ tb_volt:{n:'Turbo Volt',base:'#1c2230',pat:'stripe',cols:['#ffe14a'],r:3,lock:1,turbo:1},
+ tb_nitro:{n:'Nitro Blue',base:'#1f4fd8',pat:'sheen',cols:['#9fd8ff'],r:3,lock:1,turbo:1},
+ tb_redline:{n:'Redline',base:'#20242c',pat:'carbon',cols:['#ff3a3a'],r:3,lock:1,turbo:1},
+ tb_aurora:{n:'Aurora',base:'#2a1f4a',pat:'digital',cols:['#3affd0','#b06cff','#121028'],r:3,lock:1,turbo:1},
+ tb_magma:{n:'Magma Flow',base:'#3a1410',pat:'camo',cols:['#ff6a2a','#ffb02e','#1a0806'],r:3,lock:1,turbo:1},
+ tb_frost:{n:'Frostbite',base:'#cfe8ff',pat:'stripe',cols:['#2f6fbf'],r:3,lock:1,turbo:1},
  pt_ocean:{n:'Deep Ocean',base:'#1e4a6a',pat:'camo',cols:['#0e2a40','#3a7aa0','#16384e'],r:3,lock:1},
  pt_ivory:{n:'Ivory Line',base:'#efe8d8',pat:'stripe',cols:['#2a2a30'],r:3,lock:1},
  pt_venom:{n:'Venom Grid',base:'#2e3a1a',pat:'digital',cols:['#a8ff3a','#5a7a1e','#141a0a'],r:3,lock:1},
@@ -903,9 +915,14 @@ function armPair(arms){if(!arms.length)return arms;const a=arms[0],b=arms.find(q
 // (Refined or better, your level) drops just before that fight and is mounted on your weaker arm (swap it back in the Hangar any time).
 // Once per save (S.enG). It is kept through a Rematch like Track parts (keepGrant).
 function energyNeed(foes,opt){opt=opt||{};const M=new Set(opt.mods||[]);return (foes||[]).some(b=>b&&(armorOf(b)==='shielded'||opt.ashift==='all'||(opt.ashift&&b.boss)||M.has('shift')))}
-function energyGift(foes,opt){if(S.enG||!S.onb||!energyNeed(foes,opt))return null;if(S.inv.some(p=>p.kind==='arm'&&armFam(p)==='energy')){S.enG=1;return null}
- const p=makePart('arm',Math.max(1,S.level||1),R,0,'laser');p.r=Math.max(1,p.r);p.l=Math.max(p.l,Math.max(1,Math.round((S.level||1)*.8)));S.inv.push(p);keepGrant(p);S.enG=1;
- const R0=S.eq.armR&&findPart(S.eq.armR),L0=S.eq.armL&&findPart(S.eq.armL),slot=!L0?'armL':!R0?'armR':partScore(L0)<=partScore(R0)?'armL':'armR',old=S.eq[slot]||null;S.eq[slot]=p.id;save();
+function energyGift(foes,opt){/* ROUND5 b: the gift made inside a roll is noted in the roll record; when a reload replays that roll the restored arms are
+ the old ones, so the same cannon (same draws, same id) is mounted on the same arm again instead of being blocked by the one-time flag */
+ const rc=REC&&S.run&&S.run.pend&&S.run.pend.rec,re=S.enG&&rc&&rc.eg&&rc.eg.bi===REC.bi?rc.eg:null;
+ if((S.enG&&!re)||!S.onb||!energyNeed(foes,opt))return null;if(!re&&S.inv.some(p=>p.kind==='arm'&&armFam(p)==='energy')){S.enG=1;return null}
+ let p=makePart('arm',Math.max(1,S.level||1),R,0,'laser');p.r=Math.max(1,p.r);p.l=Math.max(p.l,Math.max(1,Math.round((S.level||1)*.8)));
+ if(re){const q=S.inv.find(x=>x.id===re.id);if(q)p=q;else{if(re.id)p.id=re.id;S.inv.push(p);keepGrant(p)}const old=S.eq[re.slot]||null;S.eq[re.slot]=p.id;save();return {p,slot:re.slot,old}}
+ S.inv.push(p);keepGrant(p);S.enG=1;
+ const R0=S.eq.armR&&findPart(S.eq.armR),L0=S.eq.armL&&findPart(S.eq.armL),slot=!L0?'armL':!R0?'armR':partScore(L0)<=partScore(R0)?'armL':'armR',old=S.eq[slot]||null;S.eq[slot]=p.id;if(rc)rc.eg={id:p.id,slot,bi:REC.bi};save();
  toast('Supply drop: '+partName(p)+' (Energy). Energy hits Shielded armor for +30%. Mounted on your '+(slot==='armL'?'left':'right')+' arm; swap it in the Hangar any time.');return {p,slot,old}}
 function autoEquip(){const free=S.inv.filter(p=>!usedElsewhere(p.id)),best=k=>free.filter(p=>p.kind===k).sort((a,b)=>partScore(b)-partScore(a));
  const arms=armPair(best('arm'));const before=botStats(myBot()).power;S.eq={head:(best('head')[0]||{}).id||null,core:(best('core')[0]||{}).id||null,armR:(arms[0]||{}).id||null,armL:(arms[1]||{}).id||null,legs:(best('legs')[0]||{}).id||null};
@@ -1495,7 +1512,12 @@ let BOSSDIR=null;
 // "reading 'armor'". It now passes the bot, and a missing bot simply has no armor.
 // ROUND4: an unarmored rival can shift too; a jam or Read on it said ARMOR[null].n and crashed the fight
 function armN(b){const A=ARMOR[armorOf(b)];return A?A.n:'unarmored'}
-function armorOf(b){if(!b)return null;return b.armor||({tank:'plated',fortress:'shielded',swarm:'light'})[b.kind]||null}
+function armorOf(b){if(!b)return null;return b.armor||KINDARM[b.kind]||null}
+// ROUND5 w (Combo B1): one armor lookup for a chapter boss, read by the fight (bossOf), the Workshop's "For Chapter N" line (wsNeed)
+// and through armorOf the energy-weapon guarantee. Rivals by name (Rin Light, Varga Plated), units by kind, other bosses unarmored.
+// Before, wsNeed read only CH[n].boss.kind (Rin: "No armor type") and the fight kept genBot's random archetype armor.
+const KINDARM={tank:'plated',fortress:'shielded',swarm:'light'},RIVALARM={rin:'light',varga:'plated'};
+function chArmor(n){const B=CH[n]&&CH[n].boss;if(!B)return null;return (B.rival?RIVALARM[B.rival]:KINDARM[B.kind])||null}
 function armorMult(w,ar){const A=ARMOR[ar];return A?(A.m[WFAM[w]||'melee']||1):1}
 // Round 2 item 2 (build 80): rule modifiers. A contract or boss carries one (the daily contract 2-3), shown on its card before
 // fuel is spent and in the fight. Each one breaks the fixed "alternate arms + Brace on HEAVY + Overdrive when ready" line.
@@ -1514,7 +1536,7 @@ const MODK=Object.keys(MODS),ARMCYC=['plated','shielded','light'];
 // Press: your attack deals +20%, and you take +25% from every hit until your next turn.
 // Read: your attack deals 80%. A telegraphed HEAVY or SPECIAL that lands before your next turn is cut by 40% and you counter
 // with your last arm at 60%; an announced armor shift that would land is read and cancelled (no stun, unlike a jam).
-const STANCE={press:{dmg:1.2,take:1.25},read:{dmg:.8,hv:.6,ctr:.6}},STN={press:'Press',hold:'Hold',read:'Read'};
+/* ROUND5 n (Apex): Read cuts a HEAVY by 20% (was 40%) and its counter hits at 12% (was 60%), so Brace is the better answer to a HEAVY of 30%+ of your hull (tools/r5sim.mjs n) */const STANCE={press:{dmg:1.2,take:1.25},read:{dmg:.8,hv:.8,ctr:.12}},STN={press:'Press',hold:'Hold',read:'Read'};
 function* battleGen(A,B,opt={}){
  const r=rng(opt.seed||Math.floor(R()*1e9));const Bs=Array.isArray(B)?B:[B];const M=new Set(opt.mods||[]);
  const F=[A,...Bs].map((b,i)=>{const s=botStats(b);if(i>0){const sc=opt.scales?opt.scales[i-1]:null,hs=sc?sc[0]:opt.bScale,as=sc?sc[1]:(opt.bAtk||opt.bScale);if(hs){s.hp=Math.round(s.hp*hs);s.atk=Math.round(s.atk*as)}if(!opt.raw){s.hp=Math.round(s.hp*ENEMYK.hp);s.atk=Math.round(s.atk*ENEMYK.atk)}if(opt.fix&&opt.fix[i-1]){const fx=opt.fix[i-1];if(fx.hp)s.hp=fx.hp;if(fx.atk)s.atk=fx.atk;s.crit=0;s.dodge=0;s.calm=1}const UK=UNITK[b.kind];if(UK){s.hp=Math.round(s.hp*UK.hp);s.atk=Math.round(s.atk*UK.atk);s.def=Math.round(s.def*UK.def);s.spd=Math.max(4,Math.round(s.spd*UK.spd));s.dodge=UK.dodge!=null?UK.dodge:s.dodge}}
@@ -1569,7 +1591,9 @@ function* battleGen(A,B,opt={}){
  const intent1=(f,k)=>{if(!k||f.hp<=0)return null;const nx=f.acts+1,o={};
   if(M.has('coolant')&&((f.cool||0)+1)%3===0)return {t:'shield',n:coolV(f)};
   const t=f.intent,heavy=t==='heavy';if(t==='guard')return {t:'guard'};if(t==='charge')return {t:'charge',sp:!f.spUsed||!!f.spNext};
-  const n=est(k,nextSlot(f),0,{heavy,special:heavy&&!!f.spNext,w:kwOf(f,heavy)});return {t:heavy?'heavy':'atk',n,buff:M.has('enrage')?1:0,shift:f.shNext?1:0}};
+  let n=est(k,nextSlot(f),0,{heavy,special:heavy&&!!f.spNext,w:kwOf(f,heavy)}),cap=0;
+  if(opt.hitCap){const d=F[0],gf=d.guard?(heavy&&M.has('pierce')?.8:heavy?R3K.hvG:.4):1;n=Math.min(n,Math.max(1,Math.floor(opt.hitCap*d.max*gf)));cap=Math.max(1,Math.floor(opt.hitCap*d.max))}/* build 84 fix: the chip shows the Easy hit cap too */
+  return {t:heavy?'heavy':'atk',n,cap,buff:M.has('enrage')?1:0,shift:f.shNext?1:0}};
  const strike=(i,slot,di,o)=>{o=o||{};const a=F[i],d=F[di];if(!d||d.hp<=0)return;
   let {p,w,mult,hits,pierce,stunCh,big,ex,combo,amul,refl}=shape(i,slot,di,o,false);if(i===0&&!o.again&&!o.od&&a.purge>0)a.purge--;if(i===0&&!o.again)a.lastSlot=slot;if(i===0&&!o.again&&!o.od)a.crun=refl?0:combo?(a.crun||0)+1:0;
   let total=0,crit=false,blocked=false;const parts=[];
@@ -1584,12 +1608,17 @@ function* battleGen(A,B,opt={}){
   // boss governor: steer the fight toward the target hull at the kill, and only an unbraced HEAVY can finish you
   if(opt.gov&&i>0&&d===F[0]&&total>0){const en=F.slice(1),fe=en.reduce((q,f)=>q+f.hp,0)/Math.max(1,en.reduce((q,f)=>q+f.max,0)),s0=start[0]/max[0],want=opt.gov+(s0-opt.gov)*fe;let g=Math.max(.4,Math.min(1.6,1+2*(d.hp/d.max-want)));if(o.heavy&&!d.guard&&a.b.boss)g=Math.max(1,g);
    total=0;for(let h=0;h<parts.length;h++)if(parts[h]!=='miss'){parts[h]=Math.max(1,Math.round(parts[h]*g));total+=parts[h]}
-   if(o.heavy&&!d.guard&&a.b.boss&&total>0&&total<d.max*.22){const up=d.max*.22/total;total=0;for(let h=0;h<parts.length;h++)if(parts[h]!=='miss'){parts[h]=Math.max(1,Math.round(parts[h]*up));total+=parts[h]}}
+   if(o.heavy&&!d.guard&&a.b.boss&&total>0&&total<d.max*(opt.hvFloor||.22)){const up=d.max*(opt.hvFloor||.22)/total;/* ROUND5 p: Easy sets a lower floor (DIFFS hf) */total=0;for(let h=0;h<parts.length;h++)if(parts[h]!=='miss'){parts[h]=Math.max(1,Math.round(parts[h]*up));total+=parts[h]}}
    if(!o.heavy||d.guard){const cap=Math.max(0,d.hp+d.sh-1);if(total>cap){total=cap;let left=cap;for(let h=0;h<parts.length;h++)if(parts[h]!=='miss'){parts[h]=Math.min(parts[h],left);left-=parts[h]}}}}
+  // ROUND5 p (Blitz): on Easy no single enemy hit (HEAVY included) takes more than opt.hitCap of your max hull before Brace or
+  // Read; a Brace still cuts it by its usual share, Read still takes 20% off, and Press can't lift it back over the cap
+  if(opt.hitCap&&i>0&&d===F[0]&&total>0){const gf=d.guard?(o.heavy&&M.has('pierce')?.8:o.heavy?R3K.hvG:.4):1,cap=Math.max(1,Math.floor(opt.hitCap*d.max*gf));
+   if(total>cap){const k=cap/total;total=0;for(let h=0;h<parts.length;h++)if(parts[h]!=='miss'){parts[h]=Math.max(1,Math.floor(parts[h]*k));total+=parts[h]}}}
   // ROUND4 item 17: your stance changes what you take (after the governor, which steers by hull, so the stance cost or gain stays)
   let rd=0;if(i>0&&d===F[0]&&total>0&&d.st&&d.st!=='hold'){const sm=d.st==='press'?STANCE.press.take:o.heavy?STANCE.read.hv:1;rd=d.st==='read'&&o.heavy?1:0;
-   if(sm!==1){total=0;for(let h=0;h<parts.length;h++)if(parts[h]!=='miss'){parts[h]=Math.max(1,Math.round(parts[h]*sm));total+=parts[h]}
+   if(sm!==1){const t0=total;total=0;for(let h=0;h<parts.length;h++)if(parts[h]!=='miss'){parts[h]=Math.max(1,Math.round(parts[h]*sm));total+=parts[h]}if(rd)d.rdSv=(d.rdSv||0)+Math.max(0,t0-total)/* ROUND5 l */
     if(opt.gov&&(!o.heavy||d.guard)){const cap=Math.max(0,d.hp+d.sh-1);if(total>cap){total=cap;let left=cap;for(let h=0;h<parts.length;h++)if(parts[h]!=='miss'){parts[h]=Math.min(parts[h],left);left-=parts[h]}}}}}
+  if(opt.hitCap&&i>0&&d===F[0]&&total>0){const cap=Math.max(1,Math.floor(opt.hitCap*d.max));if(total>cap){const k=cap/total;total=0;for(let h=0;h<parts.length;h++)if(parts[h]!=='miss'){parts[h]=Math.max(1,Math.floor(parts[h]*k));total+=parts[h]}}}/* ROUND5 p: Press never lifts an Easy hit over the cap */
   let rf=0;if(refl&&total>0){rf=total;total=0;for(let h=0;h<parts.length;h++)if(parts[h]!=='miss')parts[h]=0;hurt(a,rf,true)}
   if(i===0&&total>0)d.pin=d.pin?d.pin*.6+total*.4:total;const H=hurt(d,total,false,i===0&&!!o.od);
   const jam=i===0&&!o.od&&!o.again&&R3K.jam&&total>0&&d.hp>0&&d.shNext&&armorMult(w,d.shNext)>1;if(jam){d.shNext=null;d.ashL=d.ashN||0;a.od=Math.min(100,a.od+(R3K.jamOd||0))}  // ROUND3 item 11: an EFFECTIVE hit against the incoming armor jams the shift
@@ -1602,7 +1631,7 @@ function* battleGen(A,B,opt={}){
   if(i===0&&total>0)d.dIn=(d.dIn||0)+total;
   if(i===0)a.od=Math.min(100,a.od+(M.has('overload')?5.5:11));
   if(rf)thorn=rf;
-  push({t:'atk',a:i,d:di,w,slot,el:ex,dmg:total,hits:parts,crit,blocked,stun,thorn,refl:rf?1:0,big,kill:d.hp<=0,shAb:H.ab,saved:H.saved,splash,again:!!o.again,heavy:!!o.heavy,sp:o.special||null,braced:!!(d.guard&&d===F[0]),combo,odk:o.od||null,rd,ctr:o.ctr?1:0,gi:o.gi||null,am:amul});if(jam)push({t:'mod',a:di,d:di,jam:1,txt:d.b.name+'\'s armor shift jams! It stays '+armN(d.b)+' and loses its next turn.'})};
+  push({t:'atk',a:i,d:di,w,slot,el:ex,dmg:total,hits:parts,crit,blocked,stun,thorn,refl:rf?1:0,big,kill:d.hp<=0,shAb:H.ab,saved:H.saved,splash,again:!!o.again,heavy:!!o.heavy,sp:o.special||null,braced:!!(d.guard&&d===F[0]),combo,odk:o.od||null,rd:rd?(d.hp>0&&a.hp>0&&!(a.b.boss&&escUp())?2:1):0/* ROUND5 h: 2 = the Read counter fires next, 1 = cut only (you went down, or the barrier is up) */,ctr:o.ctr?1:0,gi:o.gi||null,am:amul});if(jam)push({t:'mod',a:di,d:di,jam:1,txt:d.b.name+'\'s armor shift jams! It stays '+armN(d.b)+' and loses its next turn.'})};
  // auto-pilot: brace for telegraphed heavies when it matters, fire Overdrive when full, pick the best arm (switching arms earns a 15% combo)
  const aiAct=()=>{const a=F[0];const threat=F.some((f,k)=>k>0&&f.hp>0&&f.intent==='heavy'&&!f.stun);if(threat&&!a.guard)return {act:'brace'};
   if(a.kits>0&&a.hp<a.max*.3)return {act:'kit',auto:true};if(a.od>=100)return {act:'od',target:defTarget()};
@@ -1626,13 +1655,14 @@ function* battleGen(A,B,opt={}){
   if(a.ab.regen&&a.hp<a.max){const h=Math.max(1,Math.round(a.max*a.ab.regen));a.hp=Math.min(a.max,a.hp+h);push({t:'heal',a:i,d:i,v:h,nano:1})}
   if(a.core==='repair'&&a.acts%4===0&&a.hp<a.max){const h=Math.round(a.max*(a.b.boss?.03:.08));a.hp=Math.min(a.max,a.hp+h);push({t:'heal',a:i,d:i,v:h})}
   if(i===0){F[0].moves=(F[0].moves||0)+1;
+   /* ROUND5 l (Mochi): Read says what it did once the enemies have moved */if(opt.manual&&a.rdW){const sv=a.rdSv||0;push({t:'mod',a:0,d:0,rdr:1,txt:a.rdC?'Read: countered the HEAVY, −'+sv+' damage.':sv?'Read: cut the HEAVY, −'+sv+' damage.':a.rdSh?'Read: caught the armor shift.':'Read: nothing to counter.'})}a.rdW=0;
    // ROUND3 item 12: stalemate watch. A boss whose hull+shield is no lower than 3 of your turns ago, although you hit it, is out-healing you
    let stl=null;F.forEach((f,k)=>{if(!k||!f.b.boss||f.hp<=0||escUp())return;const H=f.stH=f.stH||[];H.push({e:f.hp+f.sh,d:f.dIn||0});if(H.length>7)H.shift();
     // ...and it is not a one-off repair: over the last 6 turns too, at least 3/4 of what you dealt came back
     const L=H.length-1,win=j=>({dealt:H[L].d-H[L-j].d,net:H[L-j].e-H[L].e});if(L>=6){const a3=win(3),a6=win(6);if(a3.dealt>0&&a3.net<=a3.dealt*.05&&a6.net<=a6.dealt*.25)stl={k,v:Math.round((a3.dealt-a3.net)/3),src:M.has('coolant')?'coolant':'heal'}}});
    let act=opt.manual?yield {need:'act',stl,it:F.map(f=>f.intent),sx:F.map(f=>(f.stun?1:0)|(f.burn&&f.burn.n>0?2:0)),hp:hp(),max,od:Math.round(a.od),alive:F.map(f=>f.hp>0),immune:F.map(f=>!!(f.b.boss&&escUp())),last:a.lastSlot,def:defTarget(),pv:preview(),ip:intents(),ar:F.map(f=>armorOf(f.b)),mods:[...M]}:{act:'auto'};
    if(!act||act.act==='auto')act=aiAct();
-   a.st=act.act==='atk'&&STANCE[act.st]?act.st:'hold';
+   a.st=act.act==='atk'&&STANCE[act.st]?act.st:'hold';a.rdW=a.st==='read';a.rdSv=a.rdC=a.rdSh=0;
    if(act.target==null||!F[act.target]||F[act.target].hp<=0)act.target=defTarget();
    if(act.act==='brace'){a.guard=1;a.od=Math.min(100,a.od+(M.has('overload')?10:20));push({t:'brace',a:0,d:0});wingSupport();continue}
    if(act.act==='kit'){a.kits=Math.max(0,a.kits-1);const h=Math.min(a.max,a.hp+Math.round(a.max*.5))-a.hp;a.hp+=h;push({t:'heal',a:0,d:0,v:h,kit:1,autoKit:act.auto?1:0});wingSupport();continue}
@@ -1651,7 +1681,7 @@ function* battleGen(A,B,opt={}){
    for(let sw=0;sw<swings;sw++){const t=sw&&F[act.target].hp<=0?defTarget():act.target;if(t==null)break;strike(0,act.slot||'armR',t,a.st==='hold'?{again:sw>0}:{again:sw>0,mult:STANCE[a.st].dmg})}
    wingSupport();
   }else{
-   if(a.ash){a.ashN=(a.ashN||0)+1;if(a.shNext&&(F[0].moves||0)>(a.shW||0)&&F[0].st==='read'){/* ROUND4 item 17: Read cancels a shift you saw coming */a.shNext=null;a.ashL=a.ashN;F[0].od=Math.min(100,F[0].od+10);push({t:'mod',a:i,d:i,rd:1,txt:'You read the shift: '+a.b.name+' stays '+armN(a.b)+'.'})}
+   if(a.ash){a.ashN=(a.ashN||0)+1;if(a.shNext&&(F[0].moves||0)>(a.shW||0)&&F[0].st==='read'){/* ROUND4 item 17: Read cancels a shift you saw coming */a.shNext=null;a.ashL=a.ashN;F[0].od=Math.min(100,F[0].od+10);F[0].rdSh=1;push({t:'mod',a:i,d:i,rd:1,txt:'You read the shift: '+a.b.name+' stays '+armN(a.b)+'.'})}
     else if(a.shNext&&(F[0].moves||0)>(a.shW||0)){/* ROUND4 item 7: lands only after you have had a turn to see the warning */a.b.armor=a.shNext;a.shNext=null;a.ashL=a.ashN;a.shifts=(a.shifts||0)+1;push({t:'mod',a:i,d:i,shift:a.b.armor,n:a.ashN,txt:a.b.name+' shifts its armor to '+ARMOR[a.b.armor].n+'.'})}
     else if(!a.shNext&&a.ashN-(a.ashL||0)>=R3K.every-1){a.shW=F[0].moves||0;const cur=armorOf(a.b),w=wOf(F[0],F[0].lastSlot||'armR'),c=ARMCYC.filter(x=>x!==cur),res=c.filter(x=>armorMult(w,x)<1),ok=res.length?res:c.filter(x=>armorMult(w,x)<=1);const pool=ok.length?ok:c;a.shNext=pool[Math.floor(r()*pool.length)]}}
    if(a.b.regen&&a.hp>0&&a.hp<a.max){const h=Math.min(a.max-a.hp,Math.round(a.max*a.b.regen));a.hp+=h;push({t:'heal',a:i,d:i,v:h})}  // ROUND3 item 12: a healer trait (b.regen = share of max hull per turn) for future bosses
@@ -1663,7 +1693,7 @@ function* battleGen(A,B,opt={}){
    const heavy=a.intent==='heavy',spec=heavy&&a.spNext?(SPN[a.b.kind]||'OVERLOAD STRIKE'):null;if(spec)a.spNext=false;a.intent=pickIntent(a);
    const swings=heavy?1:1+(a.ab.double&&r()<a.ab.double?1:0);
    const kw=UNITK[a.b.kind]?(heavy&&a.b.kind==='fortress'?'cannon':UNITK[a.b.kind].w):null;for(let sw=0;sw<swings;sw++){if(F[0].hp<=0)break;const slot=nextSlot(a);a.pre=null;a.arm++;strike(i,slot,0,{heavy,special:spec,again:sw>0,w:kw})}
-   if(heavy&&F[0].st==='read'&&F[0].hp>0&&a.hp>0&&!(a.b.boss&&escUp()))strike(0,F[0].lastSlot||'armR',i,{again:true,ctr:1,mult:STANCE.read.ctr})  // ROUND4 item 17: Read counters the HEAVY it saw coming
+   if(heavy&&F[0].st==='read'&&F[0].hp>0&&a.hp>0&&!(a.b.boss&&escUp())&&(F[0].rdC=(F[0].rdC||0)+1))strike(0,F[0].lastSlot||'armR',i,{again:true,ctr:1,mult:STANCE.read.ctr})  // ROUND4 item 17: Read counters the HEAVY it saw coming
   }
  }
  F.forEach((f,k)=>{if(k&&(M.has('shift')||M.has('weakspot')||f.ash)){if(ar0[k]===undefined)delete f.b.armor;else f.b.armor=ar0[k]}});
@@ -1703,7 +1733,7 @@ function logBattle(outcome,res,upto){if(BT&&BT.opt&&BT.opt.sim)return;try{const 
  const sub=(BT.subs&&BT.subs[1])||'';const mode=o.canRun?(E.some(e=>e.boss)?'boss':/Mini-boss/.test(sub)?'mini':'mission'):/ladder|duel/i.test(sub)?'arena':'other';
  const L={t:Date.now(),m:mode,r:outcome,pw:botStats(A).power,lv:A.level,foe:E.length>1?(E.some(e=>e.boss)?E.find(e=>e.boss).name+' + '+(E.length-1)+' escort'+(E.length>2?'s':''):'Squad of '+E.length):E[0].name,flv:Math.max(...E.map(e=>e.level)),parts:{},sk:(S.skills||[]).slice(),dmg:{armR:0,armL:0},hits:{armR:0,armL:0},od:0,brace:0,hvB:0,hvT:0,combo:0,crit:0,stun:0,burn:0,heal:0,shield:0,thorn:0,taken:0,turns:0};
  for(const sl of SLOTS){const p=A.parts[sl];if(p)L.parts[sl]=[p.k,p.r,p.el||elOf(p)||'']}
- for(const e of ev){if(e.t==='od')L.od++;if(e.t==='brace')L.brace++;if(e.t==='atk'&&e.a>0&&e.heavy){L.hvT++;if(e.braced)L.hvB++}if(e.t==='atk'&&e.a===0&&e.combo)L.combo++;if(e.t==='atk'){if(e.a===0){L.turns++;const sl=e.slot||'armR';L.dmg[sl]=(L.dmg[sl]||0)+e.dmg;L.hits[sl]=(L.hits[sl]||0)+1;if(e.crit)L.crit++;if(e.stun)L.stun++}else{L.taken+=e.dmg;if(e.thorn)L.thorn+=e.thorn;if(e.shAb)L.shield+=e.shAb}}
+ for(const e of ev){if(e.t==='od')L.od++;if(e.t==='brace')L.brace++;if(e.t==='atk'&&e.a>0&&e.heavy){L.hvT++;if(hvAns(e))L.hvB++}if(e.t==='atk'&&e.a===0&&e.combo)L.combo++;if(e.t==='atk'){if(e.a===0){L.turns++;const sl=e.slot||'armR';L.dmg[sl]=(L.dmg[sl]||0)+e.dmg;L.hits[sl]=(L.hits[sl]||0)+1;if(e.crit)L.crit++;if(e.stun)L.stun++}else{L.taken+=e.dmg;if(e.thorn)L.thorn+=e.thorn;if(e.shAb)L.shield+=e.shAb}}
   else if(e.t==='burn'&&e.a>0)L.burn+=e.v;else if(e.t==='heal'&&e.a===0)L.heal+=e.v;else if(e.t==='shield'&&e.a===0)L.shield+=e.v}
  if(outcome==='W'&&(mode==='mission'||mode==='boss'||mode==='mini'))dirAdd('fightW',1);if(outcome==='W'&&mode==='arena')dirAdd('arenaW',1);if(outcome==='W'&&(mode==='boss'||mode==='mini'))dirAdd('boss',1);dirAdd('brace',L.hvB);dirAdd('od',L.od);dirAdd('combo',L.combo);if(mode==='mission'||mode==='boss'||mode==='mini')rcAdd('combo',L.combo);if(outcome==='W'&&(mode==='boss'||mode==='mini'))rcAdd('boss',1);
  S.blog=S.blog||[];S.blog.unshift(L);if(S.blog.length>300)S.blog.length=300;save()}catch(err){}}
@@ -1723,7 +1753,7 @@ function renderCrew(){const P=$('crewPanel');P.textContent='';const C=crew();if(
  const forHire=Object.keys(WINGS).filter(id=>RECRUIT[id]&&!C.hired.includes(id)).sort((a,b)=>RECRUIT[a].lv-RECRUIT[b].lv);if(forHire.length){P.append(el('h3',null,'Guild mercenaries'));P.append(el('p','muted rcnote','Guild pilots pick who they fly with. Reach their level, prove yourself on contracts, beat them in a trial fight, then pay the signing fee. Your first trial is free, and every loss makes the next one easier.'));for(const id of forHire){const W=WINGS[id],R0=RECRUIT[id],pr=(S.rcp||{})[id]||0,beat=(S.rcd||{})[id];const acts=[];
   if(!C.slots)acts.push(el('small','muted','Needs a wingman slot (Campaign Chapter 1).'));
   else if(S.level<R0.lv)acts.push(el('small','rcstep','Locked · reach pilot Lv '+R0.lv));
-  else if(pr<R0.goal[1]){const t=el('button','btn sm','Talk');t.onclick=()=>playScene([[id,R0.ask,'']]);const xb=el('i','wxp');const xf=el('u');xf.style.width=(100*pr/R0.goal[1])+'%';xb.append(xf);acts.push(el('small','rcstep','Step 1 of 3 · '+R0.goal[2]+' · '+pr+'/'+R0.goal[1]),xb,t)}
+  else if(pr<R0.goal[1]){const t=el('button','btn sm','Talk');t.onclick=()=>playScene([[id,R0.ask,'']],null,true);const xb=el('i','wxp');const xf=el('u');xf.style.width=(100*pr/R0.goal[1])+'%';xb.append(xf);acts.push(el('small','rcstep','Step 1 of 3 · '+R0.goal[2]+' · '+pr+'/'+R0.goal[1]),xb,t)}
   else if(!beat){const fc=rtCost(id),ez=Math.round(100*rtEase(id));const t=el('button','btn sm go','Recruit trial · '+(fc?'1 fuel':'first try free'));t.onclick=()=>recruitTrial(id);acts.push(el('small','rcstep','Step 2 of 3 · Beat '+W.n.replace(/ ".*" /,' ')+' one on one'+(ez?' · '+ez+'% easier now':'')),t)}
   else{const b=el('button','btn sm go','Sign · '+R0.fee+' Fed-$');b.disabled=S.scrap<R0.fee;acts.push(el('small','rcstep','Step 3 of 3 · Pay the signing fee'+(S.scrap<R0.fee?' · '+(R0.fee-S.scrap)+' Fed-$ to go':'')),b);b.onclick=()=>{if(S.scrap<R0.fee)return;S.scrap-=R0.fee;C.hired.push(id);C.lv[id]=Math.max(1,Math.min(5,Math.floor(S.level/3)));if(C.active.length<C.slots)C.active.push(id);save();renderHeader();sfx('coin');toast(W.n+' joined your crew.');renderCrew()}}
   P.append(card(id,acts))}}
@@ -1744,7 +1774,7 @@ function renderStats(){const P=$('statsPanel');P.textContent='';const B=S.blog||
  tbl('Head, core and legs',Object.values(pq).sort((a,b)=>b.w/b.b-a.w/a.b).map(q=>[q.n,q.sl,q.b,Math.round(100*q.w/q.b)+'%',Math.round(q.taken/q.b)]),['Part','Slot','Battles','Win %','Dmg taken / battle']);
  // abilities
  const ag={crit:0,stun:0,burn:0,heal:0,shield:0,thorn:0,turns:0,dealt:0,od:0,combo:0,hvB:0,hvT:0};for(const b of F){ag.od+=b.od||0;ag.combo+=b.combo||0;ag.hvB+=b.hvB||0;ag.hvT+=b.hvT||0;ag.crit+=b.crit;ag.stun+=b.stun;ag.burn+=b.burn;ag.heal+=b.heal;ag.shield+=b.shield;ag.thorn+=b.thorn;ag.turns+=b.turns;ag.dealt+=(b.dmg.armR||0)+(b.dmg.armL||0)}
- const n=F.length;tbl('Abilities',[['Critical hits',ag.crit,(ag.turns?Math.round(100*ag.crit/ag.turns):0)+'% of attacks'],['Stuns caused',ag.stun,(ag.stun/n).toFixed(1)+' per battle'],['Burn damage',ag.burn,Math.round(ag.burn/n)+' per battle'],['Hull repaired',ag.heal,Math.round(ag.heal/n)+' per battle'],['Shield absorbed',ag.shield,Math.round(ag.shield/n)+' per battle'],['Thorns reflected',ag.thorn,Math.round(ag.thorn/n)+' per battle'],['Overdrives fired',ag.od,(ag.od/n).toFixed(1)+' per battle'],['Combo strikes',ag.combo,(ag.turns?Math.round(100*ag.combo/ag.turns):0)+'% of attacks'],['Heavy attacks braced',ag.hvB+' of '+ag.hvT,(ag.hvT?Math.round(100*ag.hvB/ag.hvT):0)+'% braced']],['Ability','Total','Average']);
+ const n=F.length;tbl('Abilities',[['Critical hits',ag.crit,(ag.turns?Math.round(100*ag.crit/ag.turns):0)+'% of attacks'],['Stuns caused',ag.stun,(ag.stun/n).toFixed(1)+' per battle'],['Burn damage',ag.burn,Math.round(ag.burn/n)+' per battle'],['Hull repaired',ag.heal,Math.round(ag.heal/n)+' per battle'],['Shield absorbed',ag.shield,Math.round(ag.shield/n)+' per battle'],['Thorns reflected',ag.thorn,Math.round(ag.thorn/n)+' per battle'],['Overdrives fired',ag.od,(ag.od/n).toFixed(1)+' per battle'],['Combo strikes',ag.combo,(ag.turns?Math.round(100*ag.combo/ag.turns):0)+'% of attacks'],['HEAVY attacks answered (Brace or Read)',ag.hvB+' of '+ag.hvT,(ag.hvT?Math.round(100*ag.hvB/ag.hvT):0)+'% answered']],['Ability','Total','Average']);
  // recent
  tbl('Recent battles',F.slice(0,25).map(b=>[new Date(b.t).toLocaleDateString(undefined,{month:'short',day:'numeric'})+' '+new Date(b.t).toLocaleTimeString(undefined,{hour:'numeric',minute:'2-digit'}),{mission:'Mission',boss:'Boss',mini:'Mini-boss',arena:'Arena',other:'Other'}[b.m],b.foe+' (Lv '+b.flv+')',{W:'Won',L:'Lost',R:'Ran'}[b.r],(b.dmg.armR||0)+(b.dmg.armL||0),b.taken]),['When','Type','Opponent','Result','Dealt','Taken']);
  const cl=el('button','btn sm','Clear battle log');cl.onclick=async()=>{if(await ask('Clear all saved battle stats?')){S.blog=[];save();renderStats()}};P.append(cl)}
@@ -1755,9 +1785,11 @@ function modeLabel(){const b=$('bMode');if(BT&&BT.autoRest){b.textContent='Auto:
 $('bMode').onclick=e=>{if(ctlGuard(e))return;S.fightMode=S.fightMode==='auto'?'tactical':'auto';save();modeLabel();if(BT&&BT.gen&&S.fightMode==='auto'){BT.autoRest=true;if(BT.waiting)choose({act:'auto'})}toast(S.fightMode==='auto'?'Auto: ON. Your mech fights on its own.':'Auto: OFF. You call the shots (from the next fight).')};
 const INTENT={atk:['Attack','ia'],charge:['Attack','ia'],guard:['Attack','ia'],heavy:['HEAVY NEXT','ih']};
 // Round 2 item 2: the chip says exactly what the enemy does next, with its damage to you before luck
-function intentLbl(x){if(!x)return null;if(x.t==='heavy')return ['HEAVY NEXT ≈'+x.n+(x.buff?' ▲':''),'ih'];if(x.t==='atk')return ['Attack ≈'+x.n+(x.buff?' ▲':''),'ia'];
+// ROUND5 h: the incoming number is what you take with the stance picked now (Press +25% on every hit, Read cuts a HEAVY)
+function stTake(heavy){const st=stanceOn()&&STANCE[S.stance]?S.stance:'hold';return st==='press'?STANCE.press.take:st==='read'&&heavy?STANCE.read.hv:1}
+function intentLbl(x){if(!x)return null;const nn=h=>x.n>0?Math.min(x.cap||1e9,Math.max(1,Math.round(x.n*stTake(h)))):x.n;if(x.t==='heavy')return ['HEAVY NEXT ≈'+nn(1)+(x.buff?' ▲':''),'ih'];if(x.t==='atk')return ['Attack ≈'+nn(0)+(x.buff?' ▲':''),'ia'];
  if(x.t==='charge')return ['Charging HEAVY','ih'];if(x.t==='guard')return ['Will guard','ig'];if(x.t==='shield')return ['Coolant: +'+x.n+' shield','ig'];return null}
-function renderIntents(it,hp,gd,sx,ip,ar){if(BT){BT.sx=sx||BT.sx;sx=BT.sx;BT.ip=ip||BT.ip;ip=BT.ip;BT.ar=ar||BT.ar;ar=BT.ar}const box=$('bTgt');if(!BT)return;box.textContent='';const E=BT.F;for(let k=1;k<E.length;k++){const alive=hp[k]>0;const c=el('button','tchip'+(alive?'':' dead')+(BT.gen&&BT.tgt===k&&alive?' sel':''));
+function renderIntents(it,hp,gd,sx,ip,ar){if(BT){BT.lastI=[it,hp,gd];BT.sx=sx||BT.sx;sx=BT.sx;BT.ip=ip||BT.ip;ip=BT.ip;BT.ar=ar||BT.ar;ar=BT.ar}const box=$('bTgt');if(!BT)return;box.textContent='';const E=BT.F;for(let k=1;k<E.length;k++){const alive=hp[k]>0;const c=el('button','tchip'+(alive?'':' dead')+(BT.gen&&BT.tgt===k&&alive?' sel':''));
   const iv=!alive?['Down','id']:gd&&gd[k]?['Guarding','ig']:E[k].boss&&E.some((f,q)=>q>0&&!f.boss&&hp[q]>0)?['BARRIER','ig']:(ip&&intentLbl(ip[k]))||INTENT[it&&it[k]||'atk'];
   const nm=el('b',null,E[k].name);const bar=el('i','tbar');const fi=el('u');fi.style.width=Math.max(0,100*hp[k]/BT.result.max[k])+'%';bar.append(fi);const row=el('span','trow');row.append(el('span','tint '+iv[1],iv[0]));{const a2=ar&&ar[k]!==undefined?ar[k]:armorOf(E[k]);if(a2)row.append(el('i','tarm '+a2,ARMOR[a2].ic+' '+ARMOR[a2].n));if(alive&&ip&&ip[k]&&ip[k].shift)row.append(el('i','tarm','⟳ shifts next'));if(alive&&ip&&ip[k]&&ip[k].sh)row.append(el('i','tarm shifting '+ip[k].sh,'SHIFTING → '+ARMOR[ip[k].sh].n+' · '+shiftTip(ip[k].sh)))}c.append(nm,bar,row);if(alive&&sx&&sx[k]){const bw=el('span','tbadges');if(sx[k]&1)bw.append(el('i','tb stun','STUNNED'));if(sx[k]&2)bw.append(el('i','tb burn','BURNING'));c.append(bw)}
   c.disabled=!alive||!BT.gen;if(alive&&BT.gen&&BT.waiting&&E.length>2&&(S.tgtTips||0)<3)c.classList.add('teach');c.onclick=()=>{BT.tgt=k;S.tgtTips=(S.tgtTips||0)+1;if(LS&&BT.opt&&BT.opt.lesson)LS.m.tap=(LS.m.tap||0)+1;renderIntents(it,hp,gd,null,ip,ar);tintArms();sfx('tap')};box.append(c)}
@@ -1774,8 +1806,8 @@ function tintArms(){if(!BT)return;const T=BT.F[BT.tgt],ar=T?(BT.ar&&BT.ar[BT.tgt
 // ROUND4 item 17: the stance row. It opens with Chapter 2 (S.story>=1), never in training, and stays set between turns and fights.
 function stanceOn(){return (S.story||0)>=1&&!(BT&&BT.opt&&(BT.opt.lesson||BT.opt.sim))}
 function stanceRow(){const r=$('bSt'),on=stanceOn();r.hidden=!on;if(!on)return;const cur=STANCE[S.stance]?S.stance:'hold';
- r.querySelectorAll('button').forEach(b=>{b.classList.toggle('on',b.dataset.st===cur);b.setAttribute('aria-pressed',b.dataset.st===cur?'true':'false');b.onclick=()=>{S.stance=b.dataset.st;save();stanceRow();tintArms()}})}
-function stanceIntro(){if(!stanceOn()||S.stSeen||!tipsOn())return false;S.stSeen=1;save();coachSay("New in Chapter 2: Stance. Press hits 20% harder but you take 25% more. Read hits softer, but cuts a HEAVY you saw coming and counters it, and cancels an armor shift. Hold is steady. It stays set until you change it.",'');clearTimeout(TIPT);TIPT=setTimeout(()=>{if(!(BT&&BT.opt&&BT.opt.lesson))coachHide()},14000);return true}
+ r.querySelectorAll('button').forEach(b=>{b.classList.toggle('on',b.dataset.st===cur);b.setAttribute('aria-pressed',b.dataset.st===cur?'true':'false');b.onclick=()=>{S.stance=b.dataset.st;save();stanceRow();if(!S.stSeen)stanceIntro(1)/* ROUND5 l */;tintArms();if(BT&&BT.lastI)renderIntents(...BT.lastI)}})}
+function stanceIntro(force){if(!stanceOn()||S.stSeen||(!force&&!tipsOn()))return false;S.stSeen=1;save();const P=k=>Math.round(k*100);coachSay("Stance, pilot. Press hits "+P(STANCE.press.dmg-1)+"% harder but you take "+P(STANCE.press.take-1)+"% more. Read hits "+P(1-STANCE.read.dmg)+"% softer, takes "+P(1-STANCE.read.hv)+"% off a HEAVY you saw coming and hits back, and cancels an armor shift. Hold is steady. The log tells you what your Read did. It stays set until you change it.",'');clearTimeout(TIPT);TIPT=setTimeout(()=>{if(!(BT&&BT.opt&&BT.opt.lesson))coachHide()},14000);return true}
 function showActs(){const q=BT.req;if(!q)return;if(BT.autoRest){choose({act:'auto'});return}BT.waiting=true;if(BT.camA!==0){BT.camA=0;BT.camT=performance.now()}
  if(BT.tgt==null||!q.alive[BT.tgt]||q.immune[BT.tgt])BT.tgt=q.def;renderIntents(q.it,q.hp,null,q.sx,q.ip,q.ar);renderOD(q.od);
  for(const [id,sl] of [['aR','armR'],['aL','armL']]){const b=$(id);b.textContent='';const rf=q.pv&&q.pv[BT.tgt]&&q.pv[BT.tgt].rf;b.append(el('b',null,armLbl(sl)),el('small',null,q.last&&q.last!==sl?(rf&&rf[sl]?'COMBO REFLECTS':'COMBO +10%'):sl==='armR'?'Right arm':'Left arm'));/* FIX81 item 19: Mirror plating changes the combo number, so the button says so */b.classList.toggle('combo',!!(q.last&&q.last!==sl));b.dataset.sl=sl;b.onclick=()=>choose({act:'atk',slot:sl,target:BT.tgt,...(stanceOn()&&S.stance&&S.stance!=='hold'?{st:S.stance}:{})})}
@@ -1843,28 +1875,32 @@ function runTipChk(h,m){if(!BT||BT.runTip||!BT.started||BT.done||!BT.canRun||!BT
 // in-game confirm: browser confirm() is blocked inside sandboxed pages (the web test link), so every yes/no goes through this
 function ask(msg,yes,no){return new Promise(res=>{const open=()=>{if(TUT.say&&!$('tut').hidden){setTimeout(open,250);return}$('askT').textContent=msg;$('askYes').textContent=yes||'Yes';$('askNo').textContent=no||'Cancel';const done=v=>{$('ask').hidden=true;$('askYes').onclick=$('askNo').onclick=null;res(v)};$('askYes').onclick=()=>done(true);$('askNo').onclick=()=>done(false);$('ask').hidden=false};open()})}
 function buzz(kind){if(S.haptics===false)return;try{const C=window.Capacitor,H=C&&C.isNativePlatform&&C.isNativePlatform()&&C.Plugins&&C.Plugins.Haptics;if(typeof kind==='number'){if(H)H.vibrate({duration:kind});else if(navigator.vibrate)navigator.vibrate(kind);return}if(H){if(kind==='kill')H.vibrate({duration:160});else H.impact({style:kind==='heavy'?'HEAVY':kind==='med'?'MEDIUM':'LIGHT'});return}if(navigator.vibrate)navigator.vibrate(kind==='kill'?[70,40,130]:kind==='heavy'?50:kind==='med'?28:14)}catch(err){}}
-// hands-on bonus: fights played by hand (Auto OFF, no Skip) earn +10% to +30% Fed-$ and XP, graded by combos, braced HEAVYs and Overdrives
+// hands-on bonus: fights played by hand (Auto OFF, no Skip) earn +10% to +30% Fed-$ and XP, graded by combos, HEAVYs answered (Brace or Read) and Overdrives
 function handsOn(B){if(!B||!B.tac)return null;const ev=B.result.ev||[],pt=ev.filter(e=>(e.t==='atk'&&e.a===0&&!e.again&&!e.odk)||e.t==='brace'||e.t==='od'||(e.t==='heal'&&e.kit)).length,f=Math.min(1,(B.man||0)/Math.max(1,pt));if(f<=0)return null;const st=styleOf(ev);st.full=st.b;st.b=Math.round(st.b*f*100)/100;st.f=f;return st}
-function styleOf(ev){let c=0,b=0,o=0;for(const e of ev){if(e.t==='atk'&&e.a===0&&e.combo)c++;if(e.t==='atk'&&e.a>0&&e.heavy&&e.braced)b++;if(e.t==='od')o++}const p=c+3*b+3*o;
+// ROUND5 o (Apex/Blitz): a Read on a HEAVY answers it just like a Brace (recap tip, hands-on grade, PERFECT, the directive)
+function hvAns(e){return !!(e&&(e.braced||e.rd))}
+function styleOf(ev){let c=0,b=0,o=0;for(const e of ev){if(e.t==='atk'&&e.a===0&&e.combo)c++;if(e.t==='atk'&&e.a>0&&e.heavy&&hvAns(e))b++;if(e.t==='od')o++}const p=c+3*b+3*o;
  const g=p>=10?['S',.3]:p>=6?['A',.22]:p>=3?['B',.15]:['C',.1];return {g:g[0],b:g[1],c,br:b,od:o}}
 // A8 (build 74 review): 80 ms freeze on a crit, 250 ms slow motion (30% speed) on a killing blow.
 // Apex E4 (Nov 16): impact. HEAVY hits on you and your Overdrive hits shake and pause; a braced HEAVY is a short, light
 // clang, a landed one a long, heavy stop. The new stops only run at 1x, so 2x, 4x and Skip are never slower. Off under
 // reduced motion and with Settings "Impact effects" off (S.fxOff). Display only.
+// ROUND5: Settings "Skip cut-ins and story scenes" (S.skipCuts). Display only: battle results never read it.
+function skipCuts(){return !!(typeof S!=='undefined'&&S&&S.skipCuts)}
 function fxOn(){return !(typeof S!=='undefined'&&S&&S.fxOff)&&!(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches)}
 function hsSpec(e){if(!e||e.t!=='atk'||!(e.dmg>0)||!fxOn())return null;if(e.kill)return {d:250,rate:.3};
  if(btSpeed===1){if(e.heavy&&e.d===0)return e.braced?{d:70,rate:.35}:{d:170,rate:.15};if(e.odk&&e.a===0)return {d:150,rate:.2}}
  return e.crit?{d:80,rate:0}:null}
 function hsMs(e){const h=hsSpec(e);return h?h.d*(1-h.rate)/btSpeed:0}
 // the battle log line for one attack (Mochi b78 M1: kept apart so a test can read it)
-function atkText(e,who){let txt;const hm=(e.hits||[]).filter(x=>x==='miss').length;const hn=(e.hits||[]).filter(x=>x!=='miss').length,hl=(e.hits||[]).length;txt=who+' '+WVERB[e.w]+(e.big?' (full salvo!)':'')+(e.dmg?' for '+e.dmg+(hl>1?' ('+hn+' of '+hl+' rounds hit)':'')+'.':'… and misses.');if(hm&&e.dmg)txt+=' '+hm+' missed.';if(e.crit)txt+=' Critical!';if(e.blocked)txt+=' Partly blocked.';if(e.stun)txt+=' Target stunned!';if(e.refl)txt+=' Mirror plating bounces it back: '+e.thorn+' to you!';else if(e.thorn)txt+=' Plating reflects '+e.thorn+'.';if(e.ctr)txt='COUNTER! '+txt;else if(e.again&&!e.odk)txt='Chain Fire! '+txt;if(e.heavy)txt=(e.sp?e.sp+'! ':'HEAVY ATTACK! ')+txt+(e.braced?' Braced, damage cut.':'')+(e.rd?' Read it: 40% cut, and you counter.':'')+(e.gi?' '+e.gi+' intercepts! Damage halved.':'');if(e.combo)txt+=' Combo!';if(e.dmg>0){if(e.am>1)txt+=' Weak spot!';else if(e.am<1)txt+=' Resisted.'}/* Mochi b78 M1: a miss is never tagged */if(e.shAb)txt+=' Shield absorbs '+e.shAb+'.';if(e.splash)txt+=' Shockwave hits '+e.splash+' more.';if(e.saved)txt+=' LAST STAND: still standing!';return txt}
+function atkText(e,who){let txt;const hm=(e.hits||[]).filter(x=>x==='miss').length;const hn=(e.hits||[]).filter(x=>x!=='miss').length,hl=(e.hits||[]).length;txt=who+' '+WVERB[e.w]+(e.big?' (full salvo!)':'')+(e.dmg?' for '+e.dmg+(hl>1?' ('+hn+' of '+hl+' rounds hit)':'')+'.':'… and misses.');if(hm&&e.dmg)txt+=' '+hm+' missed.';if(e.crit)txt+=' Critical!';if(e.blocked)txt+=' Partly blocked.';if(e.stun)txt+=' Target stunned!';if(e.refl)txt+=' Mirror plating bounces it back: '+e.thorn+' to you!';else if(e.thorn)txt+=' Plating reflects '+e.thorn+'.';if(e.ctr)txt='COUNTER! '+txt;else if(e.again&&!e.odk)txt='Chain Fire! '+txt;if(e.heavy)txt=(e.sp?e.sp+'! ':'HEAVY ATTACK! ')+txt+(e.braced?' Braced, damage cut.':'')+(e.rd?' Read it: '+Math.round((1-STANCE.read.hv)*100)+'% cut'+(e.rd===2?', and you counter.':'.'):'')+(e.gi?' '+e.gi+' intercepts! Damage halved.':'');if(e.combo)txt+=' Combo!';if(e.dmg>0){if(e.am>1)txt+=' Weak spot!';else if(e.am<1)txt+=' Resisted.'}/* Mochi b78 M1: a miss is never tagged */if(e.shAb)txt+=' Shield absorbs '+e.shAb+'.';if(e.splash)txt+=' Shockwave hits '+e.splash+' more.';if(e.saved)txt+=' LAST STAND: still standing!';return txt}
 function nextEv(){if(!BT||BT.done||BT.waiting)return;if(BT.autoRun&&BT.disp[0]>0&&BT.disp[0]<=BT.mx0*.2){runAway(true);return}BT.i++;if(BT.i>=BT.result.ev.length){if(BT.gen){BT.i--;showActs();return}finishBattle();return}
- const e=BT.result.ev[BT.i];if(BT.opt&&BT.opt.lesson)lessonEv(e);if(e.it)renderIntents(e.it,e.hp,e.gd,e.sx,e.ip,e.ar);if(e.od!=null&&typeof e.od==='number')renderOD(e.od);BT.t0=performance.now();const special=(e.t==='atk'&&(e.crit||e.big||e.stun||e.heavy)&&e.dmg>0&&!e.odk)||e.t==='od';if(e.t==='od'&&e.a===0)BT.t0+=350/btSpeed*(BT.tac?1:.5);BT.dur=(e.t==='atk'?(e.w==='saw'?1200:1020):700)*(special?1.15:1)*(e.t==='atk'&&e.odk?1.6:1)/btSpeed;BT.hitDone=false;BT.hs=null;
- const odMe=e.t==='od'&&e.a===0,cutDur=special?700/btSpeed*(odMe&&!BT.tac?.5:1):0;BT.t0+=cutDur;/* Mochi fun pass B: your Overdrive cut-in runs half as long under Full auto and a tap skips it (skipCut) */
+ const e=BT.result.ev[BT.i];if(BT.opt&&BT.opt.lesson)lessonEv(e);if(e.it)renderIntents(e.it,e.hp,e.gd,e.sx,e.ip,e.ar);if(e.od!=null&&typeof e.od==='number')renderOD(e.od);BT.t0=performance.now();const special=(e.t==='atk'&&(e.crit||e.big||e.stun||e.heavy)&&e.dmg>0&&!e.odk)||e.t==='od',noCut=skipCuts();if(e.t==='od'&&e.a===0&&!noCut)BT.t0+=350/btSpeed*(BT.tac?1:.5);BT.dur=(e.t==='atk'?(e.w==='saw'?1200:1020):700)*(special?1.15:1)*(e.t==='atk'&&e.odk?1.6:1)/btSpeed;BT.hitDone=false;BT.hs=null;
+ const odMe=e.t==='od'&&e.a===0,cutDur=special&&!noCut?700/btSpeed*(odMe&&!BT.tac?.5:1):0;BT.t0+=cutDur;/* Mochi fun pass B: your Overdrive cut-in runs half as long under Full auto and a tap skips it (skipCut) */
  if(e.t==='atk'||e.t==='wing'){BT.shown=e.hp.slice();updBars()}
  if(e.t==='atk'){const w=e.w;setTimeout(()=>{if(!BT)return;wsfx(w,{n:e.big?8:4})},cutDur*1000)}
  pcutEv(e,cutDur);finEv(e,cutDur);
- if(special)BT.cut={od:e.t==='od'&&e.a===0,t0:performance.now(),dur:cutDur*(e.t==='od'&&e.a===0?1.5:1),move:e.t==='od'?odFull(e.v).toUpperCase():e.heavy?'HEAVY ATTACK':e.big?'FULL SALVO':MOVE[e.w],who:BT.F[e.a].name,col:e.a===0?'#4fd6e8':'#ff5d52',side:e.a===0?1:-1};
+ if(special&&!noCut)BT.cut={od:e.t==='od'&&e.a===0,t0:performance.now(),dur:cutDur*(e.t==='od'&&e.a===0?1.5:1),move:e.t==='od'?odFull(e.v).toUpperCase():e.heavy?'HEAVY ATTACK':e.big?'FULL SALVO':MOVE[e.w],who:BT.F[e.a].name,col:e.a===0?'#4fd6e8':'#ff5d52',side:e.a===0?1:-1};
  const who=BT.F[e.a].name;let txt='';
  if(e.t==='stun')txt=who+' is stunned and loses a turn.';
  else if(e.t==='heal')txt=who+(e.kit?' uses a repair kit: +':e.odk?' · '+odFull('repair')+': +':e.nano?' Nano Repair: +':' · Reactor core self-repair: +')+e.v+' hull.';
@@ -1904,7 +1940,7 @@ function sayPos(w,h,bw,bh,prev){const T=(BT&&BT.tagR)||[],y0=Math.max(30,h*.1),o
 // plus the weapon, under 2 s in all. A tap skips it. With reduced motion or Settings "Impact effects" off: no slow motion and no
 // flash, only the move name for the hit's normal length.
 const FIN_MAX=1900;
-function finEv(e,delay){if(!BT||!BT.opt||BT.opt.sim||e.t!=='atk'||e.a!==0||!e.kill)return;const T=BT.F&&BT.F[e.d];if(!(e.odk||(T&&T.boss)))return;
+function finEv(e,delay){if(!BT||!BT.opt||BT.opt.sim||skipCuts()||e.t!=='atk'||e.a!==0||!e.kill)return;const T=BT.F&&BT.F[e.d];if(!(e.odk||(T&&T.boss)))return;
  const fx=fxOn(),p=BT.A&&BT.A.parts&&BT.A.parts[e.slot],wn=p?partName(p):'',mv=e.odk?odFull(e.odk).toUpperCase():(MOVE[e.w]||'FINISHER');
  if(fx)BT.dur=Math.min(FIN_MAX,BT.dur*1.8);BT.fn={t0:BT.t0,dur:BT.dur,mv,wn,fx,boss:!!(T&&T.boss)};BT.fnN=(BT.fnN||0)+1}
 function skipFin(){if(!BT||!BT.fn||BT.done)return false;const now=performance.now(),end=BT.fn.t0+BT.fn.dur;if(now>=end){BT.fn=null;return false}const rem=end-now;BT.fn=null;BT.t0-=rem;BT.fnSkip=(BT.fnSkip||0)+1;
@@ -1922,7 +1958,7 @@ const PCUT_MS=1100,PCL={hit:['Ugh! That one hurt.','Hull breach! Still flying.',
  boss:['{b} is scrap. That one was for the crew.','Boss down! {b} is not getting back up.','{b} falls. This sector is ours.']};/* ROUND4 item 19: one on every boss kill */
 function pcutEv(e,delay){if(!BT)return;if((e.t==='atk'&&e.a===0&&!e.again&&!e.odk)||e.t==='brace'||(e.t==='od'&&e.a===0))BT.pTurn=(BT.pTurn||0)+1;
  const m0=(BT.result.max||[1])[0];let k=null;if(e.t==='atk'&&e.d===0&&e.a>0&&e.dmg>=m0*.15)k='hit';else if(e.t==='od'&&e.a===0)k='od';else if(e.t==='heal'&&e.a===0)k='repair';if(k)pilotCut(k,delay||0)}
-function pilotCut(k,delay,force){if(!BT||!BT.opt||BT.opt.sim||BT.opt.lesson||S.chatOff)return false;const n=BT.pTurn||0;if(!force&&BT.pcAt!=null&&n-BT.pcAt<3)return false;
+function pilotCut(k,delay,force){if(!BT||!BT.opt||BT.opt.sim||BT.opt.lesson||S.chatOff||skipCuts())return false;const n=BT.pTurn||0;if(!force&&BT.pcAt!=null&&n-BT.pcAt<3)return false;
  const L=PCL[k],bn=((BT.E||[]).find(e=>e&&e.boss)||{}).name||'The boss';BT.pcAt=n;BT.pcut={k,txt:L[Math.floor(Math.random()*L.length)].replace('{b}',bn),t0:performance.now()+(delay||0),dur:PCUT_MS};BT.pcN=(BT.pcN||0)+1;return true}
 function drawPCut(c,w,h,now){const B=BT&&BT.pcut;if(!B||now<B.t0)return;const q=(now-B.t0)/B.dur;if(q>=1){BT.pcut=null;return}const rm=matchMedia('(prefers-reduced-motion: reduce)').matches;
  const a=q<.12?q/.12:q>.8?(1-q)/.2:1,sl=rm?0:(1-Math.min(1,q/.12))*-40,P=myPort(),ps=Math.round(Math.max(44,Math.min(64,w/7))),fs=Math.max(12,Math.min(15,w/28));
@@ -1969,11 +2005,11 @@ function applyHit(e,w,h){if(e.t==='atk'&&e.dmg>0)sfx(e.kill?'boom':e.crit||e.big
 const FINMS=1400;
 function finishBattle(){if(!BT||BT.done)return;BT.done=true;BT.disp=BT.result.end.slice();BT.shown=BT.result.end.slice();updBars();$('bctl').hidden=true;
  const ev=BT.result.ev,last=ev[ev.length-1];
- if(!BT.skipFin&&last&&last.t==='atk'&&last.kill){const fd=Math.round(FINMS/Math.min(2,btSpeed));BT.fin={t0:performance.now(),a:last.a,d:last.d,w:last.w,el:last.el,dur:fd};setTimeout(()=>sfx('bigboom'),Math.round(fd*.58));BT.finT=setTimeout(afterFin,fd)}else afterFin()}
+ if(!BT.skipFin&&!skipCuts()&&last&&last.t==='atk'&&last.kill){const fd=Math.round(FINMS/Math.min(2,btSpeed));BT.fin={t0:performance.now(),a:last.a,d:last.d,w:last.w,el:last.el,dur:fd};setTimeout(()=>sfx('bigboom'),Math.round(fd*.58));BT.finT=setTimeout(afterFin,fd)}else afterFin()}
 // ROUND4 item 19 (Mochi): after any mission loss, one quiet beat before the recap: the fight dims, one crew line, no buttons, LOSS_BEAT_MS
 // (under 1.5 s). Taps do nothing during it. Wins, Arena and training go straight to the result as before.
 const LOSS_BEAT_MS=1100,QUIETL={yuri:['...Pull back, pilot. We regroup.','Easy. Get out of there. We rebuild.'],daichi:['Hey... you still with me?','Breathe, rookie. We fix it and go again.']};
-function afterFin(){if(!BT)return;BT.fin=null;clearTimeout(BT.finT);const loss=BT.result.win!==0;if(!(loss&&BT.opt&&BT.opt.canRun&&!BT.opt.sim&&!BT.opt.lesson)){showResult();return}
+function afterFin(){if(!BT)return;BT.fin=null;clearTimeout(BT.finT);const loss=BT.result.win!==0;if(!(loss&&BT.opt&&BT.opt.canRun&&!BT.opt.sim&&!BT.opt.lesson)||skipCuts()){showResult();return}
  const C=crew(),who=(C.active||[]).includes('daichi')&&!(C.lost||[]).includes('daichi')?'daichi':'yuri',L=QUIETL[who];$('bact').hidden=true;$('bctl').hidden=true;
  BT.quiet={t0:performance.now(),dur:LOSS_BEAT_MS,who,txt:L[Math.floor(Math.random()*L.length)]};BT.quietN=(BT.quietN||0)+1;const me=BT;BT.quietT=setTimeout(()=>{if(BT===me&&BT.quiet)showResult()},LOSS_BEAT_MS)}
 function drawQuiet(c,w,h,now){const Q=BT&&BT.quiet;if(!Q)return;const q=Math.min(1,(now-Q.t0)/Q.dur),a=Math.min(1,q/.25);c.save();c.fillStyle='rgba(3,5,8,'+(.62*a)+')';c.fillRect(0,0,w,h);
@@ -1984,24 +2020,24 @@ function showResult(){if(!BT)return;BT.fin=null;clearTimeout(BT.finT);BT.quiet=n
  if(BT.opt&&BT.opt.lesson)coachHide();
  const win=BT.result.win===0;sfx(win?'win':'lose');if(win){crewSay('win');const r0=BT.result.end&&BT.result.max?BT.result.end[0]/BT.result.max[0]:1;if((BT.E||[]).some(e=>e&&e.boss))pilotCut('boss',0,true);else pilotCut(r0<.25?'near':'win',0)}for(const id of ['bpay','bteach','bRetry','bstamp','bRematch']){const o=$(id);if(o)o.remove()}$('bDone').classList.add('go');$('bDone').textContent='Continue';const b=$('bres');b.hidden=false;b.className='bres '+(win?'win':'loss');
  $('bresT').textContent=win?'Victory':'Defeat';if(win&&S.pilot&&!(BT.opt&&BT.opt.sim))$('bresT').prepend(portCv());$('bresP').textContent=win?(BT.E.length>1?'The enemy squad is scrap.':BT.B.name+' is scrap.'):BT.A.name+' went down. Patch it up in the hangar.';
- if(win&&BT.opt&&(BT.opt.canRun||/ladder/i.test((BT.subs||[])[1]||''))){const st=handsOn(BT),man=!!st;const sp=document.createElement('span');sp.className='bstyle'+(man?' g'+st.g:'');sp.textContent=man?'HANDS-ON STYLE '+st.g+(st.f<1?', '+Math.round(st.f*100)+'% BY HAND':'')+' · +'+Math.round(st.b*100)+'% Fed-$ and XP ('+st.c+' combos, '+st.br+' braced, '+st.od+' overdrive'+(st.f<1?'; '+st.g+' fully by hand: +'+Math.round(st.full*100)+'%':'')+')':'Auto or Skip was used: no hands-on bonus. Turn Auto OFF and play it yourself for up to +30%.';$('bresP').append(document.createElement('br'),sp);if(man){/* ROUND4 item 20: one plain line on what the grade is */const w=el('small','bgwhy',GRADE_WHY);w.id='bgwhy';$('bresP').append(w);gradeStamp(stampOf(BT,st))}}if(win&&BT.opt&&BT.opt.pay){let P=null;try{P=BT.opt.pay(handsOn(BT))}catch(e){}if(P)payBeat(P)}if(!win&&BT.opt&&!BT.opt.lesson&&!BT.opt.sim)lossTeach();{const o=$('bnut');if(o)o.remove();if(!(BT.opt&&BT.opt.sim)){const nb=nutBar(win&&!(BT.rc&&BT.ri<BT.rc.lg)?1:0,'bnut');if(!win||innerHeight<880)nb.classList.add('slim');const f1=['bRetry','bRematch','bDone'].map(x=>$(x)).find(Boolean);f1.before(nb)}}$('bDone').focus({preventScroll:true});{const bw=document.querySelector('#battle .bwrap');if(bw)bw.scrollTop=0}}
+ if(win&&BT.opt&&(BT.opt.canRun||/ladder/i.test((BT.subs||[])[1]||''))){const st=handsOn(BT),man=!!st;const sp=document.createElement('span');sp.className='bstyle'+(man?' g'+st.g:'');sp.textContent=man?'HANDS-ON STYLE '+st.g+(st.f<1?', '+Math.round(st.f*100)+'% BY HAND':'')+' · +'+Math.round(st.b*100)+'% Fed-$ and XP ('+st.c+' combos, '+st.br+' HEAVY answered, '+st.od+' overdrive'+(st.f<1?'; '+st.g+' fully by hand: +'+Math.round(st.full*100)+'%':'')+')':'Auto or Skip was used: no hands-on bonus. Turn Auto OFF and play it yourself for up to +30%.';$('bresP').append(document.createElement('br'),sp);if(man){/* ROUND4 item 20: one plain line on what the grade is */const w=el('small','bgwhy',GRADE_WHY);w.id='bgwhy';$('bresP').append(w);gradeStamp(stampOf(BT,st))}}if(BT.opt&&!BT.opt.sim&&!BT.opt.lesson)ptDay();if(win&&BT.opt&&BT.opt.pay){let P=null;try{P=BT.opt.pay(handsOn(BT))}catch(e){}if(P)payBeat(P)}if(!win&&BT.opt&&!BT.opt.lesson&&!BT.opt.sim)lossTeach();{const o=$('bnut');if(o)o.remove();if(!(BT.opt&&BT.opt.sim)){const nb=nutBar(win&&!(BT.rc&&BT.ri<BT.rc.lg)?1:0,'bnut');if(!win||innerHeight<880)nb.classList.add('slim');const f1=['bRetry','bRematch','bDone'].map(x=>$(x)).find(Boolean);f1.before(nb)}}$('bDone').focus({preventScroll:true});{const bw=document.querySelector('#battle .bwrap');if(bw)bw.scrollTop=0}}
 // Apex E3: the hands-on grade stamps in under VICTORY with its own sound, bigger for a better grade. PERFECT: no hull
-// lost all fight (hull never under where it started) and every HEAVY aimed at you braced. No reward: the bonus is the
+// lost all fight (hull never under where it started) and every HEAVY aimed at you answered (Brace or Read). No reward: the bonus is the
 // grade's, as before. Reduced motion: no stamp animation. Continue is never held back.
 // Combo B1 (build 78): after a revive the fight continues in a new runBattle segment that starts at 50% hull, so that
 // segment alone could look clean. A fight you went down in (opt.cont) never stamps PERFECT; it gets its hands-on grade.
 function stampOf(B,st){if(B.opt&&B.opt.cont)return st.g;const r=B.result,ev=r.ev||[],h0=(r.start||[])[0];const clean=h0!=null&&ev.every(e=>!e.hp||e.hp[0]>=h0),hv=ev.filter(e=>e.t==='atk'&&e.a>0&&e.d===0&&e.heavy);
-  return clean&&hv.length>0&&hv.every(e=>e.braced)?'PERFECT':st.g}/* Mochi b78 M6: no HEAVY came, so no EVERY HEAVY BRACED stamp */
+  return clean&&hv.length>0&&hv.every(hvAns)?'PERFECT':st.g}/* Mochi b78 M6: no HEAVY came, so no EVERY HEAVY ANSWERED stamp */
 // ROUND4 item 20 (Mochi b80 bug 7): the hands-on grade and bonus fuel each get one plain line.
-const GRADE_WHY='Hands-on grade: with Auto off, combos, braced HEAVYs and Overdrives raise it, C +10% to S +30%.';
+const GRADE_WHY='Hands-on grade: with Auto off, combos, HEAVYs answered with Brace or Read, and Overdrives raise it, C +10% to S +30%.';
 const FUEL_WHY=x=>'Bonus fuel: the +'+x+' bonus is extra fuel from gifts, refunds and ads, on top of your daily '+FUELMAX+'. Missions use it first, and it never expires: the midnight refill only tops you back up to '+FUELMAX+'.';
-function gradeStamp(g){const d=gl(el('div','bstamp g'+g),'grade');d.id='bstamp';d.append(el('b',null,g),el('small',null,g==='PERFECT'?'NO HULL LOST · EVERY HEAVY BRACED':'HANDS-ON GRADE'));$('bDone').before(d);
+function gradeStamp(g){const d=gl(el('div','bstamp g'+g),'grade');d.id='bstamp';d.append(el('b',null,g),el('small',null,g==='PERFECT'?'NO HULL LOST · EVERY HEAVY ANSWERED':'HANDS-ON GRADE'));$('bDone').before(d);
  const lv={C:0,B:1,A:2,S:3,PERFECT:4}[g]||0;setTimeout(()=>sfx('stamp',{lv}),BT&&BT.skipFin?0:380)}
 // Apex E1: a defeat teaches. How much hull the enemy had left, one tip that is true for this fight (checked against its
 // event log), and, when the mission is over, Try again: back to the same contract or chapter at its normal fuel cost.
 function lossTip(B){const r=B.result,ev=r.ev||[],mx=r.max||[],tips=[];
- const hv=ev.filter(e=>e.t==='atk'&&e.a>0&&e.d===0&&e.heavy&&!e.braced&&e.dmg>0),hd=hv.reduce((a,e)=>a+e.dmg,0);
- if(hv.length&&hd>=.15*(mx[0]||1))tips.push(hv.length+' HEAVY hit'+(hv.length>1?'s':'')+' landed unbraced for '+hd+' damage. When an enemy card shows HEAVY, Brace that turn.');
+ const hv=ev.filter(e=>e.t==='atk'&&e.a>0&&e.d===0&&e.heavy&&!hvAns(e)&&e.dmg>0),hd=hv.reduce((a,e)=>a+e.dmg,0);
+ if(hv.length&&hd>=.15*(mx[0]||1))tips.push(hv.length+' HEAVY hit'+(hv.length>1?'s':'')+' landed with no Brace or Read for '+hd+' damage. When an enemy card shows HEAVY, answer it that turn: Brace (best on big hits) or Read.');
  const top=Math.max(...B.E.map(e=>e.level||0)),gap=top-(B.A.level||0);
  if(gap>=2)tips.push('That enemy was Lv '+top+', '+gap+' levels over you. Level up or take a contract nearer your level first.');
  const mine=ev.filter(e=>e.t==='atk'&&e.a===0&&!e.again),rs=mine.filter(e=>e.am<1);
@@ -2009,7 +2045,7 @@ function lossTip(B){const r=B.result,ev=r.ev||[],mx=r.max||[],tips=[];
   tips.push(rs.length+' of your '+mine.length+' hits were resisted by '+an+'. Arm buttons turn green on a weak spot: use that arm, or equip a different weapon type.')}
  if(ev.some(e=>e.od>=100)&&!ev.some(e=>e.t==='od'&&e.a===0))tips.push('Your Overdrive was full and never fired. Tap OVERDRIVE when it glows.');
  const h0=(r.start||[])[0];if(h0!=null&&mx[0]&&h0<.6*mx[0])tips.push('You went in with '+Math.round(100*h0/mx[0])+'% hull. Repair tiles and the field crew patch you between fights: heal up before a tough one.');
- if(hv.length)tips.push(hv.length+' HEAVY hit'+(hv.length>1?'s':'')+' landed unbraced for '+hd+' damage. When an enemy card shows HEAVY, Brace that turn.');
+ if(hv.length)tips.push(hv.length+' HEAVY hit'+(hv.length>1?'s':'')+' landed with no Brace or Read for '+hd+' damage. When an enemy card shows HEAVY, answer it that turn: Brace (best on big hits) or Read.');
  if(mine.length>=3&&!mine.some(e=>e.combo))tips.push('You never switched arms. Alternating arms adds a 10% Combo to every switch.');
  return tips[0]||null}
 function retryOf(run){if(!run)return null;if(run.story!=null&&CH[run.story])return {story:run.story,fc:CH[run.story].li+1};
@@ -2051,7 +2087,7 @@ function lossCounter(B){const ev=B.result.ev||[],mine=ev.filter(e=>e.t==='atk'&&
 function lossRecap(B){const r=B.result,ev=r.ev||[],end=r.end||B.disp;let left=0;for(let k=1;k<B.F.length;k++)left+=Math.max(0,end[k]||0);
  let turn=0,best=null,bt=1;for(const e of ev){if(e.a===0&&((e.t==='atk'&&!e.again)||e.t==='brace'||e.t==='guard'||e.t==='od'||e.t==='heal'||e.t==='kit'))turn++;if(e.t==='atk'&&e.a>0&&e.d===0&&e.dmg>0&&(!best||e.dmg>best.dmg)){best=e;bt=Math.max(1,turn)}}
  const R={short:left,counter:lossCounter(B)};
- if(best)R.turn='Turn '+bt+': '+(B.F[best.a]||{}).name+"'s "+(best.heavy?'HEAVY ATTACK':best.big?'FULL SALVO':(MOVE[best.w]||'attack'))+' hit you for '+best.dmg+(best.heavy&&!best.braced?' (unbraced)':'')+'.';
+ if(best)R.turn='Turn '+bt+': '+(B.F[best.a]||{}).name+"'s "+(best.heavy?'HEAVY ATTACK':best.big?'FULL SALVO':(MOVE[best.w]||'attack'))+' hit you for '+best.dmg+(best.heavy&&!hvAns(best)?' (no Brace or Read)':'')+'.';
  if(B.opt&&B.opt.apw){const my=myArenaPw(),need=Math.max(my+10,Math.ceil(B.opt.apw*1.05/10)*10);R.back='Come back at about Power '+need+' (you have '+my+').'}
  return R}
 let RMATCH=null;
@@ -2073,7 +2109,7 @@ function payBeat(P){const old=$('bpay');if(old)old.remove();const d=el('div','bp
  const fb=el('b',null,'+0'),xb=el('b',null,'+0');f.append(fb,el('small',null,'Fed-$'));x.append(xb,el('small',null,'XP'));vs.append(f);if(P.xp)vs.append(x);let cb=null;if(P.cr!=null){const cv=el('span','pv cr');cv.id='bpayCr';cb=el('b',null,'+0');cv.append(cb,el('small',null,'credits'));vs.append(cv)}d.append(vs);if(P.lab)d.append(el('small','plab',P.lab));
  if(P.news&&P.news.length){const nw=el('div','pnew');for(const t of P.news){const s2=el('span');s2.append(el('span','newtag','NEW'),document.createTextNode(t));nw.append(s2)}d.append(nw)}
  const g=P.goal!==undefined?P.goal:(nextHook(null,{win:1})||((nextUnlock()||{}).msg)||'');if(g){const gl=el('div','bgoal');gl.append(el('b',null,'NEXT GOAL'),document.createTextNode(g));d.append(gl)}
- $('bres').insertBefore(d,$('bDone'));const dur=payDur(),t0=performance.now(),set=q=>{fb.textContent='+'+Math.round(P.scrap*q);xb.textContent='+'+Math.round(P.xp*q);if(cb)cb.textContent='+'+Math.round((P.cr||0)*q)};
+ $('bres').insertBefore(d,$('bDone'));const dur=payDur(),t0=performance.now(),set=q=>{const v=Math.round(P.scrap*q);fb.textContent=(v<0?'−':'+')+Math.abs(v);xb.textContent='+'+Math.round(P.xp*q);if(cb)cb.textContent='+'+Math.round((P.cr||0)*q)};
  if(!dur){set(1);return}set(0);d.dataset.counting='1';const step=()=>{if(!d.isConnected)return;const q=Math.min(1,(performance.now()-t0)/dur);set(q);if(q<1)requestAnimationFrame(step);else{delete d.dataset.counting;sfx('coin')}};requestAnimationFrame(step);setTimeout(()=>{if(d.isConnected){set(1);delete d.dataset.counting}},dur+50)}
 $('bSkip').onclick=e=>{if(ctlGuard(e))return;if(BT){if(BT.gen){BT.autoRest=true;let x=BT.gen.next({act:'auto'});while(!x.done)x=BT.gen.next({act:'auto'});BT.result.win=x.value.win;BT.result.end=x.value.end;BT.gen=null;BT.waiting=false;$('bact').hidden=true}BT.skipFin=true;BT.i=BT.result.ev.length;finishBattle()}};
 const turboOn=()=>S.turbo===true||(S.turboUntil||0)>Date.now();
@@ -2102,7 +2138,7 @@ const MONEY={
 async function nativeAd(kind){const A=MONEY.admob;if(!A)return null;try{if(kind==='reward'){await A.prepareRewardVideoAd({adId:MONEY.ads.reward,isTesting:MONEY.adsTest});await A.showRewardVideoAd();return true}
  await A.prepareInterstitial({adId:MONEY.ads.inter,isTesting:MONEY.adsTest});await A.showInterstitial();return true}catch(e){return null}}
 async function syncEntitlements(){if(!MONEY.rcReady)return;try{const r=await MONEY.rc.getCustomerInfo(),act=(r.customerInfo&&r.customerInfo.entitlements&&r.customerInfo.entitlements.active)||{};
- if(act[MONEY.ent.noAds])S.noAds=true;const tb=act[MONEY.ent.turbo];if(tb){if(tb.expirationDate){S.turboUntil=Math.max(S.turboUntil||0,new Date(tb.expirationDate).getTime())}else S.turbo=true}
+ if(act[MONEY.ent.noAds])S.noAds=true;const tb=act[MONEY.ent.turbo];if(tb){if(tb.expirationDate){turboExtend(new Date(tb.expirationDate).getTime())}else S.turbo=true}
  save();renderHeader();if(VIEW==='store')renderStore();turboCredits()}catch(e){}}
 // returns true when the purchase went through (or test mode), false if cancelled/failed
 async function buyProduct(k){if(!MONEY.native){toast('Purchases open in the Android app.');return false}
@@ -2132,13 +2168,19 @@ function passRender(){const st=$('passSt'),cb=$('passClaim');if(!st||!cb)return;
  const d=passDay(),L=passOpen(),last=P.n+PASS.grace;if(d>last){st.textContent='Your pass has ended. Buy again for 30 more days.';cb.hidden=true;return}
  st.textContent=(d<=P.n?'Day '+Math.max(1,d)+' of '+P.n+'. ':'All '+P.n+' days paid out. ')+(L.length?L.length*PASS.day+' credits waiting.':d<=P.n?'Today claimed. Next 50 credits tomorrow.':'Nothing left to claim.');
  cb.hidden=!L.length;cb.textContent=L.length>1?'Claim all · '+L.length+' days · +'+L.length*PASS.day:'Claim +'+PASS.day}
-// monthly Turbo credits: 100 per 30 days while membership is active
-function turboCredits(){if(!((S.turboUntil||0)>Date.now()))return;const now=Date.now(),M=30*864e5;if(!S.turboCredAt){S.turboCredAt=now;S.credits=(S.credits||0)+100;save();toast('Turbo Membership: +100 credits this month.');return}let n=0;while(S.turboCredAt+M<=now&&n<12){S.turboCredAt+=M;n++}if(n){S.credits=(S.credits||0)+100*n;save();toast('Turbo Membership: +'+100*n+' credits.')}}
+// monthly Turbo credits: 400 per 30 days while membership is active, plus one Turbo-only paint each month
+// ROUND5 z (Combo): monthly Turbo was beaten by the Bundle and the Pass; credits 100 -> 400 and a monthly Turbo paint (cosmetic, never Power). Price and product ID unchanged.
+const TURBO_CR=400,TURBO_PAINTS=Object.keys(PAINTS).filter(k=>PAINTS[k].turbo);
+function turboMonth(){S.credits=(S.credits||0)+TURBO_CR;S.paints=S.paints||[];const id=TURBO_PAINTS.find(k=>!S.paints.includes(k));if(id)S.paints.push(id);return id}
+// build 84 fix (Sentinel): a lapsed member who resubscribes is paid this month only, never the lapsed months. Any new expiry seen
+// after the old one passed restarts the monthly clock; months are counted only up to the paid-through date.
+function turboExtend(u){const old=S.turboUntil||0;if(old<=Date.now())delete S.turboCredAt;S.turboUntil=Math.max(old,u)}
+function turboCredits(){if(!((S.turboUntil||0)>Date.now()))return;const M=30*864e5,now=Math.min(Date.now(),S.turboUntil);if(!S.turboCredAt){S.turboCredAt=now;const id=turboMonth();save();toast('Turbo Membership: +'+TURBO_CR+' credits'+(id?' and the '+PAINTS[id].n+' paint':'')+' this month.');return}let n=0;const got=[];while(S.turboCredAt+M<=now&&n<12){S.turboCredAt+=M;n++;const id=turboMonth();if(id)got.push(PAINTS[id].n)}if(n){save();toast('Turbo Membership: +'+TURBO_CR*n+' credits'+(got.length?' and '+got.join(', ')+' paint'+(got.length>1?'s':''):'')+'.')}}
 $('bSpeed').onclick=e=>{if(ctlGuard(e))return;if(btSpeed===1)btSpeed=2;else if(btSpeed===2&&turboOn())btSpeed=4;else{if(btSpeed===2&&!turboOn())toast('4x speed comes with Turbo Membership (Store, Perks).');btSpeed=1}S.btSpeed=btSpeed;save();speedLabel()};
 $('shopClose').onclick=()=>{$('shop').hidden=true;placeStore(true)};
 document.querySelectorAll('#shop [data-buy]').forEach(b=>b.onclick=async()=>{const k=b.dataset.buy;b.disabled=true;const ok=await buyProduct(k);b.disabled=false;if(!ok){renderStore();return}
  if(k==='bundle'){S.turbo=true;S.noAds=true;toast('Commander Bundle unlocked: no ads and 4x battles for life.')}
- else if(k==='turboSub'){S.turboUntil=Math.max(Date.now(),S.turboUntil||0)+30*864e5;toast('Turbo Membership active: no ads, 4x battles and 100 credits a month.');turboCredits()}
+ else if(k==='turboSub'){turboExtend(Math.max(Date.now(),S.turboUntil||0)+30*864e5);toast('Turbo Membership active: no ads, 4x battles, 400 credits and a Turbo-only paint every month.');turboCredits()}
  else if(k==='pass30'){const r=passBuy();toast('30-Day Pass: +'+r.up+' credits now'+(r.ext?', 30 more days added':'')+'. Claim 50 credits a day in Store, Credits.')}
  else if(k==='cred100'){S.credits=(S.credits||0)+100;toast('+100 credits.')}
  else if(k==='cred600'){S.credits=(S.credits||0)+600;toast('+600 credits.')}
@@ -2157,7 +2199,7 @@ function untilMidnight(){const d=new Date(),m=new Date(d);m.setHours(24,0,0,0);c
 // fix80 A6: any open overlay (Yuri, a confirm, loot, packs, store...) locks the board's Roll, the map and every Fight button
 // Apex build 78 item 3: also the mission result's buttons (Back to map, Leave, retry, repair, ad) and the fight's Continue
 const MLOCK_SEL='#rollBtn,.thb,.consoleWrap .btn,#rivals .opp .btn,.ccard,.camp .btn,#v-missions .console .btn,#bDone';
-function modalOpen(){for(const o of document.querySelectorAll('.overlay'))if(!o.hidden&&o.id!=='battle'&&getComputedStyle(o).display!=='none')return o.id||'overlay';return null}
+function modalOpen(){for(const o of document.querySelectorAll('.overlay'))if(!o.hidden&&o.id!=='battle'&&!o.classList.contains('askn')/* ROUND5 j: the callsign ask does not lock the board */&&getComputedStyle(o).display!=='none')return o.id||'overlay';return null}
 // ROUND4 item 12: a locked mission result says why (Mochi: Back to map greyed out with no hint while the boss drop asked Equip or Keep)
 const MLHINT={loot:'Pick Equip or Keep on the new part first.',pack:'Tap Collect first.',ask:'Answer the question first.',cont:'Choose on the MECH DOWN card first.'};
 function mlHint(id){const rd=$('runDone');let h=$('mlHint');if(!id||!rd){if(h)h.remove();return}if(!h){h=el('p','mlhint');h.id='mlHint';h.setAttribute('role','status');h.style.cssText='margin:6px 0 0;font-size:13px;color:var(--amber);text-align:center'}h.textContent=MLHINT[id]||'Close the open window first.';const bm=[...rd.querySelectorAll('button')].pop();if(bm&&h.nextSibling!==bm)bm.before(h);else if(!bm&&!h.isConnected)rd.append(h)}
@@ -2180,15 +2222,15 @@ document.querySelectorAll('#stabs button').forEach(b=>b.onclick=()=>{document.qu
 const WS_BASE=[80,250,700,1700],WS_R=[1,1,2,3];
 const wsLv=()=>clampInt(Math.round(S.level*.7+.5),1,15);
 function wsPrice(p){const f=Math.round(WS_BASE[p.r]*(1+.12*(p.l-1))/10)*10;return Math.max(f,Math.ceil((2*salvage(p)+10)/10)*10)}
-function wsNeed(){const n=Math.min(S.story||0,CH.length-1),B=CH[n].boss,ar=({tank:'plated',fortress:'shielded',swarm:'light'})[B.kind]||null,fam=ar?Object.keys(ARMOR[ar].m).find(f=>ARMOR[ar].m[f]>1):null;
+function wsNeed(){const n=Math.min(S.story||0,CH.length-1),B=CH[n].boss,ar=chArmor(n),fam=ar?Object.keys(ARMOR[ar].m).find(f=>ARMOR[ar].m[f]>1):null;
  const ks=TPL.arm.filter(t=>t.w!=='shield'&&!RAREK[t.k]&&(!fam||WFAM[t.w]===fam)).map(t=>t.k);
  return {ks,fam,ar,txt:'For Chapter '+(n+1)+': '+B.name+(ar?' has '+ARMOR[ar].n+' armor. '+({gun:'Guns',energy:'Energy weapons',melee:'Melee weapons'})[fam]+' hit it +30%.':'. No armor type: any weapon works.')}}
-function wsStock(){if(!S.wsSalt)S.wsSalt=1+Math.floor(Math.random()*1e9);const k=dayKey();if(S.ws&&(S.ws.day===k||!clockOK()))return S.ws;
+function wsStock(){if(!S.wsSalt)S.wsSalt=1+Math.floor(Math.random()*1e9);const k=dayKey();if(S.ws&&S.ws.nv!==2&&S.ws.day===k&&!Object.keys(S.ws.b||{}).length)S.ws=null;/* ROUND5 w: today's stock from the old armor line is redrawn once, if nothing was bought */if(S.ws&&(S.ws.day===k||!clockOK()))return S.ws;
  let h=S.wsSalt>>>0;for(const ch of k)h=Math.imul(h^ch.charCodeAt(0),16777619)>>>0;const r=rng(h),L=wsLv(),N=wsNeed(),items=[];
  const add=(kind,t,rr,need)=>{const it={id:'ws'+k+'-'+items.length,kind,k:t,r:Math.max(rr,t==='turret'?1:0),l:L};if(need)it.need=N.txt;elOf(it);it.price=wsPrice(it);items.push(it)};
  add('arm',pick(N.ks,r),2,true);
  for(const rr of WS_R){const kind=pick(PARTKINDS,r);let t=pick(TPL[kind],r);if(RAREK[t.k]&&rr<2)t=TPL[kind].find(x=>!RAREK[x.k]);add(kind,t.k,rr,false)}
- S.ws={day:k,items,b:{}};save();return S.ws}
+ S.ws={day:k,items,b:{},nv:2};save();return S.ws}
 function wsBuy(i){const W=wsStock(),it=W.items[i];if(!it||W.b[i])return null;if(S.scrap<it.price){toast('You need '+it.price.toLocaleString()+' Fed-$ for this part.');return null}
  S.scrap-=it.price;W.b[i]=1;const p={id:nid(),kind:it.kind,k:it.k,r:it.r,l:it.l};if(it.el)p.el=it.el;S.inv.push(p);save();renderHeader();renderWs();sfx('coin');toast(RAR[p.r].n+' '+partName(p)+' added to your parts.');return p}
 const WSST={hp:'Hull',atk:'Attack',def:'Armor',spd:'Speed',crit:'Crit',dodge:'Evade',shp:'Shield'};
@@ -2198,7 +2240,11 @@ function renderWs(){const box=$('st-ws');if(!box)return;const W=wsStock();box.te
  W.items.forEach((it,i)=>{const sold=!!W.b[i],c=el('div','wsi'+(sold?' sold':''));c.style.setProperty('--rc',RCOL[it.r]||'#fff');const cv=el('canvas');c.append(cv);partArt(cv,it);
   const st=partStats(it);c.append(el('b',null,partName(it)),el('small','wsr',RAR[it.r].n+' · '+({head:'Head',core:'Core',arm:'Arm',legs:'Legs'})[it.kind]+' · Lv '+it.l),el('small',null,Object.keys(st).map(k=>(WSST[k]||k)+' '+(st[k]>0?'+':'')+st[k]).join(' · ')));
   if(it.need)c.append(el('small','wsneed',it.need));
-  const b=el('button','btn sm'+(sold?'':' go'),sold?'Sold':it.price.toLocaleString()+' Fed-$');b.dataset.ws=i;b.disabled=sold||S.scrap<it.price;b.onclick=()=>wsBuy(i);c.append(b);g.append(c)})}
+  const b=el('button','btn sm'+(sold?'':' go'),sold?'Sold':it.price.toLocaleString()+' Fed-$');b.dataset.ws=i;b.disabled=sold||S.scrap<it.price;b.onclick=()=>wsTap(i);c.append(b);g.append(c)})}
+// ROUND5 u (Apex): a Workshop buy of WS_ASK Fed-$ or more asks first ("Buy Bazooka for 950 Fed-$?"); cheaper parts buy on one tap
+const WS_ASK=500;
+function wsTap(i){const W=wsStock(),it=W.items[i];if(!it||W.b[i])return;if(it.price<WS_ASK||S.scrap<it.price){wsBuy(i);return}
+ ask('Buy '+partName(it)+' for '+it.price.toLocaleString()+' Fed-$?','Buy','Cancel').then(ok=>{if(ok)wsBuy(i)})}
 const PAINTCOST=[60,120,250,500];
 function cosBuy(cost,fn){if((S.credits||0)>=cost)sfx('coin');if((S.credits||0)<cost){toast('Not enough credits. Get more in the Credits tab.');document.querySelector('#stabs [data-t="cred"]').click();return}S.credits-=cost;fn();save();renderHeader();renderCos()}
 function cosPreview(over,name,sub,act,fn){const ov=$('cosPrev');$('cpName').textContent=name;$('cpSub').textContent=sub;const b=$('cpBuy');b.hidden=!act;if(act)b.textContent=act==='Apply'||act==='Equip'?act:'Buy for '+act;b.onclick=()=>{ov.hidden=true;fn()};ov.hidden=false;
@@ -2570,7 +2616,7 @@ function trainPill(){const tb=$('trainBtn'),tn=trainCount();if(tb)tb.textContent
 // existing saves: veterans are never pushed into training; the basics they have clearly done are ticked off
 function seedTrain(){if(S.train)return;S.train={done:{}};if(!S.onb)return;const bl=S.blog||[],md=S.missionsDone||0,d=S.train.done;d[1]=1;
  if(md>=1||bl.some(b=>b.combo>0))d[2]=1;if(md>=3||bl.some(b=>b.hvB>0))d[3]=1;if(md>=5||bl.some(b=>b.od>0))d[4]=1;if((S.story||0)>=1||bl.some(b=>b.m==='boss'&&b.r==='W'))d[5]=1;save()}
-function tutClose(){$('tut').hidden=true;TUT.on=false;TUT.spk=null;$('tutName2').textContent='CAPT. YURI OSAKA';renderHeader()}
+function tutClose(quiet){$('tut').hidden=true;$('tut').classList.remove('askn');TUT.on=false;TUT.spk=null;$('tutName2').textContent='CAPT. YURI OSAKA';if(!quiet)renderHeader()}
 // tap-to-advance Captain beats in the dialog box; fin(box) adds the last buttons
 // Mochi build 78 B3: a corner tip that is up when a Captain card opens goes back in the queue and shows once the card is gone
 function tipYield(){if($('capTip').hidden||!TIP.k)return;$('capTip').hidden=true;clearTimeout(TIPT);if(S.tipsSeen)delete S.tipsSeen[TIP.k];if(!TIPQ.includes(TIP.k))TIPQ.unshift(TIP.k);TIP.k=null;save()}
@@ -2744,7 +2790,7 @@ function maybeLogin(){if(!S.onb||!gate('daily'))return;if(popHold(maybeLogin))re
  $('lgSub').textContent=saved?'Streak saved: you missed yesterday, so your catch-up day kept it going. One catch-up per week.':S.login.day>1?'Day '+S.login.day+' streak. Come back tomorrow to keep it going.':'Log in every day. Miss one day and your catch-up keeps the streak (once a week). Miss two and it starts over.';$('daily').hidden=false;sfx('gift')}
 $('lgClaim').onclick=()=>{const r=LOGINR[(S.login.day||1)-1];dailyTick();if(r.pack)holdBal();/* ROUND3 item 20: the Day 7 pack holds the header until Collect too */if(r.fed)S.scrap+=r.fed;if(r.fuel)S.dfuel+=r.fuel;if(r.cr)S.credits=(S.credits||0)+r.cr;if(r.tix)S.tix+=r.tix;save();renderHeader();$('daily').hidden=true;sfx('coin');
  if(r.pack){const cards=[];for(let i=0;i<3;i++){const p=randomPart(S.level+2,R,.8);if(i===0)p.r=Math.max(p.r,2);S.inv.push(p);cards.push({t:'part',p})}save();openPack('Day 7 reward',cards)}else toast('Claimed: '+lrTxt(r)+'.')};
-const DIRS={fightW:['Win 6 mission battles',6,{fed:80}],mission:['Clear 2 missions',2,{fed:120}],arenaW:['Win 2 arena battles',2,{cr:25}],brace:['Brace 3 heavy attacks',3,{fed:100}],od:['Fire Overdrive 3 times',3,{cr:20}],boss:['Defeat a boss or mini-boss',1,{cr:30}],combo:['Land 10 combo strikes',10,{fed:90}]};
+const DIRS={fightW:['Win 6 mission battles',6,{fed:80}],mission:['Clear 2 missions',2,{fed:120}],arenaW:['Win 2 arena battles',2,{cr:25}],brace:['Answer 3 HEAVY attacks (Brace or Read)',3,{fed:100}],od:['Fire Overdrive 3 times',3,{cr:20}],boss:['Defeat a boss or mini-boss',1,{cr:30}],combo:['Land 10 combo strikes',10,{fed:90}]};
 // FIX81 item 14: at the daily reset, finished directives that were never claimed, and the bonus crate for all three, are paid out
 // automatically with a toast instead of being lost
 function dirCarry(O){if(!O||!O.list)return;const got=[];let fed=0,cr=0;for(const d of O.list){const D0=DIRS[d.id];if(!D0||d.c||d.p<D0[1])continue;d.c=true;const rw=D0[2]||{};if(rw.fed)fed+=rw.fed;if(rw.cr)cr+=rw.cr}
@@ -2756,7 +2802,7 @@ function dirAdd(id,n){if(!n)return;ptAdd(id,n);const D=dirToday();for(const d of
 // ROUND3 item 16: the 30-Day Pass also unlocks a 20-goal Pass Track. Goals 1-3 are free for everyone; 4-20 need an active pass.
 // Goals open on played days (goal 20 on the 29th day you play), so missed days pause the track and nothing ever resets.
 // Rewards are cosmetic: a paint on every even goal and a named part at goal 20. No credits, no change to the pass price or payout.
-const PT_GOALS=[['fightW',3,'Win 3 mission battles'],['mission',1,'Clear a mission'],['od',2,'Fire Overdrive 2 times'],['fightW',5,'Win 5 mission battles'],['brace',3,'Brace 3 heavy attacks'],
+const PT_GOALS=[['fightW',3,'Win 3 mission battles'],['mission',1,'Clear a mission'],['od',2,'Fire Overdrive 2 times'],['fightW',5,'Win 5 mission battles'],['brace',3,'Answer 3 HEAVY attacks (Brace or Read)'],
  ['mission',2,'Clear 2 missions'],['combo',6,'Land 6 combo strikes'],['arenaW',1,'Win an Arena battle'],['od',4,'Fire Overdrive 4 times'],['boss',1,'Defeat a boss or mini-boss'],
  ['fightW',8,'Win 8 mission battles'],['mission',3,'Clear 3 missions'],['brace',5,'Brace 5 heavy attacks'],['arenaW',2,'Win 2 Arena battles'],['combo',10,'Land 10 combo strikes'],
  ['boss',2,'Defeat 2 bosses or mini-bosses'],['od',6,'Fire Overdrive 6 times'],['mission',4,'Clear 4 missions'],['fightW',12,'Win 12 mission battles'],['boss',3,'Defeat 3 bosses or mini-bosses']];
@@ -2779,7 +2825,7 @@ function ptAdd(id,n){ptDay();if(!ptOpen())return;const T=ptk(),G=PT_GOALS[T.g];i
  if(r==='part'){const p={id:nid(),kind:'arm',k:'laser',r:3,l:Math.max(1,Math.min(15,S.level+1)),named:"Trackrunner's"};S.inv.push(p);keepGrant(p);msg+=': '+partName(p)+' is yours.';setTimeout(()=>lootReveal(p,'Pass Track · Named part'),600)}
  else if(r){S.paints=S.paints||[];if(!S.paints.includes(r))S.paints.push(r);msg+=': '+PAINTS[r].n+' paint unlocked.'}else msg+='.';
  if(k===PT_FREE&&!ptEnt())msg+=' Goals 4-20 come with the 30-Day Pass.';toast(msg)}
-function renderPTrack(v){const T=ptk();ptDay();const box=el('div','dirs ptrack');box.id='ptrack';const hd=el('div','dirhd');
+function renderPTrack(v){const T=ptk();/* ROUND5 f: opening Missions is not a played day; only a fight or a contract counts (ptDay in finishBattle, endRun, ptAdd) */const box=el('div','dirs ptrack');box.id='ptrack';const hd=el('div','dirhd');
  hd.append(el('b',null,'PASS TRACK'),el('small',null,T.g>=PT_N?'Complete':'Goal '+(T.g+1)+' of '+PT_N+' · day '+T.days+' of 30'));box.append(hd);
  const dots=el('div','ptdots');for(let k=1;k<=PT_N;k++){const d=el('i',k<=T.g?'done':k===T.g+1?'now':k>PT_FREE&&!ptEnt()?'lock':'');d.title='Goal '+k+(PT_REW[k]?': '+ptRewTxt(k):'');dots.append(d)}box.append(dots);
  if(T.g<PT_N){const G=PT_GOALS[T.g],b=ptBlocked(),row=el('div','dirrow'),l=el('div');l.append(el('span',null,G[2]),el('small',null,PT_REW[T.g+1]?'Reward: '+ptRewTxt(T.g+1):'Next reward: '+ptRewTxt(T.g+2)));
@@ -2830,6 +2876,11 @@ function renderNextUnlock(v){const u=nextUnlock();if(!u)return;const d=el('div',
  const h=el('div','nuh');const l=el('span',null,'NEXT UNLOCK ');l.append(el('b',null,u.t));h.append(l,el('span',null,Math.min(u.cur,u.max)+' / '+u.max+' '+u.unit));
  const bar=el('div','nubar');const f=el('u');f.style.width=Math.max(3,Math.min(100,100*u.cur/u.max))+'%';bar.append(f);d.append(h,bar,el('small',null,u.msg));v.append(d)}
 let CHPEND=null;
+// the chapter clear after its card: outro, then the reward (which moves S.story on). Back to map runs it; so does a reload that
+// lands after the clear card (ROUND5 i: S.chRw is saved by endRun, so Chapter N+1 is offered even if Back to map was never tapped)
+function chapterFinish(sn){S.missionsDone=(S.missionsDone||0)+1;CHPEND=sn;save();renderMissions();playScene(CH[sn].outro,()=>{CHPEND=null;storyReward(sn);renderMissions();if($('pack').hidden){if(!revealCheck())promoteCheck()}else{const pc=PACKCB;PACKCB=()=>{if(!revealCheck()){if(pc)pc();else promoteCheck()}}}})}
+function chapterResume(){const sn=S.chRw;if(sn==null)return;if(!CH[sn]||(S.story||0)>sn){delete S.chRw;save();return}if(!$('opening').hidden||TUT.on){setTimeout(chapterResume,300);return}
+ if(S.run&&!S.run.over)return;S.run=null;if(VIEW!=='missions')setView('missions');chapterFinish(sn)}
 // ROUND3 item 5 (build 82): the win track. Every won fight (mission fights, mini-bosses, bosses, Arena, duels, training) moves one bar
 // toward a named part. When it fills, the part goes to your parts and the next target shows at once. Shown on the Hangar and on
 // every result card. It counts a fight once, when its result is closed (the same rule as the battle log), never in a replay.
@@ -2837,8 +2888,13 @@ const NUT=[['legs','treads',2],['head','visor',3],['arm','missile',4],['core','t
 function nutAt(i){const k=i%NUT.length,[kind,pk,n0]=NUT[k],lap=Math.floor(i/NUT.length);return {i,kind,k:pk,need:Math.min(12,n0+2*lap),r:Math.min(3,1+Math.floor(i/3)),name:TPL[kind].find(x=>x.k===pk).n}}
 function nutCur(){const t=S.nut||(S.nut={i:0,w:0});return {...nutAt(t.i),w:t.w}}
 function nutAdd(n){const t=S.nut||(S.nut={i:0,w:0}),got=[];t.w+=n;for(let g=0;g<20;g++){const c=nutAt(t.i);if(t.w<c.need)break;t.w-=c.need;t.i++;
-  const p=makePart(c.kind,S.level+1,R,.5,c.k);p.r=Math.max(p.r,c.r);S.inv.push(p);keepGrant(p);got.push(p)}
- save();for(const p of got)toast('Win track reward: '+RAR[p.r].n+' '+partName(p)+' added to your parts.');return got}
+  const p=nutPart(c);if(p.fed){S.scrap+=p.fed;got.push(p);continue}S.inv.push(p);keepGrant(p);got.push(p)}
+ save();for(const p of got)toast(p.fed?'Win track reward: you already have every '+p.slot+' part, so it pays '+p.fed+' Fed-$ instead.':'Win track reward: '+RAR[p.r].n+' '+partName(p)+' (Lv '+p.l+')'+(p.dup?' instead of a second '+p.dup:'')+' added to your parts.');return got}
+// ROUND5 y (Apex 9): the reward part is at the pilot's level (the Workshop's level, at least the track's rarity); if the pilot already
+// owns that part it becomes a part for the same slot they don't own yet, or, when they own them all, that part's Fed-$ value
+function nutPart(c){const own=k=>S.inv.some(q=>q.kind===c.kind&&q.k===k),mk=k=>{const p=makePart(c.kind,S.level+1,R,.5,k);p.r=Math.max(p.r,c.r);p.l=Math.max(p.l,wsLv());return p};
+ if(!own(c.k))return mk(c.k);const alt=TPL[c.kind].filter(t=>!own(t.k)&&!RAREK[t.k]);
+ if(alt.length){const p=mk(alt[Math.floor(R()*alt.length)].k);p.dup=c.name;return p}const p=mk(c.k);return {fed:salvage(p),slot:({head:'head',core:'core',arm:'arm',legs:'legs'})[c.kind],name:c.name}}
 // the bar; add: wins this result adds (shown before it is counted)
 function nutBar(add,id){const t=S.nut||{i:0,w:0},d=el('div','nutrack');if(id)d.id=id;let i=t.i,w=t.w+(add||0);const done=[];for(let g=0;g<20;g++){const c=nutAt(i);if(w<c.need)break;w-=c.need;done.push(c.name);i++}
  const c=nutAt(i),left=c.need-w;if(done.length)d.append(el('span','nudone','✓ '+done.join(', ')+' unlocked'));
@@ -2878,8 +2934,11 @@ function drawSpeaker(c,w,h,now,k){const P=SPK[k]||SPK.sys;const g=c.createLinear
  if(P.bot)portraitBot(c,w,h,P.bot,k==='varga'||k==='rin'&&!(S.story>5)?-1:1,now,{front:true,enemy:k==='varga'});
  else{c.fillStyle='rgba(255,178,46,.9)';c.font='700 '+Math.round(h*.12)+'px "Chakra Petch",sans-serif';c.textAlign='center';c.fillText('// TRANSMISSION //',w/2,h*.5)}}
 // scene player: lines [speaker,text,mood] or {loyal:[..],merc:[..]}; a 'choice' line asks loyal vs freelance
+let SCSKIP=0;/* ROUND5: scenes skipped this session (read by tools/skipcuts.js) */
 function popScene(lines){if(popHold(()=>popScene(lines)))return;playScene(lines)}
-function playScene(lines,done){let i=0;TUT.on=true;$('tut').hidden=false;
+// ROUND5: with "Skip cut-ins and story scenes" on, a scene jumps to its first choice (as Skip scene does) or is skipped whole when it has none.
+// force: scenes the player asked for (Talk, Rewatch scenes) always play.
+function playScene(lines,done,force){let i=0;if(skipCuts()&&!force){const ci=lines.findIndex(x=>Array.isArray(x)&&x[0]==='choice');if(ci<0){SCSKIP++;if(done)done();return}i=ci;SCSKIP++}TUT.on=true;$('tut').hidden=false;
  const step=()=>{if(i>=lines.length){TUT.spk=null;$('tutName2').textContent=SPK.yuri.n;$('tut').hidden=true;TUT.on=false;renderHeader();if(done)done();return}
   let L=lines[i++];if(!Array.isArray(L))L=L[S.path==='merc'?'merc':'loyal'];const [k,txt,mood]=L;const box=$('tutAct');box.textContent='';
   if(k==='choice'){TUT.spk='yuri';$('tutName2').textContent='YOUR DECISION';tutSay('Stay with the 1st Heavy Battalion, or take the Guild offer and fly for whoever pays?','');
@@ -2900,6 +2959,9 @@ const QUIET_MS=2000;function quietBeat(title,line,cb){const q=document.createEle
  const stop=e=>{e.stopPropagation();e.preventDefault()};for(const t of ['click','pointerdown','touchstart','keydown'])q.addEventListener(t,stop,true);document.body.append(q);QB.n++;QB.at=performance.now();
  setTimeout(()=>{q.remove();QB.done++;if(cb)cb()},QUIET_MS)}
 const QB={n:0,done:0,at:0};
+// ROUND5 r (Apex): a chapter's first clear also pays CH[n].reward.fed (with the chapter scene, after Back to map). The boss card and
+// the Mission cleared panel count it in their Fed-$ total and itemize it, so the card total is what the clear adds to your balance.
+function chFed(run){return run&&run.story!=null&&CH[run.story]&&(S.story||0)<=run.story&&(CH[run.story].reward||{}).fed||0}
 function storyReward(n,quietDone){const C0=CH[n],r=C0.reward||{},cr=crew();
  if(r.lose&&!quietDone&&!cr.lost.includes(r.lose)){const W=WINGS[r.lose];quietBeat((W?W.n:r.lose).toUpperCase(),'Wingman. Flew '+((cr.lv&&cr.lv[r.lose])?'to Lv '+cr.lv[r.lose]:'with you')+'. Gone.',()=>storyReward(n,1));return}
  const cards=[];holdBal();
@@ -2911,14 +2973,14 @@ function storyReward(n,quietDone){const C0=CH[n],r=C0.reward||{},cr=crew();
  if(r.part){const p=randomPart(S.level+1,R,.6);p.r=Math.max(p.r,r.part);S.inv.push(p);cards.push({t:'part',p})}
  if(r.paint){S.paints=S.paints||[];if(!S.paints.includes(r.paint))S.paints.push(r.paint);cards.push({t:'paint',id:r.paint,dup:false})}
  for(const w of cr.hired)if(cr.active.length<cr.slots&&!cr.active.includes(w))cr.active.push(w);
- S.story=Math.max(S.story||0,n+1);save();renderHeader();if(cards.length){openPack('Chapter '+(n+1)+' complete',cards,{quick:1});if(promoteDue())PACKCB=()=>promoteCheck()}else{freeBal();setTimeout(()=>promoteCheck(),300)}}
+ S.story=Math.max(S.story||0,n+1);if(S.chRw===n)delete S.chRw;save();renderHeader();if(cards.length){openPack('Chapter '+(n+1)+' complete',cards,{quick:1});if(promoteDue())PACKCB=()=>promoteCheck()}else{freeBal();setTimeout(()=>promoteCheck(),300)}}
 function renderCampaign(v){const n=Math.min(S.story||0,CH.length);const box=el('div','camp');
  box.append(el('small','camptag','SEASON 1 · THE IRON DOMINION WAR'));
  const dots=el('div','campdots');CH.forEach((c,i)=>{const d=el('i',i<n?'done':i===n?'now':'');d.title=c.t;dots.append(d)});box.append(dots);
  if(n>=CH.length){box.append(el('b',null,'Season 1 complete'),el('small','muted','The Dominion has fallen. New chapters arrive next season.'));}
  else{const C0=CH[n];box.append(el('b',null,'Chapter '+(n+1)+': '+C0.t),el('small','muted',THEMES[C0.th].n+' · '+LENS[C0.li].n+' · '+DIFFS[C0.di].n+' · '+lvRange(Math.max(1,S.level+DIFFS[C0.di].lv),n,C0.di)+' · '+(C0.li+1)+' fuel'));
   const b=el('button','btn go',S.level<C0.req?'Reach pilot Lv '+C0.req:'Play chapter');b.disabled=S.level<C0.req;b.onclick=()=>storyStart(n);box.append(b)}
- if(n>0){const rw=el('button','btn sm','Rewatch scenes');rw.onclick=()=>{const all=[];for(let i=0;i<n;i++){all.push(['sys','Chapter '+(i+1)+': '+CH[i].t,''],...CH[i].intro,...CH[i].outro.filter(x=>!(Array.isArray(x)&&x[0]==='choice')))}playScene(all)};box.append(rw)}
+ if(n>0){const rw=el('button','btn sm','Rewatch scenes');rw.onclick=()=>{const all=[];for(let i=0;i<n;i++){all.push(['sys','Chapter '+(i+1)+': '+CH[i].t,''],...CH[i].intro,...CH[i].outro.filter(x=>!(Array.isArray(x)&&x[0]==='choice')))}playScene(all,null,true)};box.append(rw)}
  v.append(box)}
 function addr(){return S.cmdr?'Commander':(S.pilot||'pilot')}
 function addrName(){return S.cmdr?'Commander'+(S.pilot?' '+S.pilot:''):(S.pilot||'Pilot')}
@@ -2927,7 +2989,11 @@ function promoteDue(){return !S.cmdr&&((S.story||0)>=6||(S.ladder&&S.ladder.tier
 function promoteCheck(done){if(!promoteDue()){if(done)done();return false}if(popHold(()=>promoteCheck(done)))return true;
  const how=(S.story||0)>=6?'You brought Rin home and held the line through six chapters of this war.':'You fought your way up to the Silver league.';const nm=S.pilot||'pilot';
  playScene([['yuri','Hold it, '+nm+'. Command sent something down for you. '+how,''],['yuri','For valor in the Iron Dominion War, you are promoted to Commander, effective now.','happy'],['yuri',"You've earned this. Welcome to command, Commander.",'cheer2']],()=>{S.cmdr=1;save();sfx('rare');buzz('kill');toast('Promoted to Commander!');renderHeader();if(VIEW==='hangar')hgSub(HGSUB);if(done)done()});return true}
-function welcomeBack(){if(promoteDue()){promoteCheck(()=>welcomeBack());return}if(S.train&&S.train.cur){const k=S.train.cur;delete S.train.cur;save();TUT.on=true;$('tut').hidden=false;const bx=$('tutAct');bx.textContent='';tutSay(CAP.resume(k),'');const lt=el('button','btn','Later');lt.onclick=()=>{tutClose();welcomeBack()};const rn=el('button','btn go','Run Lesson '+k);rn.id='lessonResume';rn.onclick=()=>{tutClose();playLesson(k,'train')};bx.append(lt,rn);return}if(!S.toldDaily){S.toldDaily=1;save();yuriSay(DAILY_BRIEF(),'','Understood',maybeLogin);return}const nm=addrName(),lines=["Welcome back, "+nm+". The battalion's been waiting. Your Vanguard is fueled and ready.","Good to see you, "+nm+". Command has fresh contracts on the board. Let's get to work.","There you are, "+nm+". The arena ladder won't climb itself. Ready to deploy?"];
+// ROUND5 t (Apex): no Welcome back card over a resumed fight: a cut-off Arena fight (S.apend, offered by arenaResumeOffer) or mission fight (RESUMING)
+// build 84 fix (Sentinel): only the Welcome back card is skipped. Once the resumed fight is over (and its card closed) the promotion,
+// daily brief and login reward/streak still run for this session. (RESUMING stays true after a mission resume, so it is not polled.)
+const wbFightOver=()=>!S.apend&&!(S.run&&S.run.pend&&!S.run.over)&&$('battle').hidden&&$('tut').hidden;
+function welcomeBack(skip){if(!skip&&(RESUMING||S.apend)){const w=()=>{if(!wbFightOver()){setTimeout(w,1000);return}welcomeBack(true)};setTimeout(w,1000);return}if(promoteDue()){promoteCheck(()=>welcomeBack(skip));return}if(S.train&&S.train.cur){const k=S.train.cur;delete S.train.cur;save();TUT.on=true;$('tut').hidden=false;const bx=$('tutAct');bx.textContent='';tutSay(CAP.resume(k),'');const lt=el('button','btn','Later');lt.onclick=()=>{tutClose();welcomeBack(skip)};const rn=el('button','btn go','Run Lesson '+k);rn.id='lessonResume';rn.onclick=()=>{tutClose();playLesson(k,'train')};bx.append(lt,rn);return}if(!S.toldDaily){S.toldDaily=1;save();yuriSay(DAILY_BRIEF(),'','Understood',maybeLogin);return}if(skip){renderHeader();maybeLogin();return}const nm=addrName(),lines=["Welcome back, "+nm+". The battalion's been waiting. Your Vanguard is fueled and ready.","Good to see you, "+nm+". Command has fresh contracts on the board. Let's get to work.","There you are, "+nm+". The arena ladder won't climb itself. Ready to deploy?"];
  TUT.on=true;$('tut').hidden=false;const box=$('tutAct');box.textContent='';tutSay(S.run&&!S.run.over?'Welcome back, '+nm+'. Your mission at '+S.run.name+' is still waiting, '+(S.run.tiles.length-1-S.run.pos)+' tiles from the gate. Ready to pick it back up?':lines[Math.floor(Math.random()*lines.length)],'happy');
  if(S.run&&!S.run.over){const rs=el('button','btn go','Resume mission');rs.onclick=()=>{$('tut').hidden=true;TUT.on=false;renderHeader();setView('missions');maybeLogin()};box.append(rs)}
  const b=el('button','btn'+(S.run&&!S.run.over?'':' go'),S.run&&!S.run.over?'Hangar first':"Let's go");b.onclick=()=>{$('tut').hidden=true;TUT.on=false;renderHeader();maybeLogin()};box.append(b)}
@@ -2940,14 +3006,16 @@ function quickStart(){const W={id:nid(),kind:'arm',k:'esword',r:0,l:1,el:'volt'}
  const b=el('button','btn go','Roll out!');b.id='qsGo';b.onclick=()=>{tutClose();const C0=CH[0],D=DIFFS[C0.di],L=LENS[C0.li],lv=Math.max(1,S.level+D.lv);S.dfuel-=C0.li+1;S.sceneQ=0;
   startRun(-1,{li:C0.li,di:C0.di,th:C0.th,name:'Ch.1 · '+C0.t,lv,scrap:Math.round((60+12*lv)*(L.rolls/15)*D.rw),xp:Math.round((40+10*lv)*(L.rolls/15)*D.rw),story:0,cl:'fed'});S.run.q1=1;save();setView('missions')};box.append(b)}
 // the callsign is asked once the first mission is over, not before the first fight
-function askName(){TUT.on=true;$('tut').hidden=false;const box=$('tutAct');box.textContent='';tutSay("Good work out there. I'm Captain Yuri Osaka, 1st Heavy Battalion. What do I call you, pilot?",'happy');
+function askName(){TUT.on=true;$('tut').hidden=false;$('tut').classList.add('askn');tutBottom();const box=$('tutAct');box.textContent='';tutSay("Good work out there. I'm Captain Yuri Osaka, 1st Heavy Battalion. What do I call you, pilot?",'happy');
  const inp=document.createElement('input');inp.id='tutName';inp.maxLength=16;inp.placeholder='Pilot name';inp.className='tutin';box.append(portPick(),inp);const b=el('button','btn go',"That's me");b.onclick=()=>{const nm=inp.value.trim();if(!nm){toast('Every pilot needs a callsign. Type a name first.');inp.focus();return}S.pilot=nm.slice(0,16);delete S.needName;save();tutClose()};box.append(b);enterSubmits(inp,b)}
-setInterval(()=>{if(S.needName&&!S.run&&!popBusy())askName()},1500);
+// ROUND5 j: a tap outside the ask box goes to what was tapped and puts the ask off until the next mission is done (or 3 minutes)
+let NAMESNZ=null;document.addEventListener('pointerdown',e=>{const t=$('tut');if(t.hidden||!t.classList.contains('askn'))return;if(e.target.closest&&e.target.closest('#tut .tutbox'))return;tutClose(1)/* no re-render: the tapped card must still be there for its click */;NAMESNZ={m:S.missionsDone||0,at:Date.now()}},true);
+setInterval(()=>{if(S.needName&&!S.run&&!popBusy()&&(!NAMESNZ||(S.missionsDone||0)!==NAMESNZ.m||Date.now()-NAMESNZ.at>18e4)){NAMESNZ=null;askName()}},1500);
 function startTutorial(){if(!S.onb){S.fresh=1;save();renderHeader()}TUT.on=true;$('tut').hidden=false;
  if(!S.onb&&S.tut&&S.tut.n){const d=S.tut.d;if(d&&d.loot){TUT.loot=d.loot;TUT.pw0=d.pw0;TUT.pw1=d.pw1;TUT.oldN=d.oldN;TUT.st0={hp:d.hp0};TUT.st1={hp:d.hp1}}tutStep(S.tut.n);return}
  tutStep(S.onb?0:1)}
 
-$('bDone').onclick=()=>{if(!BT||!BT.done||BT.result.end==null)return;const r=BT.res,res=BT.result,old=BT.rc&&BT.ri<BT.rc.lg;if(BT.rc&&!old)BT.rc.lg=BT.ri+1;{const ak=(res.ev||[]).filter(e=>e.t==='heal'&&e.autoKit).length;if(ak&&BT.opt.lkit==null&&!old){S.kits=Math.max(0,(S.kits||0)-ak);save()}}{const ho=handsOn(BT);res.manual=!!ho;if(ho)res.style=ho}if(!old)logBattle(res.win===0?'W':'L',res);if(!old&&res.win===0&&!(BT.opt&&BT.opt.sim))nutAdd(1);$('battle').hidden=true;BT=null;r(res)};
+$('bDone').onclick=()=>{if(!BT||!BT.done||BT.result.end==null)return;const r=BT.res,res=BT.result,old=BT.rc&&BT.ri<BT.rc.lg;if(BT.rc&&!old)BT.rc.lg=BT.ri+1;{const ak=(res.ev||[]).filter(e=>e.t==='heal'&&e.autoKit).length;if(ak&&BT.opt.lkit==null&&!old){S.kits=Math.max(0,(S.kits||0)-ak);save()}}{const ho=handsOn(BT);res.manual=!!ho;if(ho)res.style=ho}if(!old)logBattle(res.win===0?'W':'L',res);if(!old&&res.win===0&&!(BT.opt&&BT.opt.sim))nutAdd(1);$('bres').hidden=true;$('battle').hidden=true;BT=null;r(res)};  // ROUND5 x (Combo B3): the result panel closes with the fight
 const MOVE={cannon:'MAIN CANNON',barrage:'TURRET BARRAGE',swarm:'ALL-OUT ASSAULT',gunpod:'BULLET STORM',blaster:'MAX OUTPUT SHOT',laser:'LANCE BREAKER',hammer:'TITAN CLEAVE',esword:'THUNDER EDGE',mace:'QUAKE CRUSHER',whip:'SERPENT LASH',bazooka:'HEAVY ORDNANCE',rapier:'SERAPH THRUST',saw:'RIPPER DRIVE',missile:'FULL SALVO',shield:'AEGIS RAM',fist:'IRON KNUCKLE'};
 let SKY=null;
 function skyline(w,h){if(SKY&&SKY.w===w&&SKY.h===h)return SKY;const r=rng(7);const far=[],near=[];
@@ -3218,7 +3286,7 @@ function loreOf(b){const P=b.parts,k=x=>P[x]?P[x].k:null,el=x=>P[x]&&isMelee(P[x
  const LEGS={biped:'It walks the line on standard strider legs, steady and stubborn.',treads:'Siege treads grind through rubble that would stop any walker.',hover:'Its thruster skirt keeps it gliding a meter above the dirt.',spider:'Reverse-jointed raptor legs let it pounce from cover.',jet:'Jet nacelles let it boost across the battlefield in seconds.',heel:'Siren legs carry it with a dancer\'s balance, always one step ahead.'};
  const W={blaster:'a beam rifle',laser:'a lance cannon that punches through plating',hammer:'a breaker axe',saw:'a chain blade',missile:'a missile pod',gunpod:'a roaring gun pod',shield:'a kite shield',rapier:'a lumen rapier',esword:'a crackling volt saber',mace:'a thunder mace',whip:'an arc whip',bazooka:'a shoulder-busting bazooka',fist:'bare iron fists'};
  const HEAD={optic:'Its single eye sweeps the smoke, never blinking.',visor:'Twin eyes behind the visor lock on and do not let go.',antenna:'The command crest marks it as the one others follow.',turret:'Twin head lasers track every target in range.',skull:'The horned warlord helm is the last thing most rivals see.',valk:'Behind the slim visor, its eyes burn with quiet focus.'};
- const wpn=x=>{const w=P[x]?tplOf(P[x]).w:'fist',e=el(x);return (e&&isMelee(P[x])?W[w].replace(/^an? /,'a '+e+' '):W[w])};
+ const wpn=x=>{const w=P[x]?tplOf(P[x]).w:'fist',e=el(x);return (e&&isMelee(P[x])?W[w].replace(/^an? /,an(e)+' '):W[w])};
  const mel=isMelee(P.armR)||isMelee(P.armL),rng2=['blaster','laser','missile','gunpod','bazooka'].some(w=>[P.armR,P.armL].some(p=>p&&tplOf(p).w===w));
  const style=mel&&rng2?'It softens targets at range, then closes in to finish them.':mel?'It closes the distance fast and settles fights up close.':rng2?'It ends fights before the enemy gets near.':'It wins by outlasting everything thrown at it.';
  const CLS={Electric:(S.pilot||'Its pilot')+' trusts speed and shock.',Iron:(S.pilot||'Its pilot')+' trusts armor and brute force.',Range:(S.pilot||'Its pilot')+' trusts distance and patience.',Rookie:'Its pilot, '+(S.pilot||'a rookie')+', is still writing their legend.'};
@@ -3324,7 +3392,8 @@ const THEMES=[
  {n:'Low Orbit',kind:'void',sky:'space',top:'#8a94a4',edge:'#232a36',sT:'#02030a',sM:'#060a1c',sH:'#0a1430',glow:'120,190,255',stars:1,planet:1,boss:'Orbital Warden',names:['Fuel Farm','Gantry Climb','Launch Ring','Sat Grid']},
  {n:'Deep Space',kind:'void',sky:'space',top:'#6a7484',edge:'#1a2030',sT:'#03010a',sM:'#0c0420',sH:'#200a3a',glow:'200,140,255',stars:1,nebula:1,boss:'The Silent Hulk',names:['Dead Drift','Nebula Veil','Far Beacon','Ghost Lane']}];
 const LENS=[{n:'Short',rolls:15,tiles:13,pay:1.25},{n:'Medium',rolls:25},{n:'Long',rolls:35,pay:1.35}];const PAYV=3;// pay: contract Fed-$/XP multiplier (Long x1.35, Sean Nov 16); PAYV bumps saved contracts to new pay
-const DIFFS=[{n:'Easy',lv:-1,sc:.82,rw:1,col:'var(--green)',da:1.3,bf:.2,gt:.38},{n:'Normal',lv:0,sc:1,rw:1.6,col:'var(--amber)',da:1.45,bf:.15,gt:.26},{n:'Hard',lv:2,sc:1.2,rw:2.6,col:'var(--red)',da:1.05,bf:.06,gt:.2,nf:[.92,.02,.72],mf:[.92,.02,.72]}];
+const EASY_CAP=.45;/* ROUND5 p: Easy hit cap, share of your max hull */
+const DIFFS=[{n:'Easy',lv:-1,sc:.82,rw:1,col:'var(--green)',da:1.3,bf:.2,gt:.38,hf:.15/* ROUND5 p: boss HEAVY floor, Normal/Hard keep .22 */},{n:'Normal',lv:0,sc:1,rw:1.6,col:'var(--amber)',da:1.45,bf:.15,gt:.26},{n:'Hard',lv:2,sc:1.2,rw:2.6,col:'var(--red)',da:1.05,bf:.06,gt:.2,nf:[.92,.02,.72],mf:[.92,.02,.72]}];
 // ROUND3 item 19: nf/mf ease Hard regular fights and mini-bosses (hull and attack), never the boss. Tuned with apexsim a8 (DIS=2) toward ~40% whole-mission clears.
 // ---- idle patrols: the mech fights on its own while the phone is in a pocket ----
 const PATROLS=[{n:'Perimeter sweep',h:1,fuel:1,li:0},{n:'Deep patrol',h:3,fuel:2,li:1},{n:'Long-range recon',h:8,fuel:3,li:2}];
@@ -3403,7 +3472,9 @@ function renderDaily(v){if((S.missionsDone||0)<DAILY_TUNE.minMissions)return;con
 let TWOTAP=true;
 function armTap(b,fc,go){return ()=>{if(!TWOTAP||b.classList.contains('armed')){go();return}
  document.querySelectorAll('.ccard.armed').forEach(x=>{x.classList.remove('armed');const o=x.querySelector('.clgo');if(o)o.remove()});
- b.classList.add('armed');const L=el('span','btn clgo','Launch · '+fc+' fuel');L.setAttribute('role','button');b.append(L);try{L.scrollIntoView({block:'nearest'})}catch(e){}}}
+ b.classList.add('armed');const L=el('span','btn clgo','Launch · '+fc+' fuel');L.setAttribute('role','button');b.append(L);try{L.scrollIntoView({block:'nearest'})}catch(e){}navClear(L)}}
+// ROUND5 v (Apex): at 390x844 the Launch button opened under the fixed bottom nav; lift it clear (and the safe-area inset) if it still overlaps
+function navClear(x){const n=document.querySelector('nav.tabs');if(!x||!n||getComputedStyle(n).position!=='fixed')return;const a=x.getBoundingClientRect(),t=n.getBoundingClientRect().top;if(a.bottom>t-8)window.scrollBy(0,a.bottom-t+12)}
 function startDaily(C){const done=S.dailyDone===C.k,keep=RS;RS=rng(C.seed);try{startRun(-1,{...C,scrap:done?0:C.scrap,xp:done?0:C.xp})}finally{RS=keep}
  const run=S.run;if(run){run.daily=1;run.dk=C.k;run.sc=dailyScale();save()}}
 function canSkip(ci){const C=S.contracts&&S.contracts[ci];return !!C&&perkOn()&&((S.clr3||{})[C.li+','+C.di]||0)>=C.lv}
@@ -3697,7 +3768,7 @@ function renderBoard(v){
  // FIX81 item 10: the result (title, pay, stars, next goal, buttons) is its own panel at the top of the view, above the board, so it shows without scrolling at 390x844; toasts steer around it (.notoast)
  let rd=null;if(run.over){rd=el('div','console rundone notoast');rd.id='runDone';const c=rd;const o=run.over;const t=el('h3',null,o.success?'Mission cleared':o.ran?'Retreated':'Mech destroyed');t.style.color=o.success?'var(--amber)':o.ran?'#ffb22e':'var(--red)';c.append(t);
   const salvLn=!o.success&&!o.ran&&o.salv;  // ROUND3 fix 3: a destroyed card names the kept Fed-$ once, on the Salvaged line
-  c.append(el('p',null,(o.success?'★'.repeat(o.stars)+'☆'.repeat(3-o.stars)+'  ':'')+(salvLn?'':'+'+o.scrap+' Fed-$, ')+'+'+o.xp+' XP'+(run.loot.parts?', '+run.loot.parts+' part'+(run.loot.parts>1?'s':'')+' found':'')+'.'));
+  c.append(el('p',null,(o.success?'★'.repeat(o.stars)+'☆'.repeat(3-o.stars)+'  ':'')+(salvLn?'':o.chFed?'+'+(o.scrap+o.chFed)+' Fed-$ ('+o.scrap+' mission + '+o.chFed+' Chapter '+(run.story+1)+' reward), ':'+'+o.scrap+' Fed-$, ')+'+'+o.xp+' XP'+(run.loot.parts?', '+run.loot.parts+' part'+(run.loot.parts>1?'s':'')+' found':'')+'.'));
   if(!o.success&&!o.ran&&o.salv){const sv=o.salv.map(id=>S.inv.find(p=>p.id===id)).filter(Boolean),sp=el('p','salvln');sp.id='runSalv';
    sp.append(el('b',null,'Salvaged: '),document.createTextNode(sv.length?sv.map(p=>RAR[p.r].n+' '+partName(p)).join(', ')+' (kept) + '+o.scrap+' Fed-$'+(o.lostParts?'. Lost '+o.lostParts+' other part'+(o.lostParts>1?'s':'')+'.':'.'):o.scrap+' Fed-$ ('+(run.keepAll?'Short contract: you keep the whole haul':'half the mission haul')+'). No parts were found.'));c.append(sp)}
   {const cl=el('p','crline',crLine(o,run));cl.id='runCr';c.append(cl)}c.append(nutBar(0,'runNut'));if(o.part)c.append(el('p',null,'Boss drop: '+RAR[o.part.r].n+' '+partName(o.part)+'.'));
@@ -3705,7 +3776,7 @@ function renderBoard(v){
   {const nh=nextHook(o.success&&run.story!=null&&CH[run.story]?run.story:null,{win:o.success?1:0,noArena:1});if(nh)c.append(el('p','nexthook','NEXT UP · '+nh))}
   if(!o.success&&!o.ran&&o.rm){RETRY=null;const rb=el('button','btn go','Rematch · ⛽ '+rmCost(run));rb.id='runRematch';rb.style.marginRight='8px';rb.onclick=rematchMission;c.append(rb)}
   else if(!o.success&&!o.ran){const rt=retryOf(run);if(rt){if(RETRY&&!busy){RETRY=null;setTimeout(()=>doRetry(rt),0)}const tb=el('button','btn go','Try again · ⛽ '+rt.fc);tb.id='runRetry';tb.style.marginRight='8px';tb.onclick=()=>doRetry(rt);c.append(tb)}}else RETRY=null
-  const b=el('button',c.querySelector('#runRematch,#runRetry')?'btn':'btn go','Back to map');/* ROUND3 fix 3: when a retry is offered it is the primary button */b.onclick=async()=>{const won=!!(S.run&&S.run.over&&S.run.over.success),sn=S.run&&S.run.story;S.run=null;if(won&&sn!=null&&CH[sn]&&(S.story||0)<=sn){S.missionsDone=(S.missionsDone||0)+1;CHPEND=sn;save();renderMissions();playScene(CH[sn].outro,()=>{CHPEND=null;storyReward(sn);renderMissions();if($('pack').hidden){if(!revealCheck())promoteCheck()}else{const pc=PACKCB;PACKCB=()=>{if(!revealCheck()){if(pc)pc();else promoteCheck()}}}});return}if(won)S.missionsDone=(S.missionsDone||0)+1;save();renderMissions();if(revealCheck())return;
+  const b=el('button',c.querySelector('#runRematch,#runRetry')?'btn':'btn go','Back to map');/* ROUND3 fix 3: when a retry is offered it is the primary button */b.onclick=async()=>{const won=!!(S.run&&S.run.over&&S.run.over.success),sn=S.run&&S.run.story;S.run=null;if(won&&sn!=null&&CH[sn]&&(S.story||0)<=sn){chapterFinish(sn);return}if(won)S.missionsDone=(S.missionsDone||0)+1;save();renderMissions();if(revealCheck())return;
    // ads: never in a new pilot's first 3 missions, never after a loss, then every other mission
    if(won&&S.missionsDone>3&&S.missionsDone%2===0)await breakAd()};c.append(b)}
  else{const rr=el('div','rollrow');const die=el('div','die');die.id='die';dieFace(die,run.die||5);const rb=el('button','btn go','Roll');rb.id='rollBtn';rb.disabled=busy;rb.onclick=roll;if(run.thr==null)run.thr=run.li===2?3:2;const thw=el('div','thr');if((S.missionsDone||0)<4&&!busy){const hn=el('small','muted','Tip: tap the board to skip the walk. Tap any tile to see what it is.');hn.style.cssText='display:block;width:100%;font-size:12px;margin-top:2px';thw.append(hn)}thw.append(el('small',null,'Thrusters ×'+run.thr));for(const k of [1,2,3]){const tb=el('button','btn sm thb','+'+k);tb.title='Move exactly '+k;tb.disabled=busy||!(run.thr>0);tb.onclick=()=>thrust(k);thw.append(tb)}
@@ -3752,10 +3823,10 @@ async function doRoll(run){RS=rng(run.pend.seed);run.pend.rec=run.pend.rec||{c0:
  n=1+Math.floor(R()*6);run.die=n;dieFace(die,n);sfx('dieland');await wait(160)}
  let atGate=false,atMB=false;const last=run.tiles.length-1;WALKSKIP=false;if(run.q1===1){const t=Math.min(last-1,run.pos+n);run.tiles[t]='battle';run.q1=2}for(let s=0;s<n;s++){run.pos=Math.min(last,run.pos+1);renderMissions();if(!WALKSKIP){sfx('step');await wait(turboOn()?WALKMS[1]:WALKMS[0])}if(run.pos===last){atGate=true;break}if(run.tiles[run.pos]==='mboss'){atMB=true;break}if(run.tiles[run.pos]==='route')break;if(run.tiles[run.pos]==='mheal'&&s<n-1)mbHeal()}
  if(atGate)await bossFight();else if(atMB)await miniBoss();else await resolveTile();
- }finally{const fi=REC?REC.bi-1:-1;RS=Math.random;REC=null;NIDQ=null;delete S.tgr;if(run){if(run.over&&!run.over.success&&!run.over.ran&&run.pend&&run.pend.s0&&fi>=0){const P=run.pend,rc=P.rec||{};run.over.rm={s0:P.s0,seed:P.seed,from:P.from,fixed:P.fixed||null,fi,rec:{c0:rc.c0||0,k:(rc.k||[]).slice(0,fi),t:(rc.t||[]).slice(0,fi),a:(rc.a||[]).slice(0,fi),s:(rc.s||[]).slice(0,fi),cn:[],lg:fi,p:rc.p||[]}}}delete run.pend}}
+ }finally{const fi=REC?REC.bi-1:-1;RS=Math.random;REC=null;NIDQ=null;delete S.tgr;if(run){if(run.over&&!run.over.success&&!run.over.ran&&run.pend&&run.pend.s0&&fi>=0){const P=run.pend,rc=P.rec||{};run.over.rm={s0:P.s0,seed:P.seed,from:P.from,fixed:P.fixed||null,fi,rec:{c0:rc.c0||0,k:(rc.k||[]).slice(0,fi),t:(rc.t||[]).slice(0,fi),a:(rc.a||[]).slice(0,fi),s:(rc.s||[]).slice(0,fi),cn:(()=>{/* ROUND5 a: continues paid inside the roll (each led to one of the kept segments) are kept, so a Rematch replays them without asking or charging again */const c=rc.cn||[];let n=0;while(n<c.length&&c[n]===true)n++;return c.slice(0,Math.min(n,fi))})(),lg:fi,p:rc.p||[],eg:rc.eg&&rc.eg.bi<=fi?rc.eg:undefined}}}delete run.pend}}
  busy=false;if(RMATCH&&RMATCH.mission){RMATCH=null;if(S.run&&S.run.over&&S.run.over.rm){setTimeout(rematchMission,0);return}}
  save();if(VIEW==='missions')renderMissions();renderHeader();if(S.autoRoll&&turboOn())autoRoll()}
-async function battleCont(E,opt){let res=await runBattle(runBot(),E,opt);const run=S.run;
+async function battleCont(E,opt){if(S.run&&S.run.di===0&&opt.hitCap==null)opt.hitCap=EASY_CAP;/* ROUND5 p */let res=await runBattle(runBot(),E,opt);const run=S.run;
  while(res.win!==0&&res.win!=='ran'&&(run.cont||0)<2){const ok=await askContinue(2-(run.cont||0),contFoe(E,res));if(!ok)break;run.cont=(run.cont||0)+1;save();
   const keep=E.map((e,k)=>({e,hp:res.end[k+1],sc:opt.scales?opt.scales[k]:null})).filter(x=>x.hp>0);if(!keep.length)break;
   E=keep.map(x=>x.e);opt={...opt,card:false,hpA:Math.round(botStats(runBot()).hp*.5),hpB:keep.map(x=>x.hp),scales:keep.map(x=>x.sc),intro:'Back online. Hull restored to 50%.',cont:run.cont};
@@ -3881,11 +3952,12 @@ async function miniBoss(){const run=S.run,T=THEMES[run.th],e=run.mbBot||genBot(r
 // the boss mech for a mission (or a sim copy of it, FIX81 item 16): same rolls, same order as before
 const bossBP=di=>[[0,0,.5,.4,.18,.15],[0,.15,.42,.34,.16,.14],[1,.3,.4,.3,.16,.14]][di]||[0,0,.45,.32,.18,.15];
 // ROUND3 item 9: bosses from Chapter 2 on (side missions too once you reach Chapter 2) shift armor mid-fight
-const shiftTip=x=>{const f=Object.keys(ARMOR[x].m).find(q=>ARMOR[x].m[q]>1);return (f?'a '+(f==='gun'?'gun':f)+' hit jams it':'')+(f?', ':'')+'Overdrive ×'+R3K.openOd};  // the shift chip: how to punish it
+// ROUND5 s (Apex, Blitz): "a energy hit" -> "an energy hit"; every armor / weapon-type / element word built into a sentence takes a or an
+const shiftTip=x=>{const f=Object.keys(ARMOR[x].m).find(q=>ARMOR[x].m[q]>1);return (f?an(f)+' hit jams it':'')+(f?', ':'')+'Overdrive ×'+R3K.openOd};  // the shift chip: how to punish it
 const R3K={open:1.3,openOd:2,stag:1,shield:.4,every:3,hvG:.4,jam:1,jamOd:25};  // ROUND3 item 11 tuning: while its armor is shifting (the warned turn) an enemy is OPEN: +30% damage (open); Overdrive hits x2 (openOd) and staggers it (stag);
 // a normal hit that is EFFECTIVE against the incoming armor jams the shift (jam): it keeps its armor and loses its next turn, +jamOd Overdrive. every = enemy turns per shift.
 function bossShift(run){return (run.story!=null?run.story:(S.story||0))>=1?'boss':undefined}
-function bossOf(run){const T=THEMES[run.th],mk=['Mk I','Mk II','Mk III'][run.di],BP=bossBP(run.di);let boss=genBot(run.lv+BP[0],R,BP[1],T.boss+' '+mk);const SB=run.story!=null&&CH[run.story]?CH[run.story].boss:null;if(SB){if(SB.rival){const rb=SPK[SB.rival].bot,g=genBot(run.lv+BP[0]+1,R,BP[1]+(SB.boost||.2),SB.name);for(const sl of SLOTS){const q=rb.parts[sl];g.parts[sl]=q?{...g.parts[sl]||{},...q,id:'sb'+sl,l:g.parts.head.l,r:Math.max(q.r,g.parts.head.r)}:null}boss=g}else{boss=genBot(run.lv+BP[0],R,BP[1]+(SB.boost||0),SB.name);boss.kind=SB.kind||undefined}boss.name=SB.name;boss.color=SB.color;if(SB.rival)boss.armor={rin:'light',varga:'plated'}[SB.rival]||boss.armor}
+function bossOf(run){const T=THEMES[run.th],mk=['Mk I','Mk II','Mk III'][run.di],BP=bossBP(run.di);let boss=genBot(run.lv+BP[0],R,BP[1],T.boss+' '+mk);const SB=run.story!=null&&CH[run.story]?CH[run.story].boss:null;if(SB){if(SB.rival){const rb=SPK[SB.rival].bot,g=genBot(run.lv+BP[0]+1,R,BP[1]+(SB.boost||.2),SB.name);for(const sl of SLOTS){const q=rb.parts[sl];g.parts[sl]=q?{...g.parts[sl]||{},...q,id:'sb'+sl,l:g.parts.head.l,r:Math.max(q.r,g.parts.head.r)}:null}boss=g}else{boss=genBot(run.lv+BP[0],R,BP[1]+(SB.boost||0),SB.name);boss.kind=SB.kind||undefined}boss.name=SB.name;boss.color=SB.color;boss.armor=chArmor(run.story)}
  else{const bk=BOSSK[run.th];if(bk){boss.kind=bk;boss.name=(bk==='fortress'?(run.th>=4?'Star Fortress ':'Citadel ')+T.boss:bk==='tank'?T.boss+' Siege Tank':T.boss)+' '+mk;boss.color='#9a3640'}}return {boss,SB}}
 // ROUND4 item 10: the Easy Short gate boss (a contract, not a story chapter) is set for a hand-played same-level mech, not just Auto.
 // Its director aims higher (gov/floor), its hull and escorts are trimmed. Normal, Hard, Medium, Long and story bosses are unchanged.
@@ -3893,7 +3965,7 @@ const ESBOSS={gt:.6,bf:.42,hp:.75,esc:.7};function esBoss(run){return run&&run.d
 async function bossFight(){const run=S.run,T=THEMES[run.th];run.f1=1;const BP=bossBP(run.di);const {boss,SB}=bossOf(run);const mx=botStats(runBot()).hp,patch=Math.round(mx*.35);run.hp=Math.min(mx,run.hp+patch);log('Reached the gate. Field crew patches +'+patch+' hull. '+boss.name+' is waiting.');renderMissions();await wait(400);
  boss.boss=true;const esc=[genBot(Math.max(1,run.lv-1)),genBot(Math.max(1,run.lv-1))];energyGift([boss,...esc],{ashift:bossShift(run),mods:run.mods});const M1=run.story===0&&!(S.missionsDone>0);if(M1&&(S.kits||0)<1){S.kits=1;log('Field crew tossed you a repair kit. Tap Kit in the fight if your hull runs low.')}const DD=DIFFS[run.di]||DIFFS[1],ES=esBoss(run),GT=M1?.22:ES?ES.gt:DD.gt,escS=[BP[4]*run.sc*(ES?ES.esc:1),BP[5]*run.sc*(DD.da||1)*(ES?ES.esc:1)],me=runBot(),bfx=bossFix(boss,me,run.sc,run.lv+BP[0],.12);
  bfx.atk=bossDirector(me,[boss,...esc],{kits:S.kits||0,wings:wingOpts(),fix:[{hp:bfx.hp*(ES?ES.hp:1)}],scales:[[1,1],escS,escS],gov:GT,hpA:run.hp,mods:run.mods||[],ashift:bossShift(run)},ES?ES.bf:DD.bf||.1);if(ES)bfx.hp=Math.round(bfx.hp*ES.hp);
- const res=await battleCont([boss,...esc],{wings:wingOpts(),gov:GT,ashift:bossShift(run),mods:run.mods||[],fix:[bfx],scales:[[1,1],escS,escS],hpA:run.hp,intro:boss.name+' is behind a barrier. Destroy both escorts to break it!',card:true,reveal:{k:bossKey(boss),name:boss.name,tag:run.story!=null?'CHAPTER '+(run.story+1)+' BOSS':'COMMAND UNIT',line:SB&&SB.rival?({rin:'You again, Federation? This time I finish it.',varga:'Kneel, pilot. The Dominion does not lose.'})[SB.rival]:''},bg:'art:'+run.th,subs:['1st Heavy Battalion',T.n+' command unit'],canRun:true,runsLeft:2-(run.runs||0),pay:()=>{const C=run.sc0||(S.contracts&&S.contracts[run.ci]),sc=run.loot.scrap+(C?C.scrap:60),xp=run.loot.xp+(C?C.xp:40),news=lvNews(xp,[]),m=(S.missionsDone||0)+1;if(run.di===2)news.push('Skill point');if(S.fresh&&m===2)news.push('Arena');if(S.fresh&&m===3)news.push('Store');return {scrap:sc,xp,cr:crClear(run,starsOf(run,BT&&BT.result&&BT.result.end?BT.result.end[0]:run.hp)),news,lab:'Mission pay: your haul plus the contract reward · boss part next',goal:nextHook(run.story!=null&&CH[run.story]?run.story:null,{win:1})||((nextUnlock()||{}).msg)||''}}});if(res.win==='ran'){if(!fled(res,boss.name)){run.pos=Math.max(0,run.tiles.length-4);log('You fall back from the gate.')}renderMissions();return}run.hp=res.end[0];
+ const res=await battleCont([boss,...esc],{hvFloor:DD.hf||null,wings:wingOpts(),gov:GT,ashift:bossShift(run),mods:run.mods||[],fix:[bfx],scales:[[1,1],escS,escS],hpA:run.hp,intro:boss.name+' is behind a barrier. Destroy both escorts to break it!',card:true,reveal:{k:bossKey(boss),name:boss.name,tag:run.story!=null?'CHAPTER '+(run.story+1)+' BOSS':'COMMAND UNIT',line:SB&&SB.rival?({rin:'You again, Federation? This time I finish it.',varga:'Kneel, pilot. The Dominion does not lose.'})[SB.rival]:''},bg:'art:'+run.th,subs:['1st Heavy Battalion',T.n+' command unit'],canRun:true,runsLeft:2-(run.runs||0),pay:()=>{const C=run.sc0||(S.contracts&&S.contracts[run.ci]),sc=run.loot.scrap+(C?C.scrap:60)-(run.debt||0)/* ROUND5 c: after a Rematch the card shows what endRun pays: less the taken-back Fed-$ and the XP already paid */,xp=Math.max(0,run.loot.xp+(C?C.xp:40)-(run.xpPaid||0)),news=lvNews(xp,[]),m=(S.missionsDone||0)+1;if(run.di===2)news.push('Skill point');if(S.fresh&&m===2)news.push('Arena');if(S.fresh&&m===3)news.push('Store');const cf=chFed(run);return {scrap:sc+cf,xp,cr:crClear(run,starsOf(run,BT&&BT.result&&BT.result.end?BT.result.end[0]:run.hp)),news,lab:cf?'Mission pay +'+sc+' Fed-$ and Chapter '+(run.story+1)+' reward +'+cf+' Fed-$ · boss part next':'Mission pay: your haul plus the contract reward · boss part next',goal:nextHook(run.story!=null&&CH[run.story]?run.story:null,{win:1})||((nextUnlock()||{}).msg)||''}}});if(res.win==='ran'){if(!fled(res,boss.name)){run.pos=Math.max(0,run.tiles.length-4);log('You fall back from the gate.')}renderMissions();return}run.hp=res.end[0];
  if(res.win===0){log('Boss down!');endRun(true)}else endRun(false,boss.name+' held the gate.')}
 function missionRep(run){if(!S.path||run.story!=null)return;S.rep=S.rep||{fed:0,dom:0};const cl=run.cl||'fed',b4={...S.rep};
  if(cl==='fed'){S.rep.fed=Math.min(100,S.rep.fed+6);if(S.path==='merc')S.rep.dom=Math.max(-100,S.rep.dom-4)}else if(cl==='dom'){S.rep.dom=Math.min(100,S.rep.dom+6);S.rep.fed=Math.max(-100,S.rep.fed-4)}else{S.rep.fed=Math.min(100,S.rep.fed+1);S.rep.dom=Math.min(100,S.rep.dom+1)}
@@ -3925,12 +3997,12 @@ function endRun(success,why){const run=S.run;if(!run||run.over)return;if(success
   salv=fd.slice(0,keepN);const f=new Set(fd.slice(keepN).map(p=>p.id));lostParts=f.size;lostIds=[...f];{const ls=S.inv.filter(p=>f.has(p.id)&&(p.sig||p.named));if(ls.length)run.lostSig=ls.map(p=>partName(p))}S.inv=S.inv.filter(p=>!f.has(p.id));if(salv.length)log('Salvaged: '+salv.map(p=>RAR[p.r].n+' '+partName(p)).join(', ')+'.');if(run.prevEq)for(const sl in run.prevEq){if(f.has(S.eq[sl])){S.eq[sl]=run.prevEq[sl];eqRev[sl]=run.prevEq[sl]}}run.loot.parts=0;if(why)log(why);if(lostParts)log('Lost '+lostParts+' other part'+(lostParts>1?'s':'')+' found on this mission.');// ROUND4 item 8: a loss (Give up or destroyed) pays only the XP from fights won on this run (fights and mini-bosses; no tile
   // XP, never a clear bonus). The Easy fuel refund made losing on purpose a free, repeatable farm of those fights, so it is now the
   // first Easy loss of each day only; after that a loss costs its fuel like any run and always pays less than clearing it.
-  if(success===false)xp=Math.min(xp,run.fxp!=null?run.fxp:xp);
+  if(success===false)xp=Math.min(xp,run.fxp||0);/* ROUND5 e: before the first win nothing was won, so a loss pays no XP (scout XP is not fight XP) */
   if(run.di===0){const fc=(run.li!=null?run.li:LENS.findIndex(x=>x.rolls===run.rolls))+1||1;if(S.efr!==dayKey()){S.efr=dayKey();dailyTick();S.dfuel+=fc;refund=fc;log('Easy contract: your '+fc+' fuel was refunded (first Easy loss today).');toast('Fuel refunded ('+fc+'). Easy refunds the first loss each day.')}else log('Easy refund already used today: the fuel is spent.')}}
  // ROUND4 item 1: after a Rematch the XP already paid at the loss is not paid again, and the rest of the taken-back payout comes out here
  if(run.xpPaid)xp=Math.max(0,xp-run.xpPaid);
  if(run.debt){const d=Math.min(scrap,run.debt);scrap-=d;run.debt-=d;if(run.debt>0){const w=Math.min(S.scrap,run.debt);S.scrap-=w;run.debt-=w}}
- const crb=crBase(run),cr=success===true?crClear(run,stars):0;if(cr)S.credits=(S.credits||0)+cr;S.scrap+=scrap;gainXP(xp);run.over={success:success===true,ran:success==='ran',scrap,xp,stars,part,lostParts,cr,crb,refund,salv:salv.map(p=>p.id),lost:lostIds,eqRev};if(run.lostSig)setTimeout(()=>quietBeat('SIGNATURE PART LOST',run.lostSig.join(', ')+'. Left in the wreck.'),200);if(success===true){dirAdd('mission',1);if(run.di===2)rcAdd('hardW',1);if(run.li>=1)rcAdd('longOk',1);missionRep(run);wingXP();S.streak=(S.streak||0)+1;if(S.streak%3===0)setTimeout(streakCheer,1400);else if(run.story==null)setTimeout(mercCall,1600)}else S.streak=0;save();if(VIEW==='missions')renderMissions();renderHeader()}
+ ptDay();const crb=crBase(run),cr=success===true?crClear(run,stars):0;if(cr)S.credits=(S.credits||0)+cr;S.scrap+=scrap;gainXP(xp);run.over={success:success===true,ran:success==='ran',scrap,xp,stars,part,lostParts,cr,crb,refund,salv:salv.map(p=>p.id),lost:lostIds,eqRev,chFed:success===true?chFed(run):0};if(run.lostSig)setTimeout(()=>quietBeat('SIGNATURE PART LOST',run.lostSig.join(', ')+'. Left in the wreck.'),200);if(success===true){if(run.story!=null&&CH[run.story]&&(S.story||0)<=run.story)S.chRw=run.story;/* ROUND5 i: the clear is saved with the card; a reload finishes it (chapterResume) */dirAdd('mission',1);if(run.di===2)rcAdd('hardW',1);if(run.li>=1)rcAdd('longOk',1);missionRep(run);wingXP();S.streak=(S.streak||0)+1;if(S.streak%3===0)setTimeout(streakCheer,1400);else if(run.story==null)setTimeout(mercCall,1600)}else S.streak=0;save();if(VIEW==='missions')renderMissions();renderHeader()}
 // ---------- arena ----------
 let DB=null,USER=null,UID=null,pilots=null,pilotsAt=0,NETK=null;
 // pull this slot's cloud save; newer one wins. force=true after signing in on a new phone.
@@ -3966,7 +4038,9 @@ const ARENA_TUNE={rung:{9:1.38,8:1.39,7:1.44,6:1.45,5:1.47,4:1.48,3:1.53,2:1.55,
  first:2,             // first time you take a rung in a bracket: +2 mission fights
  act:{5:3,15:6,30:10}, // weekly activity pay (win or lose) at 5, 15 and 30 fights
  season:[4,8,14,22,34],seasonRung:.04}; // Monday payout in mission fights by final bracket, +4% per rung above #10
-function rivalPw(L,p){return Math.round(L.ref*(ARENA_TUNE.rung[p]||1))}
+function rivalPw(L,p){const w=Math.round(L.ref*(ARENA_TUNE.rung[p]||1));return arenaFirst(L,p)?Math.min(w,Math.floor(myArenaPw()*.98)):w}
+// ROUND5 q (Apex): until your first Arena win the rung you can challenge is held to your Power (never above it), so it rehearses Even or better
+function arenaFirst(L,p){return !!(L&&L.tier===0&&p===L.pos-1&&!((S.arena&&S.arena.wins)>0))}
 const MPAY=lv=>12+4*lv+3.5;  // average mission-fight Fed-$ at a level (fight(): 12+4*lv+rand 0..7, solo)
 const myArenaPw=()=>botStats(botOf(S.arenaBot)).power;
 function arenaWinPay(tier){return Math.round(ARENA_TUNE.win*MPAY(S.level)*(1+ARENA_TUNE.brkPay*tier))}
@@ -3983,8 +4057,13 @@ function jumpReady(L){if(!clockOK())return false;if(L.jd===dayKey())return false
 function jumpUse(L){const m=new Date();m.setHours(24,0,0,0);L.jt=m.getTime();L.jd=dayKey()}
 function seasonPay(L){return Math.round(ARENA_TUNE.season[L.tier]*MPAY(S.level)*(1+ARENA_TUNE.seasonRung*(10-L.pos)))}
 // weekly season: on the first look after Monday 00:00, pay by the final bracket, then drop one bracket and start at rung #10
+// build 84 fix (Sentinel): a rollover that comes while an Arena fight is being played waits until that fight is over (ARENA_LIVE);
+// only a pending fight that nobody is playing is dropped and refunded.
+let ARENA_LIVE=false;
 function seasonTick(){if(!clockOK())return false;const wk=weekKey(Date.now());if(!S.season){S.season={wk,f:0,paid:[]};return true}
- const se=S.season;if(se.wk===wk||wk<se.wk)return true;
+ const se=S.season;if(se.wk===wk||wk<se.wk)return true;if(ARENA_LIVE)return true;
+ /* ROUND5 d: an Arena fight left pending from last season is dropped and its ticket refunded; the new ladder's rival is not touched */
+ if(S.apend){delete S.apend;S.tix=(S.tix||0)+1;setTimeout(()=>toast('A new Arena season started, so your unfinished fight was dropped and your ticket is back.'),2400)}
  const L=S.ladder;if(L){const pay=seasonPay(L),from=BRK[L.tier].n+' #'+L.pos;S.scrap+=pay;const t=Math.max(0,L.tier-1);genLadder(t);S.lastSeason={wk:se.wk,from,pay,to:BRK[t].n+' #10',f:se.f};setTimeout(()=>toast('Arena season over: you finished '+from+'. +'+pay+' Fed-$. New season starts at '+BRK[t].n+' #10.'),600)}
  S.season={wk,f:0,paid:[]};save();return true}
 function activityAdd(){const se=S.season;if(!se||!clockOK())return null;se.f++;const k=ARENA_TUNE.act[se.f];if(k&&!se.paid.includes(se.f)){se.paid.push(se.f);const pay=Math.round(k*MPAY(S.level));S.scrap+=pay;return {n:se.f,pay}}return null}
@@ -4040,7 +4119,10 @@ const NEMLOST=["You got lucky last time, {me}. Not twice.","I rebuilt everything
 function nemOn(){const L=S.ladder;return !!(L&&L.tier<=1&&L.pos>1)}
 function nemAt(){const L=S.ladder;if(!L)return null;for(const k in L.rungs)if(L.rungs[k]&&L.rungs[k].nem)return +k;return null}
 function nemSync(){if(!nemOn())return null;const L=S.ladder,N=S.nem,up=L.pos-1,T=L.rungs[up];let at=nemAt();
- if(!N){if(!T)return null;T.nem=1;S.nem={n:T.bot.name,pilot:T.pilot,w:0,l:0};save();return up}
+ // ROUND5 q (Apex): a nemesis is a rival who has beaten you (arenaLossBook makes one); never a stranger on a fresh ladder. Old saves
+ // that got one before any loss drop it.
+ if(N&&!(N.l>0)){const a=nemAt();if(a!=null)delete L.rungs[a].nem;S.nem=null;save();return null}
+ if(!N)return null;
  if(at===up||N.bd===dayKey()||!T||!T.pilot)return at; // the nemesis is a pilot: a rung with no pilot is skipped
  if(at!=null){const F=L.rungs[at];for(const f of ['bot','pilot','beat']){const x=F[f];F[f]=T[f];T[f]=x}delete F.nem;F.k=0}
  else{T.bot.name=N.n;T.pilot=N.pilot;T.beat=N.l}
@@ -4053,7 +4135,7 @@ function renderHgNem(){const b=$('hgNem');if(!b)return;const N=S.nem;b.hidden=tr
  b.append(el('b',null,'NEMESIS · '+(N.pilot||N.n).toUpperCase()+' · RUNG #'+(S.ladder.pos-1)),document.createTextNode('“'+N.tl+'”'+(N.w||N.l?' · You '+N.w+'–'+N.l:'')));b.hidden=false;b.onclick=()=>setView('arena')}
 // fix80 A3: a rung's fight scale comes from the rival's fixed Power (ARENA_TUNE), not from your Power. Ladders made before
 // fix80 get their table Power the first time they are shown, anchored on your arena mech then.
-function rungScale(p){const L=S.ladder,R2=L&&L.rungs[p];if(!R2)return 1;if(!L.ref)L.ref=botStats(botOf(S.arenaBot)).power;if(!R2.pw||L.v80!==2){if(L.v80!==2){if(!L.v80)L.ref=myArenaPw();for(const k in L.rungs)if(L.rungs[k])L.rungs[k].pw=rivalPw(L,+k);L.v80=2;L.clr=L.clr||[]}else R2.pw=rivalPw(L,p)}
+function rungScale(p){const L=S.ladder,R2=L&&L.rungs[p];if(!R2)return 1;if(!L.ref)L.ref=botStats(botOf(S.arenaBot)).power;if(arenaFirst(L,p)&&L.v80===2&&R2.pw){const w=rivalPw(L,p);if(R2.pw!==w)R2.pw=w}/* ROUND5 q: follows your Power */if(!R2.pw||L.v80!==2){if(L.v80!==2){if(!L.v80)L.ref=myArenaPw();for(const k in L.rungs)if(L.rungs[k])L.rungs[k].pw=rivalPw(L,+k);L.v80=2;L.clr=L.clr||[]}else R2.pw=rivalPw(L,p)}
 
  if(!R2.k||R2.kpw!==R2.pw||R2.kb!==R2.bot.name){R2.k=+rivalK(R2.bot,R2.pw).toFixed(4);R2.kpw=R2.pw;R2.kb=R2.bot.name}return R2.k}
 // R3 (Apex arena playtest): what the fight actually uses for a ladder rung: hull and attack after rungScale, and the Power of those stats
@@ -4092,8 +4174,10 @@ function renderArena(){renderHeader();capTip('arena');if(!S.ladder)genLadder(0);
  const rv=$('rivals');rv.textContent='';const myPw=myArenaPw();
  for(let p=1;p<=10;p++){if(p===L.pos){const me=el('div','opp me');const cv=el('canvas');me.append(cv);const info=el('div');const nm=el('span','on');nm.append(el('span','rk','#'+p),portCv(),document.createTextNode(botOf(S.arenaBot).name));info.append(nm,el('small',null,(S.pilot?'Pilot '+S.pilot+' · ':'')+'You · power '+botStats(botOf(S.arenaBot)).power));me.append(info,el('span'));requestAnimationFrame(()=>{const [c,w,h]=fitCanvas(cv);drawBot(c,botOf(S.arenaBot),w/2,h-3,.3,1,0,{front:true})});rv.append(me);continue}
   const R2=L.rungs[p];if(!R2)continue;const can=p===L.pos-1,fo=rungOpp(p),stronger=can&&fo.power>myPw&&p>2,up2=stronger&&jumpReady(L),jumpUsed=stronger&&!up2;
-  const NM=R2.nem&&nemOn(),row=oppRow(R2.bot,null,(NM&&S.nem&&(S.nem.w||S.nem.l)?'Your nemesis · you '+S.nem.w+'–'+S.nem.l+' · ':NM?'Your nemesis · ':'')+(NM&&S.nem&&S.nem.bd===dayKey()?'Climbs back above you tomorrow · ':'')+(R2.pilot?'Pilot '+R2.pilot+(R2.bot.arch?' · '+ARCH[R2.bot.arch].n:'')+(R2.beat?' · beat you '+R2.beat+'x':'')+' · ':'')+(R2.was&&R2.was.d===dayKey()&&R2.was.p!==p?'Knocked down from #'+R2.was.p+' by you (Power '+R2.was.pw+' up there, kept) · ':'')+(can?(up2?'Stronger than you · Win: +2 rungs (once a day), to #'+(p-1):'Win: +1 rung, to #'+p+' ('+(jumpUsed?'2-rung jump used today':fo.power>myPw?'no 2-rung jump into #1':'not stronger than you, so no 2-rung jump')+')')+((L.clr||[]).includes(p)?'':' · first clear +'+arenaFirstPay()+' Fed-$'):p<L.pos?'Locked: reach rung #'+(p+1)+' to challenge':'Below you: already passed'),false,()=>arenaFight(p),fo.power,fo,true);
-  row.querySelector('.on').prepend(el('span','rk','#'+p));if(R2.nem&&nemOn())row.querySelector('.on').after(el('span','tag nem','Nemesis'));/* FIX81 item 24: rival armor, and a warning when you are more than 15% under its Power */if(p<L.pos){const ar=armorOf(fo.bot||R2.bot),am=row.querySelector('small');if(am)am.append(document.createTextNode(' · Armor '+(ar&&ARMOR[ar]?ARMOR[ar].n:'Standard')));/* ROUND4 item 13: only on the rung you can challenge now, from the Auto rehearsal */if(can){const od=rungOdds(p,fo),tg=el('span','tag '+(od.lab==='Favored'?'fav':od.lab==='Even'?'even':'lloss'),od.lab);tg.title='Auto rehearsal with your mech: won '+od.w+' of '+od.n;row.querySelector('.on').append(tg);if(am)am.append(document.createTextNode(' · Auto rehearsal: won '+od.w+' of '+od.n))}}const fb=row.querySelector('.btn');fb.disabled=!can;if(!can&&p<L.pos){fb.textContent='Beat #'+(L.pos-1)+' first';fb.setAttribute('aria-label','Locked. Beat rung #'+(L.pos-1)+' first to move up');fb.classList.add('lockhint')}/* Apex build 78: the locked button says what unlocks it */if(p>L.pos)fb.replaceWith(el('span','tag passed','Passed'));rv.append(row)}
+  /* ROUND5 k (Mochi): the rung text and the odds tag agree; Power alone no longer says "Stronger than you" next to FAVORED */const OD=can&&p<L.pos?rungOdds(p,fo):null,upT=!OD||OD.lab==='Likely loss'?'Stronger than you':OD.lab==='Favored'?'Higher Power, but your build is favored':'Higher Power, about even';
+  const NM=R2.nem&&nemOn(),row=oppRow(R2.bot,null,(NM&&S.nem&&(S.nem.w||S.nem.l)?'Your nemesis · you '+S.nem.w+'–'+S.nem.l+' · ':NM?'Your nemesis · ':'')+(NM&&S.nem&&S.nem.bd===dayKey()?'Climbs back above you tomorrow · ':'')+(R2.pilot?'Pilot '+R2.pilot+(R2.bot.arch?' · '+ARCH[R2.bot.arch].n:'')+(R2.beat?' · beat you '+R2.beat+'x':'')+' · ':'')+(R2.was&&R2.was.d===dayKey()&&R2.was.p!==p?'Knocked down from #'+R2.was.p+' by you (Power '+R2.was.pw+' up there, kept) · ':'')+(can?(up2?upT+' · Win: +2 rungs (once a day), to #'+(p-1):'Win: +1 rung, to #'+p+' ('+(jumpUsed?'2-rung jump used today':fo.power>myPw?'no 2-rung jump into #1':'Power not above yours, so no 2-rung jump')+')')+((L.clr||[]).includes(p)?'':' · first clear +'+arenaFirstPay()+' Fed-$'):p<L.pos?'Locked: reach rung #'+(p+1)+' to challenge':'Below you: already passed'),false,()=>arenaFight(p),fo.power,fo,true);
+  row.querySelector('.on').prepend(el('span','rk','#'+p));if(R2.nem&&nemOn())row.querySelector('.on').after(el('span','tag nem','Nemesis'));/* FIX81 item 24: rival armor, and a warning when you are more than 15% under its Power */if(p<L.pos){const ar=armorOf(fo.bot||R2.bot),am=row.querySelector('small');if(am)am.append(document.createTextNode(' · Armor '+(ar&&ARMOR[ar]?ARMOR[ar].n:'Standard')));/* ROUND4 item 13: only on the rung you can challenge now, from the Auto rehearsal */if(can&&OD){const od=OD,tg=el('span','tag '+(od.lab==='Favored'?'fav':od.lab==='Even'?'even':'lloss'),od.lab);tg.title='Auto rehearsal with your mech: won '+od.w+' of '+od.n;row.querySelector('.on').append(tg);if(am)am.append(document.createTextNode(' · Auto rehearsal: won '+od.w+' of '+od.n));
+   if(od.lab==='Likely loss'){const ue=upEst(p,fo),u=el('small','upfirst');u.append(el('b',null,'Upgrade first. '),document.createTextNode(ue.fed!=null?'About '+ue.fed.toLocaleString()+' Fed-$ of part upgrades ('+ue.ups+' level'+(ue.ups>1?'s':'')+') should bring this to Even (estimate).':'Part upgrades alone are not enough here (estimate); level up or find better parts.'));row.querySelector('.on').parentNode.append(u)}/* ROUND5 q */}}const fb=row.querySelector('.btn');fb.disabled=!can;if(!can&&p<L.pos){fb.textContent='Beat #'+(L.pos-1)+' first';fb.setAttribute('aria-label','Locked. Beat rung #'+(L.pos-1)+' first to move up');fb.classList.add('lockhint')}/* Apex build 78: the locked button says what unlocks it */if(p>L.pos)fb.replaceWith(el('span','tag passed','Passed'));rv.append(row)}
  renderPilots();if(DB&&Date.now()-pilotsAt>60000)loadPilots()}
 // out of daily fuel/tickets: offer one ad refill per day, or the store
 function outOf(kind,need){const isF=kind==='fuel',ov=$('outOf');if(isF)capTip('nofuel');$('ooT').textContent=isF?'OUT OF FUEL':'OUT OF TICKETS';
@@ -4111,25 +4195,35 @@ function arenaPin(P){const L=S.ladder,o=P&&P.opp;if(!o||!L)return;const T=L.rung
  let F=null;for(const k in L.rungs)if(+k!==P.p&&same(L.rungs[k])){F=L.rungs[k];break}
  if(F){for(const f of ['bot','pilot','beat']){const x=F[f];F[f]=T[f];T[f]=x}if(F.nem!==T.nem){const x=F.nem;F.nem=T.nem;T.nem=x;if(!F.nem)delete F.nem;if(!T.nem)delete T.nem}F.k=0;T.k=0}
  else{T.bot=JSON.parse(JSON.stringify(o.bot));T.pilot=o.pilot;T.beat=o.beat;if(o.nem)T.nem=1;else delete T.nem;T.k=0}}
-function arenaLossBook(R2){S.arena.losses++;S.scrap+=5;R2.beat=(R2.beat||0)+1;if(R2.nem&&S.nem){S.nem.l++;S.nem.last='them'}}
+function arenaLossBook(R2){S.arena.losses++;S.scrap+=5;R2.beat=(R2.beat||0)+1;if(R2.nem&&S.nem){S.nem.l++;S.nem.last='them'}
+ else if(!S.nem&&nemOn()&&R2.pilot){R2.nem=1;R2.k=0;S.nem={n:R2.bot.name,pilot:R2.pilot,w:0,l:1,last:'them'}}/* ROUND5 q: the first rival to beat you becomes your nemesis */}
 // ROUND4 item 13: the challenge rung's odds come from a hidden Auto rehearsal (30 seeded fights with the same options as the real
 // fight, so armor matchups, the rival AI and armor shifts all count), cached per rung and loadout. Power alone mislabeled 3 of 3
 // of Apex's fights. Favored = wins 65%+ of rehearsals, Likely loss = 35% or less, Even between.
 function arenaOpts(p,O){const L=S.ladder;return {scales:[[O.scale,O.scale]],rivalAI:O.ai,ashift:L.tier>=1?'all':undefined,...(L.tier===0&&p===1&&!S.promo1?{gov:ARENA_TUNE.promo}:{})}}
 const ODDC={},ODDN=30;
-function rungOdds(p,O){O=O||rungOpp(p);const A=botOf(S.arenaBot),o=arenaOpts(p,O),k=JSON.stringify([S.ladder.tier,p,O.bot,O.scale,O.ai,o,A.parts,A.level,A.armor||0,A.skills||0,S.pskill||0]);
+// ROUND5 q: on a Likely-loss rung, an estimate of the Fed-$ in part upgrades that brings the Auto rehearsal to Even: upgrade the part
+// with the most Power per Fed-$ (upCost) one level at a time, up to 40 levels, and find the first point that rehearses Even.
+function upEst(p,O){O=O||rungOpp(p);const A0=botOf(S.arenaBot),o=arenaOpts(p,O),k='ue'+JSON.stringify([S.ladder.tier,p,O.bot,O.scale,O.ai,o,A0.parts,A0.level,A0.mods||0]);if(k in ODDC)return ODDC[k];
+ const A=JSON.parse(JSON.stringify(A0)),path=[];let fed=0;for(let s=0;s<40;s++){let b=null;const pw0=botStats(A).power;for(const sl in A.parts){const q=A.parts[sl];if(!q||q.l>=15)continue;const c=upCost(q);q.l++;const g=botStats(A).power-pw0;q.l--;if(g>0&&(!b||g/c>b.e))b={sl,c,e:g/c}}
+  if(!b)break;A.parts[b.sl].l++;fed+=b.c;path.push({fed,parts:JSON.parse(JSON.stringify(A.parts))})}
+ const ok=i=>{let w=0;for(let s=0;s<ODDN;s++){const r=simulate({...A0,parts:path[i].parts},O.bot,{...o,sim:true,seed:104729*(s+1)+p*7+1});if(r.win===0)w++}return w/ODDN>.35};
+ // build 84 fix (Sentinel): binary search over the upgrade count (more upgrades never lower Power), about 6 checks instead of up to 40
+ let ans=null;if(path.length&&ok(path.length-1)){let lo=0,hi=path.length-1;while(lo<hi){const mid=(lo+hi)>>1;if(ok(mid))hi=mid;else lo=mid+1}ans=lo}
+ return ODDC[k]=ans==null?{fed:null,max:fed}:{fed:Math.ceil(path[ans].fed/50)*50,ups:ans+1}}
+function rungOdds(p,O){O=O||rungOpp(p);const A=botOf(S.arenaBot),o=arenaOpts(p,O),k=JSON.stringify([S.ladder.tier,p,O.bot,O.scale,O.ai,o,A.parts,A.level,A.armor||0,A.mods||0,A.paint||0,A.pose||0,S.pskill||0]);/* ROUND5 g: skill mods (A.mods) are in the key; A.skills never existed, so the odds stayed stale after buying skills */
  if(ODDC[k])return ODDC[k];let w=0;for(let s=0;s<ODDN;s++){const r=simulate(A,O.bot,{...o,sim:true,seed:104729*(s+1)+p*7+1});if(r.win===0)w++}
  const pc=w/ODDN,lab=pc>=.65?'Favored':pc<=.35?'Likely loss':'Even';return ODDC[k]={w,n:ODDN,pc,lab}}
 async function arenaFight(p,rs){dailyTick();seasonTick();const AP0=rs?S.apend:null;if(rs&&AP0)arenaPin(AP0);if(rs&&!(AP0&&AP0.p===p&&AP0.tier===S.ladder.tier&&p===S.ladder.pos-1&&S.ladder.rungs[p])){if(S.apend){delete S.apend;S.tix=(S.tix||0)+1;save();renderHeader();toast('The Arena ladder changed since that fight, so your ticket is back.')}return}
  if(!rs&&S.tix<1){outOf('tix');return}if(p!==S.ladder.pos-1)return;const A=S.arena,L=S.ladder,R2=L.rungs[p],B=BRK[L.tier],O=rs&&AP0.opp&&AP0.opp.O?AP0.opp.O:rungOpp(p),bot=O.bot;
  if(R2.pilot&&!rs){const me=S.pilot||'pilot',NL=R2.nem&&S.nem?S.nem.last:null,pool=NL==='you'?NEMLOST:R2.beat||NL==='them'?REVENGE:(ARCH[bot.arch]||ARCH.gunner).talk,line=pool[Math.floor(Math.random()*pool.length)].replace('{me}',me);SPK.rival={n:(R2.nem?'NEMESIS · ':'')+R2.pilot.toUpperCase()+' · '+bot.name.toUpperCase(),c:ARCHC[bot.arch]||'#3a1018',bot};await new Promise(res=>playScene([['rival',line,'']],res))}
  const wasPw=rs?AP0.wasPw:O.power,up2=rs?AP0.up2:wasPw>myArenaPw()&&p>2&&jumpReady(L),dest=up2?p-1:p,first=!(L.clr||[]).includes(p);
- if(!rs){S.tix--;S.apend={p,tier:L.tier,wasPw,up2,rec:{k:[],t:[],a:[],s:[],lg:0},opp:{pilot:R2.pilot,bot:JSON.parse(JSON.stringify(R2.bot)),beat:R2.beat,nem:R2.nem?1:0,O:JSON.parse(JSON.stringify(O))}}}save();renderHeader();
+ if(!rs){S.tix--;S.apend={p,tier:L.tier,wk:S.season&&S.season.wk,wasPw,up2,rec:{k:[],t:[],a:[],s:[],lg:0},opp:{pilot:R2.pilot,bot:JSON.parse(JSON.stringify(R2.bot)),beat:R2.beat,nem:R2.nem?1:0,O:JSON.parse(JSON.stringify(O))}}}save();renderHeader();
  // FIX81 item 2: the pay is worked out once (card and payment share it), and the NEXT GOAL is about this ladder, never another rival's revenge
  let AP=null;const apay=st=>{if(AP)return AP;const hb=st?1+st.b:1,s=Math.round(arenaWinPay(L.tier)*hb)+(first?arenaFirstPay():0),xp=Math.round((10+3*bot.level)*hb),top=dest===1,news=lvNews(xp,[]);if(top&&L.tier<BRK.length-1)news.push(BRK[L.tier+1].n+' bracket');
   const goal=top?(L.tier<BRK.length-1?'Promoted: '+BRK[L.tier+1].n+' bracket starts at rung #10.':'Titan champion: the ladder resets with new challengers.'):'Rung #'+(dest-1)+' is next in '+B.n+'.'+(dest-1===1?' Take it to move up a bracket.':'');
   return AP={base:s,xp,goal,cr0:CRPAY.arenaWin(L.tier)+(first?CRPAY.rungFirst:0),cr:CRPAY.arenaWin(L.tier)+(first?CRPAY.rungFirst:0)+(top?20+L.tier*15:0),scrap:s+(top?150*(L.tier+1):0),news,lab:top?'Includes '+150*(L.tier+1)+' Fed-$ for taking rung #1, plus '+(20+L.tier*15)+' credits':(up2?'Jumped 2 rungs to #'+dest:'Rung #'+dest+' is yours')+(first?' · first clear +'+arenaFirstPay():'')+(R2.nem?' · Nemesis beaten: +1 Prototype part':'')}};
- const bp=runBattle(botOf(S.arenaBot),bot,{arec:S.apend.rec,intro:B.n+' ladder: rung #'+p+'.',card:true,bg:'art:arena',subs:['1st Heavy Battalion',B.n+' ladder · rung #'+p],...arenaOpts(p,O),apw:O.power,acr:CRPAY.arenaWin(L.tier)+(first?CRPAY.rungFirst:0)+(dest===1?20+L.tier*15:0),arp:p,pay:apay});save();const res=await bp;delete S.apend;const w=res.win===0;if(w&&L.tier===0&&p===1)S.promo1=1;
+ const bp=runBattle(botOf(S.arenaBot),bot,{arec:S.apend.rec,intro:B.n+' ladder: rung #'+p+'.',card:true,bg:'art:arena',subs:['1st Heavy Battalion',B.n+' ladder · rung #'+p],...arenaOpts(p,O),apw:O.power,acr:CRPAY.arenaWin(L.tier)+(first?CRPAY.rungFirst:0)+(dest===1?20+L.tier*15:0),arp:p,pay:apay});save();ARENA_LIVE=true;let res;try{res=await bp}finally{ARENA_LIVE=false}delete S.apend;const w=res.win===0;if(w&&L.tier===0&&p===1)S.promo1=1;
  const act=activityAdd();if(act)setTimeout(()=>toast('Arena activity: '+act.n+' fights this week. +'+act.pay+' Fed-$.'),1800);
  if(w&&R2.nem&&S.nem){const N=S.nem;N.w++;N.last='you';N.bd=dayKey();const np=randomPart(S.level+1,R,.5);np.r=Math.max(np.r,2);S.inv.push(np);N.tro='You beat your nemesis '+(N.pilot||N.n)+' ('+N.n+'). '+(N.w>N.l?'You lead ':N.w<N.l?'They lead ':'Tied ')+N.w+'–'+N.l+'. Drop: '+RAR[np.r].n+' '+partName(np)+'.';N.troD=dayKey();setTimeout(()=>toast('🏆 '+N.tro),2600)}
  if(w){const ruFrom=B.n+' #'+L.pos;A.wins++;const P0=apay(res.manual&&res.style?res.style:null),s=P0.base;S.scrap+=s;S.credits=(S.credits||0)+P0.cr0;gainXP(P0.xp);L.clr=L.clr||[];if(first)L.clr.push(p);if(up2)jumpUse(L);R2.was={p,pw:wasPw,d:dayKey()};const old=L.pos;L.rungs[old]=R2;if(dest!==p){L.rungs[p]=L.rungs[dest];if(L.rungs[p])L.rungs[p].was={p:dest,pw:rungFoe(p).power,d:dayKey()}}delete L.rungs[dest];L.pos=dest;
@@ -4189,12 +4283,14 @@ if(S.run&&!S.run.over)S.run.die=S.run.die||null;
 setView('hangar');requestAnimationFrame(frame);if(S.run&&S.run.pend&&!S.run.over&&S.run.pend.done&&!S.run.pend.s0){delete S.run.pend;save()}
 var RESUMING=false;
 // FIX81 item 13: an Arena fight cut off by a reload is offered back here
-function arenaResumeOffer(){const P=S.apend;if(!P||!S.ladder)return;if(!$('opening').hidden||TUT.on){setTimeout(arenaResumeOffer,300);return}const R2=S.ladder.rungs[P.p],nm=P.opp?(P.opp.pilot||P.opp.bot.name):R2?(R2.pilot||R2.bot.name):'your rival';
+function arenaResumeOffer(){if(!$('opening').hidden||TUT.on){if(S.apend)setTimeout(arenaResumeOffer,300);return}seasonTick();const P=S.apend;if(!P||!S.ladder){renderHeader();if(VIEW==='arena')renderArena();return}const R2=S.ladder.rungs[P.p],nm=P.opp?(P.opp.pilot||P.opp.bot.name):R2?(R2.pilot||R2.bot.name):'your rival';
  ask('Your Arena fight with '+nm+' (rung #'+P.p+') was cut off. Resume it where you left off? Your ticket is already spent. Forfeit counts as a loss.','Resume fight','Forfeit').then(ok=>{if(!S.apend)return;
   if(ok){setView('arena');arenaFight(P.p,1);return}
-  const L=S.ladder;if(P.tier===L.tier)arenaPin(P);const Rf=L.rungs[P.p];delete S.apend;if(P.tier===L.tier&&Rf)arenaLossBook(Rf);save();if(VIEW==='arena')renderArena();toast('Fight forfeited. You keep rung #'+L.pos+'.')})}
+  seasonTick();if(S.apend!==P){renderHeader();if(VIEW==='arena')renderArena();return}
+  const L=S.ladder;if(P.tier===L.tier)arenaPin(P);const Rf=L.rungs[P.p];delete S.apend;if(P.tier===L.tier&&Rf)arenaLossBook(Rf);/* ROUND5 d: a forfeit is a fight played this week */const act=activityAdd();save();if(VIEW==='arena')renderArena();renderHeader();toast('Fight forfeited. You keep rung #'+L.pos+'.');if(act)setTimeout(()=>toast('Arena activity: '+act.n+' fights this week. +'+act.pay+' Fed-$.'),1800)})}
 if(S.bh&&S.bh.h&&!(S.run&&S.run.pend&&!S.run.over)){const H=S.bh;BALHOLD=H.h;renderHeader();const go=()=>{if(!$('opening').hidden||TUT.on){setTimeout(go,300);return}openPack(H.t,H.c||[],H.q?{quick:1}:null)};setTimeout(go,600)}else if(S.bh){delete S.bh}
 if(S.apend&&!(S.run&&S.run.pend&&!S.run.over))setTimeout(arenaResumeOffer,900);
+if(S.chRw!=null&&!(S.run&&!S.run.over))setTimeout(chapterResume,900);
 if(S.run&&S.run.pend&&!S.run.over){const run=S.run.pend.s0?rollRestore():S.run,rc=run.pend.rec;run.pos=run.pend.from;if(rc&&!run.pend.s0)run.cont=rc.c0;busy=true;RESUMING=true;const go=()=>{if(!$('opening').hidden){setTimeout(go,300);return}setView('missions');toast(rc&&rc.a.some(a=>a&&a.length)?'Resuming your fight where you left off.':'Resuming your last roll.');doRoll(run)};setTimeout(go,900)}setTimeout(turboCredits,1500);
 
 
@@ -4387,9 +4483,9 @@ document.addEventListener('pointerdown',e=>{sndInit();if(e.target.closest&&e.tar
   if(VIEW!=='hangar'){setView('hangar');return}
   if(Date.now()-exitAt<2000){App.exitApp();return}exitAt=Date.now();toast('Press back again to exit.')})}catch(e){}})();
 
-$('setHap').onchange=e=>{S.haptics=e.target.checked;save();if(S.haptics)buzz('heavy')}; $('setChat').onchange=e=>{S.chatOff=!e.target.checked;save()};$('setFx').onchange=e=>{S.fxOff=!e.target.checked;save()}; $('setTips').onchange=e=>{S.tipsOff=!e.target.checked;if(S.tipsOff){TIPQ.length=0;$('capTip').hidden=true}save()};
+$('setHap').onchange=e=>{S.haptics=e.target.checked;save();if(S.haptics)buzz('heavy')}; $('setChat').onchange=e=>{S.chatOff=!e.target.checked;save()};$('setFx').onchange=e=>{S.fxOff=!e.target.checked;save()};/* ROUND5: free switch, off by default (old saves have no S.skipCuts) */$('setSkipCuts').onchange=e=>{S.skipCuts=!!e.target.checked;save()}; $('setTips').onchange=e=>{S.tipsOff=!e.target.checked;if(S.tipsOff){TIPQ.length=0;$('capTip').hidden=true}save()};
 $('setPtA').onchange=e=>{S.ptAlerts=e.target.checked;save();if(!S.ptAlerts)ptCancel();else if(S.patrol)ptNotify(S.patrol.t1)};
-$('setBtn').onclick=()=>{renderAcct();$('setHap').checked=S.haptics!==false;$('setTips').checked=!S.tipsOff;$('setChat').checked=!S.chatOff;$('setFx').checked=!S.fxOff;$('setPtA').checked=S.ptAlerts!==false;$('volMus').value=Math.round(VOL.mus*100);$('volSfx').value=Math.round(VOL.sfx*100);$('verTxt').textContent='HEAVYFRAME '+APP_VER+' · Pixel & Palate Partners LLC';$('settings').hidden=false};
+$('setBtn').onclick=()=>{renderAcct();$('setHap').checked=S.haptics!==false;$('setTips').checked=!S.tipsOff;$('setChat').checked=!S.chatOff;$('setFx').checked=!S.fxOff;$('setSkipCuts').checked=!!S.skipCuts;$('setPtA').checked=S.ptAlerts!==false;$('volMus').value=Math.round(VOL.mus*100);$('volSfx').value=Math.round(VOL.sfx*100);$('verTxt').textContent='HEAVYFRAME '+APP_VER+' · Pixel & Palate Partners LLC';$('settings').hidden=false};
 $('setClose').onclick=()=>{$('settings').hidden=true};
 const saveVol=()=>{try{localStorage.setItem('hf-vol',JSON.stringify(VOL))}catch(e){}};
 $('volMus').oninput=e=>{VOL.mus=e.target.value/100;saveVol();if(SND.ctx&&SND.musOn)SND.mus.gain.setTargetAtTime(.5*VOL.mus,SND.ctx.currentTime,.05)};
@@ -4411,7 +4507,7 @@ const GUIDE=()=>{const ar=ARMOR,el=ELEM,R0=RAR;return [
  {id:'b1',t:'Battle basics',lesson:1,ps:[
    'With <b>Auto: OFF</b> you pick every move: tap a weapon to attack. <b>Auto: ON</b> plays for you. Speed and Skip are always up top.',
    '<b>Hull</b> is your health bar. Empty the enemy’s hull to win. If yours hits zero, you’re down.',
-   '<b>Hands-on bonus.</b> Fights you play yourself (Auto OFF, no Skip) pay +10% to +30% more Fed-$ and XP, graded by combos, braced HEAVYs and Overdrives.',
+   '<b>Hands-on bonus.</b> Fights you play yourself (Auto OFF, no Skip) pay +10% to +30% more Fed-$ and XP, graded by combos, HEAVYs answered (Brace or Read) and Overdrives.',
    '<b>Field repair.</b> After each fight you win on a mission, your crew repairs half the hull you’re missing.']},
  {id:'b2',t:'Two arms and targeting',lesson:2,ps:[
    '<b>Combo.</b> Switch arms between attacks for +10% damage. Using the same arm twice gets no bonus.',
@@ -4833,14 +4929,17 @@ function showOpening(cine,done,tapped){if(!tapped&&(!SND.ctx||SND.ctx.state!=='r
  musStart();OP.on=true;OP.base=performance.now();OP.mode=cine?'cine':'title';OP.sparks=[];OP.done=done;$('opSkip').hidden=!cine;$('opening').hidden=false;OP.t0=performance.now();cancelAnimationFrame(OP.raf);OP.raf=requestAnimationFrame(drawOpening)}
 function opFinish(){if(!OP.on)return;$('opCv').setAttribute('aria-label','');musStop(1.2);OP.on=false;cancelAnimationFrame(OP.raf);$('opening').hidden=true;if(!S.introSeen){S.introSeen=1;save()}const d=OP.done;OP.done=null;if(d)d()}
 $('opSkip').onclick=e=>{e.stopPropagation();opFinish()};
-$('opening').onclick=()=>{if(OP.mode==='gate'){sndInit();const g=OP.gate;OP.gate=null;if(!g.cine){musStart();OP.on=false;cancelAnimationFrame(OP.raf);$('opening').hidden=true;if(g.done)g.done();return}showOpening(g.cine,g.done,true);return}if(performance.now()-OP.t0<400)return;opFinish()};
+// ROUND5 m (Mochi): after a reload the title (no cinematic) is not a wall. The tap that closes it also lands on what was under it
+// (a tab, a card, a button), and the title takes taps at once instead of eating them for 400 ms. Not over a resumed fight.
+function opPass(e){if(RESUMING||!S.onb||!e||e.clientX==null)return;const x=e.clientX,y=e.clientY;setTimeout(()=>{const t=document.elementFromPoint(x,y),b=t&&t.closest&&t.closest('button,.ccard,[role=button],a,.tab,[role=tab]');if(b&&b.getAttribute('role')==='tab'&&!b.disabled&&!b.closest('#opening'))b.click()},0)}/* build 84 fix (Sentinel): only a navigation tab gets the title-closing tap; any other button (buy, upgrade, a fuel-spending contract) swallows it */
+$('opening').onclick=e=>{if(OP.mode==='gate'){sndInit();const g=OP.gate;OP.gate=null;if(!g.cine){musStart();OP.on=false;cancelAnimationFrame(OP.raf);$('opening').hidden=true;if(g.done)g.done();opPass(e);return}showOpening(g.cine,g.done,true);return}if(OP.mode==='title'){opFinish();opPass(e);return}if(performance.now()-OP.t0<400)return;opFinish()};
 function openPilots(){const L=$('ppList');L.textContent='';for(let i=0;i<3;i++){let d=null;try{d=JSON.parse(localStorage.getItem(i?KEY0+'-p'+i:KEY0))}catch(e){}
   const r=el('button','tkrow'+(i===SLOT?' open':''));const l=el('div');l.append(el('b',null,d&&d.onb?(d.pilot||'Pilot')+' · '+(d.name||'Mech'):'Empty slot'),el('small',null,d&&d.onb?'Level '+(d.level||1)+' · '+(d.credits||0)+' credits':'Start a new pilot'));r.append(l,el('span','tag'+(i===SLOT?' o':''),i===SLOT?'Current':'Slot '+(i+1)));
   r.onclick=()=>{if(i===SLOT){$('pilotPick').hidden=true;return}save();try{localStorage.setItem('hf-slot',String(i))}catch(e){}location.reload()};L.append(r)}
  $('pilotPick').hidden=false}
 $('switchPilot').onclick=()=>{$('settings').hidden=true;openPilots()};$('ppClose').onclick=()=>{$('pilotPick').hidden=true};
 $('resetSave').onclick=async()=>{if(!await ask('Erase '+(S.pilot||'this pilot')+"'s progress and start over? Other pilot slots are not touched. This cannot be undone."))return;try{localStorage.removeItem(KEY)}catch(e){}if(DB&&UID){try{await DB.doc('data/users/'+UID+'/'+CLOUDK).delete()}catch(e){}}location.reload()};
-$('tutReplay').onclick=()=>{$('settings').hidden=true;if(!S.onb){showOpening(true,startTutorial);return}S.train={done:{}};S.tipsSeen={};save();showOpening(true,()=>playLesson(1,'replay'))};seedTrain();seedTips();if(location.hash!=='#notut'&&location.hash!=='#hq'){const today=dayKey(),QS=!S.onb&&!(S.tut&&S.tut.n)&&location.hash!=='#tut',full=!RESUMING&&!QS&&!S.introSeen;/* FIX81 item 12: the intro cinematic plays once per save (it used to replay on the first load of every day for onboarded pilots); Settings can still replay it */showOpening(full,()=>{if(!S.onb)setTimeout(QS?quickStart:startTutorial,QS?0:200);else if(!RESUMING)setTimeout(welcomeBack,200)})}
+$('tutReplay').onclick=()=>{$('settings').hidden=true;if(!S.onb){showOpening(true,startTutorial);return}S.train={done:{}};S.tipsSeen={};save();showOpening(true,()=>playLesson(1,'replay'))};seedTrain();seedTips();if(location.hash!=='#notut'&&location.hash!=='#hq'){const today=dayKey(),QS=!S.onb&&!(S.tut&&S.tut.n)&&location.hash!=='#tut',full=!RESUMING&&!QS&&!S.introSeen&&!skipCuts();/* ROUND5: Skip cut-ins skips the cinematic; the title tap (audio unlock) stays *//* FIX81 item 12: the intro cinematic plays once per save (it used to replay on the first load of every day for onboarded pilots); Settings can still replay it */showOpening(full,()=>{if(!S.onb)setTimeout(QS?quickStart:startTutorial,QS?0:200);else if(!RESUMING)setTimeout(welcomeBack,200)})}
 (async()=>{const fb=!!(window.HFNET&&window.HFCONF);if(!fb&&!(window.claude&&window.claude.use))return;
  if(fb){try{[USER,DB]=await Promise.race([HFNET.connect(window.HFCONF),wait(15000).then(()=>{throw new Error('offline')})]);NETK='fb'}catch(e){USER=DB=null}}
  else{try{[USER,DB]=await Promise.all([claude.use('user'),claude.use('db')])}catch(e){}}
